@@ -43,6 +43,11 @@ Observacion:
 - Variables relevantes:
   - `IFRAME_ALLOWLIST`
   - `CSP_REPORT_ONLY`
+- Allowlist por defecto actual:
+  - `https://app.powerbi.com`
+  - `https://*.powerbi.com`
+  - `https://public.tableau.com`
+  - `https://*.tableau.com`
 - Riesgo principal:
   - cambiar CSP sin validar Power BI/Tableau puede romper vistas de indicadores y reportes agrupados.
 
@@ -83,6 +88,7 @@ Controles actuales:
 
 - Definir si produccion seguira con CSP `report-only` o pasara a enforcing.
 - Documentar criterio de `IFRAME_ALLOWLIST` por ambiente.
+- Revisar si `script-src` y `style-src` pueden reducir o eliminar `unsafe-inline`.
 - Evaluar necesidad de rate limiting si la API se expone fuera de mismo origen.
 - Definir monitoreo de errores CSP y embeds fallidos.
 
@@ -96,6 +102,7 @@ Controles actuales:
 
 - Riesgo: asumir que no usar `cors()` implica seguridad completa. Mitigacion: documentar que la postura actual depende de mismo origen.
 - Riesgo: endurecer CSP sin smoke checks sobre iframes. Mitigacion: validar embeds reales antes de mover a enforcing.
+- Riesgo: mantener `unsafe-inline` sin revision posterior. Mitigacion: tratarlo como deuda de hardening y evaluar compatibilidad real del frontend.
 
 ## Referencias
 

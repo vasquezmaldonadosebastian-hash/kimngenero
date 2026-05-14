@@ -56,6 +56,7 @@ pnpm run test:coverage
 - No hay smoke tests automatizados post-build.
 - No hay pruebas de regresion visual para cards, dashboards o responsive.
 - No hay una matriz documentada de que cambios exigen que suite.
+- No hay validacion automatizada del artefacto productivo empaquetado (`dist/index.js`) como parte de CI.
 
 ## Regla operativa recomendada
 
@@ -77,7 +78,8 @@ pnpm run test:coverage
 1. Agregar smoke E2E de rutas criticas.
 2. Cubrir filtros y busqueda en `/indicadores`.
 3. Cubrir estados de error de cliente con `ApiError`.
-4. Agregar checklist QA de release en `docs/RELEASE_CHECKLIST.md`.
+4. Ejecutar al menos un smoke post-build sobre el servidor productivo.
+5. Agregar checklist QA de release en `docs/RELEASE_CHECKLIST.md`.
 
 ## Validacion
 

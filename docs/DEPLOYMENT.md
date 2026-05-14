@@ -33,6 +33,7 @@ Notas:
 - `build` ejecuta build de cliente y bundle del server.
 - `start` ejecuta `NODE_ENV=production node dist/index.js`.
 - El puerto lo define `PORT`, o usa `3000` por defecto.
+- El script `start` esta escrito con sintaxis POSIX; en shells Windows puede requerir exportar `NODE_ENV` por separado o ejecutar directamente el runtime objetivo del hosting.
 
 ## Variables de entorno minimas
 
@@ -78,7 +79,13 @@ La matriz detallada esta en `docs/PRODUCTION_CONFIGURATION.md`.
   1. ejecutar CI en PR
   2. correr `pnpm run build` localmente antes de merge
   3. desplegar un build reproducible desde `main`
-  4. conservar el ultimo artefacto estable o release previo para rollback manual
+4. conservar el ultimo artefacto estable o release previo para rollback manual
+
+## Nota sobre desarrollo versus validacion productiva
+
+- `pnpm run dev` levanta el servidor de Vite para frontend.
+- La validacion de despliegue debe hacerse sobre el artefacto productivo generado por `pnpm run build` + `pnpm run start`, porque ese camino ejercita el servidor Express empaquetado.
+- Mientras no exista un script unificado de desarrollo full-stack documentado, no se debe asumir que el flujo `dev` replica exactamente el comportamiento de produccion.
 
 ## Smoke checks post-deploy
 
@@ -99,6 +106,7 @@ La matriz detallada esta en `docs/PRODUCTION_CONFIGURATION.md`.
 
 - Riesgo: usar SQLite en filesystem efimero. Mitigacion: usar volumen persistente o modo `memory`.
 - Riesgo: desplegar sin smoke checks sobre dashboards externos. Mitigacion: validar al menos un embed real en cada release.
+- Riesgo: validar solo sobre Vite dev server y omitir el artefacto final. Mitigacion: probar siempre `build` + `start` antes de una liberacion importante.
 
 ## Referencias
 
