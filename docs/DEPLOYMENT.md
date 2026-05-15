@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Definir el camino actual para construir y ejecutar `NewKimn` en un entorno productivo, junto con las decisiones operativas minimas necesarias para frontend, backend y persistencia.
+Definir el camino actual para construir y ejecutar `KimnGenero` en un entorno productivo, junto con las decisiones operativas minimas necesarias para frontend, backend y persistencia.
 
 ## Alcance
 

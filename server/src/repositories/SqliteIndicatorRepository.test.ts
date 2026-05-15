@@ -22,7 +22,7 @@ function makeRawIndicator(overrides: Partial<RawIndicator> = {}): RawIndicator {
 
 describe("SqliteIndicatorRepository", () => {
   it("creates missing directories for dbPath", async () => {
-    const baseDir = path.join(os.tmpdir(), `newkimn-sqlite-${Date.now()}-${Math.random()}`);
+    const baseDir = path.join(os.tmpdir(), `KimnGenero-sqlite-${Date.now()}-${Math.random()}`);
     const dbPath = path.join(baseDir, "nested", "indicators.sqlite");
 
     expect(fs.existsSync(path.dirname(dbPath))).toBe(false);
@@ -43,7 +43,7 @@ describe("SqliteIndicatorRepository", () => {
   it("is idempotent when initialize is called multiple times", async () => {
     const dbPath = path.join(
       os.tmpdir(),
-      `newkimn-sqlite-idempotent-${Date.now()}-${Math.random()}.sqlite`
+      `KimnGenero-sqlite-idempotent-${Date.now()}-${Math.random()}.sqlite`
     );
 
     const repo = new SqliteIndicatorRepository({
@@ -61,7 +61,7 @@ describe("SqliteIndicatorRepository", () => {
   it("rejects dbPath that points to an existing directory", async () => {
     const dirPath = path.join(
       os.tmpdir(),
-      `newkimn-sqlite-dirpath-${Date.now()}-${Math.random()}`
+      `KimnGenero-sqlite-dirpath-${Date.now()}-${Math.random()}`
     );
     fs.mkdirSync(dirPath, { recursive: true });
 
@@ -77,7 +77,7 @@ describe("SqliteIndicatorRepository", () => {
   it("does not overwrite an existing database on re-initialization with different seed", async () => {
     const dbPath = path.join(
       os.tmpdir(),
-      `newkimn-sqlite-seed-${Date.now()}-${Math.random()}.sqlite`
+      `KimnGenero-sqlite-seed-${Date.now()}-${Math.random()}.sqlite`
     );
 
     const repoA = new SqliteIndicatorRepository({

@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Describir el significado operativo de los campos que componen el modelo de indicadores y los conceptos derivados que usa NewKimn.
+Describir el significado operativo de los campos que componen el modelo de indicadores y los conceptos derivados que usa KimnGenero.
 
 ## Alcance
 

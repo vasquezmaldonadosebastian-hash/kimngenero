@@ -59,7 +59,7 @@ async function makeApps() {
   await memoryRepo.initialize();
 
   const sqliteRepo = new SqliteIndicatorRepository({
-    dbPath: path.join(os.tmpdir(), `newkimn-contract-${Date.now()}-${Math.random()}.sqlite`),
+    dbPath: path.join(os.tmpdir(), `KimnGenero-contract-${Date.now()}-${Math.random()}.sqlite`),
     seedIndicators: rawIndicators,
     seedReports: rawReports,
   });

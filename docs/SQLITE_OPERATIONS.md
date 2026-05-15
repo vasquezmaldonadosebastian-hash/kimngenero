@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Documentar el comportamiento actual del repositorio SQLite y las precauciones necesarias para operarlo de forma segura en NewKimn.
+Documentar el comportamiento actual del repositorio SQLite y las precauciones necesarias para operarlo de forma segura en KimnGenero.
 
 ## Alcance
 

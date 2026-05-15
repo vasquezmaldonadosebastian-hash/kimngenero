@@ -1,10 +1,10 @@
-# NewKimn - Onboarding Tecnico
+# KimnGenero - Onboarding Tecnico
 
 Guia de entrada para levantar el proyecto localmente, entender su estructura y contribuir de forma segura.
 
 ## 1) Contexto
 
-`NewKimn` es una aplicacion web con frontend en React/Vite y backend en Express.
+`KimnGenero` es una aplicacion web con frontend en React/Vite y backend en Express.
 El dominio principal expone indicadores y categorias via API, y consume datos locales para su inicializacion.
 
 ## 2) Requisitos

@@ -1,5 +1,5 @@
 /*
- * Calendario — Kimn Género
+ * Calendario — KimnGenero
  * Design: Hero con gradiente azul/morado + iframe de Google Calendar
  */
 

@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Documentar la postura actual de seguridad de `NewKimn`, la configuracion de red visible en el backend y los puntos que deben revisarse antes de endurecer el paso a produccion.
+Documentar la postura actual de seguridad de `KimnGenero`, la configuracion de red visible en el backend y los puntos que deben revisarse antes de endurecer el paso a produccion.
 
 ## Alcance
 

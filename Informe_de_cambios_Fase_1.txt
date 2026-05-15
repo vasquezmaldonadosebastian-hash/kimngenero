@@ -1,6 +1,6 @@
 # Informe de cambios — Fase 1 (Fundaciones)
 Fecha: 2026-04-18
-Repo: NewKimn
+Repo: KimnGenero
 
 Este informe resume lo implementado para la Fase 1 descrita en `OPTIMIZATION_PLAN.md`
 (tests, contrato de errores, validación, tipado y lint).

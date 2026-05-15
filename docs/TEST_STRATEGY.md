@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Consolidar la estrategia actual de testing de `NewKimn`, clarificar que cubre cada suite y definir el baseline minimo para cambios de backend, frontend y datos.
+Consolidar la estrategia actual de testing de `KimnGenero`, clarificar que cubre cada suite y definir el baseline minimo para cambios de backend, frontend y datos.
 
 ## Alcance
 

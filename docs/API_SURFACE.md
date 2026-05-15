@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Documentar la superficie HTTP actual de NewKimn para facilitar consumo interno, validacion operativa y evolucion controlada del backend.
+Documentar la superficie HTTP actual de KimnGenero para facilitar consumo interno, validacion operativa y evolucion controlada del backend.
 
 ## Alcance
 

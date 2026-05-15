@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Definir estandares visuales y de interaccion para asegurar consistencia en `NewKimn`, facilitar el desarrollo del frontend en React y sostener una experiencia accesible para usuarios del observatorio.
+Definir estandares visuales y de interaccion para asegurar consistencia en `KimnGenero`, facilitar el desarrollo del frontend en React y sostener una experiencia accesible para usuarios del observatorio.
 
 ## Alcance
 

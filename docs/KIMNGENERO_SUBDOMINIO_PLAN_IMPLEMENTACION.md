@@ -1,8 +1,8 @@
-# Plan de implementacion: NewKimn en subdominio propio
+# Plan de implementacion: KimnGenero en subdominio propio
 
 ## 1) Objetivo
 
-Desplegar NewKimn en un subdominio dedicado, por ejemplo `newkimn.kimn.uct.cl`, para aislarlo de la instalacion principal de WordPress en `kimn.uct.cl`.
+Desplegar KimnGenero en un subdominio dedicado, por ejemplo `KimnGenero.kimn.uct.cl`, para aislarlo de la instalacion principal de WordPress en `kimn.uct.cl`.
 
 La meta es mantener:
 
@@ -16,7 +16,7 @@ La meta es mantener:
 
 La opcion recomendada es:
 
-1. `newkimn.kimn.uct.cl` como punto de entrada unico.
+1. `KimnGenero.kimn.uct.cl` como punto de entrada unico.
 2. Nginx o Apache como reverse proxy frontal.
 3. Node.js ejecutando Express para:
    - servir la API (`/api/v1/...`)
@@ -45,7 +45,7 @@ La opcion recomendada es:
 ### No incluye
 
 - Integracion por shortcode dentro del DOM de WordPress.
-- Mezcla de estilos entre temas de WordPress y NewKimn.
+- Mezcla de estilos entre temas de WordPress y KimnGenero.
 - Dependencia de servicios externos de hosting para el runtime.
 
 ## 4) Flujo de despliegue propuesto
@@ -114,7 +114,7 @@ La app ya define rutas SPA en `client/src/App.tsx`:
 
 ### Regla operativa
 
-- Si la app vive en `newkimn.kimn.uct.cl`, `wouter` puede operar en la raiz del subdominio sin prefijos extra.
+- Si la app vive en `KimnGenero.kimn.uct.cl`, `wouter` puede operar en la raiz del subdominio sin prefijos extra.
 - Si mas adelante se mueve a un subdirectorio, entonces habria que ajustar base path, router y rewrites.
 
 ### Riesgo a vigilar
@@ -125,12 +125,12 @@ El parche de `wouter@3.7.1` debe mantenerse pinneado y validado en cada upgrade 
 
 ### Riesgo principal
 
-El conflicto no viene del backend de NewKimn, sino de la capa de enrutamiento y de los estilos globales de WordPress.
+El conflicto no viene del backend de KimnGenero, sino de la capa de enrutamiento y de los estilos globales de WordPress.
 
 ### Como se evita
 
 1. No mezclar la SPA dentro del tree de rutas de WordPress.
-2. No depender de permalinks del CMS para rutas internas de NewKimn.
+2. No depender de permalinks del CMS para rutas internas de KimnGenero.
 3. No permitir que reglas de WordPress capturen peticiones del subdominio.
 4. Mantener el subdominio como una aplicacion completa e independiente.
 
@@ -184,7 +184,7 @@ El componente `IndicadorDetail` ya esta compuesto por subcomponentes, lo que ayu
 
 ### CORS
 
-No habilitar CORS por defecto entre WordPress y NewKimn.
+No habilitar CORS por defecto entre WordPress y KimnGenero.
 
 Solo activarlo si existe un caso concreto de consumo cross-origin desde navegador.
 
@@ -220,7 +220,7 @@ Definir y documentar al menos:
 
 ### Pruebas minimas de aceptacion
 
-- Carga de `https://newkimn.kimn.uct.cl/`
+- Carga de `https://KimnGenero.kimn.uct.cl/`
 - Navegacion a una ruta profunda como `/indicador/:id`
 - Respuesta correcta de `/api/v1/...`
 - Carga del JSON local
@@ -265,7 +265,7 @@ Definir y documentar al menos:
 
 El despliegue se considera exitoso si:
 
-- NewKimn vive en su propio subdominio.
+- KimnGenero vive en su propio subdominio.
 - WordPress no presenta conflictos de rutas.
 - La SPA navega sin errores de recarga.
 - La API responde bajo el mismo origen.

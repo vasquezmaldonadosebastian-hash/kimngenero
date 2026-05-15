@@ -1,4 +1,4 @@
-# Plan de optimización — Repositorio `NewKimn`
+# Plan de optimización — Repositorio `KimnGenero`
 
 Fecha de elaboración: **2026-04-17**.
 

@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Definir una lista breve y repetible para reducir riesgos antes, durante y despues de una liberacion de NewKimn.
+Definir una lista breve y repetible para reducir riesgos antes, durante y despues de una liberacion de KimnGenero.
 
 ## Alcance
 

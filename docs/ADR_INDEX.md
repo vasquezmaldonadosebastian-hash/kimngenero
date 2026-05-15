@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Concentrar las decisiones tecnicas relevantes que ya fueron tomadas en NewKimn y dar un punto de entrada para futuras ADRs.
+Concentrar las decisiones tecnicas relevantes que ya fueron tomadas en KimnGenero y dar un punto de entrada para futuras ADRs.
 
 ## Alcance
 

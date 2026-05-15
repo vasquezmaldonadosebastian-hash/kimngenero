@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Consolidar que conocimiento tecnico ya esta documentado en `NewKimn` y dejar explicitadas las brechas mas relevantes para mantenibilidad, flujo de datos y paso a produccion.
+Consolidar que conocimiento tecnico ya esta documentado en `KimnGenero` y dejar explicitadas las brechas mas relevantes para mantenibilidad, flujo de datos y paso a produccion.
 
 ## Alcance
 

@@ -2,7 +2,7 @@
 
 ## Objetivo
 
-Centralizar las variables de entorno y defaults relevantes para operar `NewKimn` en produccion y evitar configuracion implicita.
+Centralizar las variables de entorno y defaults relevantes para operar `KimnGenero` en produccion y evitar configuracion implicita.
 
 ## Alcance
 
