@@ -22,7 +22,7 @@ const Glosario = lazy(() => import("./pages/Glosario"));
 const Contacto = lazy(() => import("./pages/Contacto"));
 const Calendario = lazy(() => import("./pages/Calendario"));
 const EstadoAgrupado = lazy(() => import("./pages/EstadoAgrupado"));
-const NotebooksLMS = lazy(() => import("./pages/NotebooksLMS"));
+const KimnIA = lazy(() => import("./pages/NotebooksLMS"));
 const NotFound = lazy(() => import("./pages/NotFound"));
 
 function Router() {
@@ -36,8 +36,10 @@ function Router() {
       <Route path="/contacto" component={Contacto} />
       <Route path="/calendario" component={Calendario} />
       <Route path="/estado-agrupado" component={EstadoAgrupado} />
-      <Route path="/notebookslms" component={NotebooksLMS} />
-      <Route path="/notebookslms/" component={NotebooksLMS} />
+      <Route path="/kimnia" component={KimnIA} />
+      <Route path="/kimnia/" component={KimnIA} />
+      <Route path="/notebookslms" component={KimnIA} />
+      <Route path="/notebookslms/" component={KimnIA} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>
