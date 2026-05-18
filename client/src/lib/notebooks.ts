@@ -14,33 +14,33 @@ export interface NotebookItem {
 export const notebooks: NotebookItem[] = [
   {
     id: "notebook-01",
-    title: "Notebook 01",
+    title: "Recursos sobre Brechas y Estudios de Género en Chile",
     summary:
-      "NotebookLM insertado desde el enlace proporcionado por el usuario. Título por definir cuando se comparta el contenido editorial final.",
+      "NotebookLM sobre brechas y estudios de género en Chile, disponible para consulta y navegación desde el catálogo.",
     longSummary:
-      "NotebookLM insertado desde el enlace proporcionado por el usuario. Título por definir cuando se comparta el contenido editorial final. Por ahora se mantiene como parte del catálogo mínimo del módulo para validar navegación, detalle y salida externa.",
+      "NotebookLM sobre brechas y estudios de género en Chile, disponible para consulta y navegación desde el catálogo. Por ahora se mantiene como parte del módulo mínimo para validar navegación, detalle y salida externa.",
     status: "Publicado",
     featured: true,
-    tags: ["pendiente de título", "catálogo mínimo", "NotebookLM"],
+    tags: ["chile", "brechas de género", "estudios de género", "NotebookLM"],
     imageUrl:
       "https://www.genia.udec.cl/media/original_images/placeholder-facultades-by-genIA.webp",
-    imageAlt: "Notebook 01",
+    imageAlt: "Recursos sobre Brechas y Estudios de Género en Chile",
     notebookUrl:
       "https://notebooklm.google.com/notebook/1085ecc7-e2da-4388-b798-2725936d717f",
   },
   {
     id: "notebook-02",
-    title: "Notebook 02",
+    title: "Recursos sobre Brechas y Estudios de Género en America Latina",
     summary:
-      "NotebookLM insertado desde el enlace proporcionado por el usuario. Título por definir cuando se comparta el contenido editorial final.",
+      "NotebookLM sobre brechas y estudios de género en América Latina, disponible para consulta y navegación desde el catálogo.",
     longSummary:
-      "NotebookLM insertado desde el enlace proporcionado por el usuario. Título por definir cuando se comparta el contenido editorial final. Por ahora se mantiene como parte del catálogo mínimo del módulo para validar navegación, detalle y salida externa.",
+      "NotebookLM sobre brechas y estudios de género en América Latina, disponible para consulta y navegación desde el catálogo. Por ahora se mantiene como parte del módulo mínimo para validar navegación, detalle y salida externa.",
     status: "Publicado",
     featured: false,
-    tags: ["pendiente de título", "catálogo mínimo", "NotebookLM"],
+    tags: ["america latina", "brechas de género", "estudios de género", "NotebookLM"],
     imageUrl:
       "https://www.genia.udec.cl/media/original_images/placeholder-mediacion-by-genIA.webp",
-    imageAlt: "Notebook 02",
+    imageAlt: "Recursos sobre Brechas y Estudios de Género en America Latina",
     notebookUrl:
       "https://notebooklm.google.com/notebook/4f1c131a-77cd-43e5-8fc7-8741f3eb2680",
   },
