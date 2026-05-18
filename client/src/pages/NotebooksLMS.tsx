@@ -149,7 +149,7 @@ export default function NotebooksLMS() {
   const [selectedNotebook, setSelectedNotebook] = useState<NotebookItem | null>(null);
 
   useEffect(() => {
-    document.title = "KimnIA - [genIA] UdeC";
+    document.title = "KimnIA | UCT";
     window.scrollTo(0, 0);
   }, []);
 
@@ -178,9 +178,9 @@ export default function NotebooksLMS() {
             </h1>
 
             <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/85 md:text-xl">
-              KimnIA: Kimün es la palabra para el conocimiento, la sabiduría o el saber ancestral.
-              KimnIA refleja que este repositorio es un espacio de aprendizaje y sabiduría sobre
-              género, impulsado por tecnología.
+              KimnIA: Kim?n es la palabra para el conocimiento, la sabidur?a o el saber ancestral.
+              KimnIA refleja que este repositorio UCT es un espacio de aprendizaje y sabidur?a
+              sobre g?nero, impulsado por tecnolog?a.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
