@@ -46,9 +46,7 @@ function NotebookArtwork({ item }: { item: NotebookItem }) {
     return (
       <div className="flex h-full w-full items-end justify-between bg-gradient-to-br from-[#1A0A2E] via-[#173F8A] to-[#0176DE] p-5 text-white">
         <div className="max-w-[78%]">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/70">
-            NotebookLMS
-          </p>
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-white/70">KimnIA</p>
           <p className="mt-2 text-lg font-bold leading-tight">{item.title}</p>
         </div>
         <div className="rounded-full bg-white/15 p-3 backdrop-blur-sm">
@@ -94,7 +92,7 @@ function NotebookCard({
 
       <div className="flex h-full flex-col p-5">
         <div className="inline-flex w-fit rounded-full bg-slate-100 px-3 py-1 text-xs font-semibold text-slate-600">
-          NotebookLMS
+          KimnIA
         </div>
 
         <h3 className="mt-4 text-xl font-bold leading-tight text-slate-900">
@@ -151,7 +149,7 @@ export default function NotebooksLMS() {
   const [selectedNotebook, setSelectedNotebook] = useState<NotebookItem | null>(null);
 
   useEffect(() => {
-    document.title = "[genIA] UdeC - NotebooksLMS";
+    document.title = "KimnIA - [genIA] UdeC";
     window.scrollTo(0, 0);
   }, []);
 
@@ -169,19 +167,20 @@ export default function NotebooksLMS() {
           <div className="max-w-4xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-white/80 backdrop-blur">
               <Sparkles className="h-3.5 w-3.5" />
-              Catálogo mínimo
+              KimnIA
             </div>
 
             <h1
               className="mt-6 text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl"
               style={{ fontFamily: "Montserrat, sans-serif" }}
             >
-              NotebooksLMS
+              KimnIA
             </h1>
 
             <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/85 md:text-xl">
-              Por ahora el módulo contiene solo los 2 notebooks que compartiste. Aquí puedes
-              explorarlos, leer su resumen editorial y abrirlos en NotebookLM.
+              KimnIA: Kimün es la palabra para el conocimiento, la sabiduría o el saber ancestral.
+              KimnIA refleja que este repositorio es un espacio de aprendizaje y sabiduría sobre
+              género, impulsado por tecnología.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -232,10 +231,10 @@ export default function NotebooksLMS() {
                 className="mt-2 text-3xl font-extrabold tracking-tight text-[#1A0A2E]"
                 style={{ fontFamily: "Montserrat, sans-serif" }}
               >
-                Dos notebooks disponibles por ahora
+                Dos notebooks disponibles en KimnIA
               </h2>
               <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-600 md:text-base">
-                Usa la búsqueda para filtrar por palabra clave o abre cualquiera de los notebooks
+                Usa la búsqueda para filtrar por palabra clave o abre cualquiera de los cuadernos
                 directamente en NotebookLM.
               </p>
             </div>

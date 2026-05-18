@@ -19,7 +19,7 @@ export default function HeaderUCT() {
     { label: "INICIO", href: "/" },
     { label: "INDICADORES", href: "/indicadores" },
     { label: "VISTA GENERAL", href: "/estado-agrupado" },
-    { label: "NOTEBOOKSLMS", href: "/notebookslms" },
+    { label: "KIMNIA", href: "/kimnia" },
     { label: "SOBRE EL MODELO", href: "/metodologia" },
     { label: "CALENDARIO", href: "/calendario" },    
     { label: "GLOSARIO", href: "/glosario" },
