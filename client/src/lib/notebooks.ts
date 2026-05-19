@@ -18,31 +18,29 @@ export const notebooks: NotebookItem[] = [
     summary:
       "NotebookLM sobre brechas y estudios de género en Chile, disponible para consulta y navegación desde el catálogo.",
     longSummary:
-      "NotebookLM sobre brechas y estudios de género en Chile, disponible para consulta y navegación desde el catálogo KimnIA. Por ahora se mantiene como parte del módulo mínimo para validar navegación, detalle y salida externa.",
+      "NotebookLM sobre brechas y estudios de género en Chile, disponible para consulta y navegación desde el catálogo KimnGenero. Por ahora se mantiene como parte del módulo mínimo para validar navegación, detalle y salida externa.",
     status: "Publicado",
     featured: true,
-    tags: ["chile", "brechas de género", "estudios de género", "NotebookLM"],
-    imageUrl:
-      "/assets/kimnia-chile.png",
+    tags: ["Chile", "brechas de género", "estudios de género", "NotebookLM"],
+    imageUrl: "/assets/kimnia-chile.png",
     imageAlt: "Recursos sobre Brechas y Estudios de Género en Chile",
     notebookUrl:
-      "https://notebooklm.google.com/notebook/1085ecc7-e2da-4388-b798-2725936d717f",
+      "https://notebooklm.google.com/notebook/025011de-ca9f-4e76-8fbd-d1f58a2bccb4?authuser=1",
   },
   {
     id: "notebook-02",
-    title: "Recursos sobre Brechas y Estudios de Género en America Latina",
+    title: "Recursos sobre Brechas y Estudios de Género en América Latina",
     summary:
       "NotebookLM sobre brechas y estudios de género en América Latina, disponible para consulta y navegación desde el catálogo.",
     longSummary:
-      "NotebookLM sobre brechas y estudios de género en América Latina, disponible para consulta y navegación desde el catálogo KimnIA. Por ahora se mantiene como parte del módulo mínimo para validar navegación, detalle y salida externa.",
+      "NotebookLM sobre brechas y estudios de género en América Latina, disponible para consulta y navegación desde el catálogo KimnGenero. Por ahora se mantiene como parte del módulo mínimo para validar navegación, detalle y salida externa.",
     status: "Publicado",
     featured: false,
-    tags: ["america latina", "brechas de género", "estudios de género", "NotebookLM"],
-    imageUrl:
-      "/assets/kimnia-latam.png",
-    imageAlt: "Recursos sobre Brechas y Estudios de Género en America Latina",
+    tags: ["América Latina", "brechas de género", "estudios de género", "NotebookLM"],
+    imageUrl: "/assets/kimnia-latam.png",
+    imageAlt: "Recursos sobre Brechas y Estudios de Género en América Latina",
     notebookUrl:
-      "https://notebooklm.google.com/notebook/4f1c131a-77cd-43e5-8fc7-8741f3eb2680",
+      "https://notebooklm.google.com/notebook/2f956a0e-db54-4fd4-8495-8523ce29eed2?authuser=1",
   },
 ];
 
@@ -61,20 +59,16 @@ export function filterNotebooks(items: NotebookItem[], query = "") {
   }
 
   return items.filter((item) => {
-    const searchableValues = [
-      item.title,
-      item.summary,
-      item.longSummary,
-      item.tags.join(" "),
-    ].join(" ");
-
+    const searchableValues = [item.title, item.summary, item.longSummary, item.tags.join(" ")].join(
+      " ",
+    );
     return normalizeText(searchableValues).includes(normalizedQuery);
   });
 }
 
 export function getNotebookStats(items: NotebookItem[]) {
-  const total = items.length;
-  const featured = items.filter((item) => item.featured).length;
-
-  return { total, featured };
+  return {
+    total: items.length,
+    featured: items.filter((item) => item.featured).length,
+  };
 }
