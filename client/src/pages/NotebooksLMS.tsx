@@ -271,7 +271,7 @@ export default function NotebooksLMS() {
         </div>
       </section>
 
-      <section className="-mt-8">
+      <section className="pt-10 md:pt-14">
         <div className="container">
           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
             <StatCard
