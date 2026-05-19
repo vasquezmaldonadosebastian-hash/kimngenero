@@ -55,7 +55,7 @@ export const notebooks: NotebookItem[] = [
     imageUrl: "/assets/kimnia-mundo.png",
     imageAlt: "Cuaderno Mundo con enfoque global sobre género",
     notebookUrl:
-      "https://notebooklm.google.com/notebook/3afce1c7-bc72-4dab-8f2b-c1cf52909a98?authuser=1",
+      "https://notebooklm.google.com/notebook/2c746c6c-44dc-4c35-bd1d-c7470274fd85?authuser=1",
   },
   {
     id: "notebook-04",
