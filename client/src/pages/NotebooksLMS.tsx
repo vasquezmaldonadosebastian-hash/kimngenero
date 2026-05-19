@@ -1,13 +1,5 @@
 import { useEffect, useMemo, useState, type ReactNode } from "react";
-import {
-  ArrowRight,
-  BookOpen,
-  ExternalLink,
-  Search,
-  Sparkles,
-  Star,
-  X,
-} from "lucide-react";
+import { ArrowRight, BookOpen, ExternalLink, Search, Sparkles, Star, X } from "lucide-react";
 import {
   Dialog,
   DialogContent,
@@ -75,7 +67,10 @@ function NotebookCard({
   onOpen: (item: NotebookItem) => void;
 }) {
   return (
-    <article className="group flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl">
+    <article
+      id={item.id}
+      className="group flex h-full flex-col overflow-hidden rounded-[1.75rem] border border-slate-200 bg-white shadow-sm transition-all duration-300 hover:-translate-y-1 hover:shadow-xl"
+    >
       <button
         type="button"
         onClick={() => onOpen(item)}
@@ -144,12 +139,85 @@ function NotebookCard({
   );
 }
 
+function NotebookDetailDialog({
+  item,
+  onOpenChange,
+}: {
+  item: NotebookItem | null;
+  onOpenChange: (open: boolean) => void;
+}) {
+  return (
+    <Dialog open={Boolean(item)} onOpenChange={onOpenChange}>
+      <DialogContent className="max-w-3xl border-slate-200 bg-white p-0">
+        {item && (
+          <div className="grid gap-0 md:grid-cols-[1.05fr_0.95fr]">
+            <div className="relative min-h-[260px] bg-slate-100">
+              <img src={item.imageUrl} alt={item.imageAlt} className="h-full w-full object-cover" />
+              <div className="absolute left-4 top-4 rounded-full bg-[#0176DE] px-3 py-1 text-xs font-bold text-white">
+                KimnIA
+              </div>
+            </div>
+
+            <div className="p-6 md:p-7">
+              <DialogHeader>
+                <DialogTitle className="text-2xl font-extrabold tracking-tight text-[#1A0A2E]">
+                  {item.title}
+                </DialogTitle>
+                <DialogDescription className="text-sm leading-relaxed text-slate-600">
+                  {item.longSummary}
+                </DialogDescription>
+              </DialogHeader>
+
+              <div className="mt-5 space-y-4">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+                    Estado
+                  </p>
+                  <p className="mt-1 text-sm font-semibold text-slate-800">{item.status}</p>
+                </div>
+
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.2em] text-slate-400">
+                    Etiquetas
+                  </p>
+                  <div className="mt-2 flex flex-wrap gap-2">
+                    {item.tags.map((tag) => (
+                      <span
+                        key={tag}
+                        className="rounded-full border border-slate-200 bg-slate-50 px-3 py-1 text-xs font-medium text-slate-600"
+                      >
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div className="flex flex-wrap gap-3 pt-2">
+                  <a
+                    href={item.notebookUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 rounded-xl bg-[#0176DE] px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-[#03122E]"
+                  >
+                    Abrir en NotebookLM
+                    <ExternalLink className="h-4 w-4" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
+      </DialogContent>
+    </Dialog>
+  );
+}
+
 export default function NotebooksLMS() {
   const [query, setQuery] = useState("");
   const [selectedNotebook, setSelectedNotebook] = useState<NotebookItem | null>(null);
 
   useEffect(() => {
-    document.title = "KimnIA | UCT";
+    document.title = "KimnIA | KimnGenero";
     window.scrollTo(0, 0);
   }, []);
 
@@ -178,9 +246,9 @@ export default function NotebooksLMS() {
             </h1>
 
             <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/85 md:text-xl">
-              KimnIA: Kim?n es la palabra para el conocimiento, la sabidur?a o el saber ancestral.
-              KimnIA refleja que este repositorio UCT es un espacio de aprendizaje y sabidur?a
-              sobre g?nero, impulsado por tecnolog?a.
+              KimnIA: Kimün es la palabra para el conocimiento, la sabiduría o el saber ancestral.
+              KimnIA refleja que este módulo dentro de KimnGenero es un espacio de aprendizaje y
+              sabiduría sobre género, impulsado por tecnología.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -293,95 +361,20 @@ export default function NotebooksLMS() {
         ) : (
           <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             {visibleNotebooks.map((item) => (
-              <div key={item.id} id={item.id}>
-                <NotebookCard item={item} onOpen={setSelectedNotebook} />
-              </div>
+              <NotebookCard key={item.id} item={item} onOpen={setSelectedNotebook} />
             ))}
           </div>
         )}
       </section>
 
-      <Dialog
-        open={selectedNotebook !== null}
+      <NotebookDetailDialog
+        item={selectedNotebook}
         onOpenChange={(open) => {
           if (!open) {
             setSelectedNotebook(null);
           }
         }}
-      >
-        <DialogContent className="max-h-[90vh] max-w-5xl overflow-y-auto border-slate-200 bg-[#F5F4F8] p-0">
-          {selectedNotebook && (
-            <div className="grid lg:grid-cols-[1.1fr_0.9fr]">
-              <div className="relative min-h-[18rem] overflow-hidden bg-slate-200 lg:min-h-full">
-                <NotebookArtwork item={selectedNotebook} />
-                <div className="absolute left-4 top-4 flex items-center gap-2">
-                  <span className="rounded-full bg-[#0176DE] px-3 py-1 text-xs font-bold text-white">
-                    {selectedNotebook.featured ? "Destacado" : "Notebook"}
-                  </span>
-                </div>
-              </div>
-
-              <div className="p-6 md:p-8">
-                <DialogHeader className="text-left">
-                  <DialogTitle
-                    className="text-2xl font-extrabold tracking-tight text-[#1A0A2E]"
-                    style={{ fontFamily: "Montserrat, sans-serif" }}
-                  >
-                    {selectedNotebook.title}
-                  </DialogTitle>
-                  <DialogDescription className="mt-2 text-sm leading-relaxed text-slate-600">
-                    {selectedNotebook.longSummary}
-                  </DialogDescription>
-                </DialogHeader>
-
-                <div className="mt-6 rounded-2xl bg-white p-4 shadow-sm">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-                    Estado
-                  </p>
-                  <p className="mt-2 text-sm font-semibold text-slate-700">
-                    {selectedNotebook.status}
-                  </p>
-                </div>
-
-                <div className="mt-6">
-                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-slate-400">
-                    Etiquetas
-                  </p>
-                  <div className="mt-3 flex flex-wrap gap-2">
-                    {selectedNotebook.tags.map((tag) => (
-                      <span
-                        key={tag}
-                        className="rounded-full border border-slate-200 bg-white px-3 py-1.5 text-xs font-medium text-slate-600"
-                      >
-                        {tag}
-                      </span>
-                    ))}
-                  </div>
-                </div>
-
-                <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-                  <a
-                    href={selectedNotebook.notebookUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#0176DE] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#03122E]"
-                  >
-                    Abrir en NotebookLM
-                    <ExternalLink className="h-4 w-4" />
-                  </a>
-                  <button
-                    type="button"
-                    onClick={() => setSelectedNotebook(null)}
-                    className="inline-flex items-center justify-center gap-2 rounded-xl border border-slate-200 bg-white px-5 py-3 text-sm font-semibold text-slate-700 transition-colors hover:border-[#0176DE]/30 hover:text-[#0176DE]"
-                  >
-                    Cerrar
-                  </button>
-                </div>
-              </div>
-            </div>
-          )}
-        </DialogContent>
-      </Dialog>
+      />
     </div>
   );
 }
