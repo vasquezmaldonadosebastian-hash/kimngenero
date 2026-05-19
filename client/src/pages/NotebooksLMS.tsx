@@ -223,6 +223,7 @@ export default function NotebooksLMS() {
 
   const visibleNotebooks = useMemo(() => filterNotebooks(notebooks, query), [query]);
   const stats = useMemo(() => getNotebookStats(notebooks), []);
+  const notebookLabel = stats.total === 1 ? "notebook" : "notebooks";
 
   return (
     <div className="min-h-screen bg-[#F5F4F8] text-slate-700">
@@ -299,7 +300,7 @@ export default function NotebooksLMS() {
                 className="mt-2 text-3xl font-extrabold tracking-tight text-[#1A0A2E]"
                 style={{ fontFamily: "Montserrat, sans-serif" }}
               >
-                Dos notebooks disponibles en KimnIA
+                {stats.total} {notebookLabel} disponibles en KimnIA
               </h2>
               <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-600 md:text-base">
                 Usa la búsqueda para filtrar por palabra clave o abre cualquiera de los cuadernos
@@ -347,7 +348,7 @@ export default function NotebooksLMS() {
               No encontramos coincidencias
             </h2>
             <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-slate-600">
-              Prueba con otro término o limpia la búsqueda para volver a ver los dos notebooks
+              Prueba con otro término o limpia la búsqueda para volver a ver los notebooks
               disponibles.
             </p>
             <button

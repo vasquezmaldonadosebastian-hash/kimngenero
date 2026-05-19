@@ -42,6 +42,36 @@ export const notebooks: NotebookItem[] = [
     notebookUrl:
       "https://notebooklm.google.com/notebook/2f956a0e-db54-4fd4-8495-8523ce29eed2?authuser=1",
   },
+  {
+    id: "notebook-03",
+    title: "Mundo",
+    summary:
+      "NotebookLM con recursos de alcance global para explorar enfoques y referencias comparadas sobre género.",
+    longSummary:
+      "NotebookLM con recursos de alcance global para explorar enfoques, marcos y referencias comparadas sobre género dentro de KimnIA y KimnGenero.",
+    status: "Publicado",
+    featured: false,
+    tags: ["Mundo", "perspectiva global", "género", "NotebookLM"],
+    imageUrl: "/assets/kimnia-mundo.png",
+    imageAlt: "Cuaderno Mundo con enfoque global sobre género",
+    notebookUrl:
+      "https://notebooklm.google.com/notebook/3afce1c7-bc72-4dab-8f2b-c1cf52909a98?authuser=1",
+  },
+  {
+    id: "notebook-04",
+    title: "UCT",
+    summary:
+      "NotebookLM institucional con contenidos y recursos vinculados a la Universidad Católica de Temuco.",
+    longSummary:
+      "NotebookLM institucional con contenidos y recursos vinculados a la Universidad Católica de Temuco, pensado para apoyar la consulta y la navegación dentro de KimnIA.",
+    status: "Publicado",
+    featured: true,
+    tags: ["UCT", "institucional", "universidad", "NotebookLM"],
+    imageUrl: "/assets/kimnia-uct.png",
+    imageAlt: "Cuaderno UCT con identidad institucional de la Universidad Católica de Temuco",
+    notebookUrl:
+      "https://notebooklm.google.com/notebook/e6442ee1-acd8-4cde-9b79-a820bb1ec0a9?authuser=1",
+  },
 ];
 
 function normalizeText(value: string) {
