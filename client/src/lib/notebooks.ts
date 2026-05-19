@@ -44,7 +44,7 @@ export const notebooks: NotebookItem[] = [
   },
   {
     id: "notebook-03",
-    title: "Mundo",
+    title: "Recursos sobre Brechas y Estudios de Género en el Mundo",
     summary:
       "NotebookLM con recursos de alcance global para explorar enfoques y referencias comparadas sobre género.",
     longSummary:
@@ -59,7 +59,7 @@ export const notebooks: NotebookItem[] = [
   },
   {
     id: "notebook-04",
-    title: "UCT",
+    title: "Recursos sobre Brechas y Estudios de Género en la UCT",
     summary:
       "NotebookLM institucional con contenidos y recursos vinculados a la Universidad Católica de Temuco.",
     longSummary:
