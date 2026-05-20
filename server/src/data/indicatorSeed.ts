@@ -1,4 +1,3 @@
-import { z } from "zod";
 import type { RawGroupedReport, RawIndicator } from "../../../shared/types/indicators";
 
 type RecordLike = Record<string, unknown>;
@@ -14,6 +13,10 @@ const indicatorStatusKeys = ["estado", "Estado del Indicador"] as const;
 const indicatorCutoffKeys = ["fechaCorte", "Fecha de Corte"] as const;
 const reportRequiredKeys = ["id", "titulo", "descripcion", "iframeSrc", "tipo"] as const;
 
+function isRecord(value: unknown): value is RecordLike {
+  return typeof value === "object" && value !== null && !Array.isArray(value);
+}
+
 function isNonEmptyString(value: unknown): value is string {
   return typeof value === "string" && value.trim().length > 0;
 }
@@ -22,64 +25,66 @@ function isValidIdentifier(value: unknown): boolean {
   return typeof value === "string" || typeof value === "number";
 }
 
-function hasAnyValue(record: RecordLike, keys: readonly string[], predicate: (value: unknown) => boolean) {
-  return keys.some((key) => predicate(record[key]));
+function hasAnyValue(record: RecordLike, keys: readonly string[]) {
+  return keys.some((key) => isNonEmptyString(record[key]));
 }
 
-function getMissingFieldLabel(record: RecordLike, keys: readonly string[], label: string) {
-  if (hasAnyValue(record, keys, isNonEmptyString)) return null;
-  return label;
-}
+function assertIndicatorShape(record: unknown, index: number) {
+  if (!isRecord(record)) {
+    throw new Error(`Indicator seed entry at index ${index} must be an object`);
+  }
 
-const rawIndicatorSchema = z.record(z.unknown()).superRefine((record, ctx) => {
   const missing = [
-    getMissingFieldLabel(record, indicatorIdentifierKeys, "id"),
-    getMissingFieldLabel(record, indicatorTitleKeys, "nombre"),
-    getMissingFieldLabel(record, indicatorCodeKeys, "codigo"),
-    getMissingFieldLabel(record, indicatorDescriptionKeys, "descripcion"),
-    getMissingFieldLabel(record, indicatorObjectiveKeys, "objetivo"),
-    getMissingFieldLabel(record, indicatorAreaKeys, "area"),
-    getMissingFieldLabel(record, indicatorDimensionKeys, "dimension"),
-    getMissingFieldLabel(record, indicatorStatusKeys, "estado"),
-    getMissingFieldLabel(record, indicatorCutoffKeys, "fechaCorte"),
+    !hasAnyValue(record, indicatorIdentifierKeys) ? "id" : null,
+    !hasAnyValue(record, indicatorTitleKeys) ? "nombre" : null,
+    !hasAnyValue(record, indicatorCodeKeys) ? "codigo" : null,
+    !hasAnyValue(record, indicatorDescriptionKeys) ? "descripcion" : null,
+    !hasAnyValue(record, indicatorObjectiveKeys) ? "objetivo" : null,
+    !hasAnyValue(record, indicatorAreaKeys) ? "area" : null,
+    !hasAnyValue(record, indicatorDimensionKeys) ? "dimension" : null,
+    !hasAnyValue(record, indicatorStatusKeys) ? "estado" : null,
+    !hasAnyValue(record, indicatorCutoffKeys) ? "fechaCorte" : null,
   ].filter((value): value is string => Boolean(value));
 
   if (missing.length > 0) {
-    ctx.addIssue({
-      code: z.ZodIssueCode.custom,
-      message: `Missing required indicator fields: ${missing.join(", ")}`,
-    });
+    throw new Error(`Missing required indicator fields: ${missing.join(", ")}`);
   }
 
   const identifierValue = indicatorIdentifierKeys.some((key) => isValidIdentifier(record[key]));
   if (!identifierValue) {
-    ctx.addIssue({
-      code: z.ZodIssueCode.custom,
-      message: "Indicator seed requires a stable identifier",
-    });
+    throw new Error("Indicator seed requires a stable identifier");
   }
-});
+}
 
-const rawGroupedReportSchema = z.record(z.unknown()).superRefine((record, ctx) => {
+function assertReportShape(record: unknown, index: number) {
+  if (!isRecord(record)) {
+    throw new Error(`Report seed entry at index ${index} must be an object`);
+  }
+
   const missing = reportRequiredKeys.filter((key) => !isNonEmptyString(record[key]));
   if (missing.length > 0) {
-    ctx.addIssue({
-      code: z.ZodIssueCode.custom,
-      message: `Missing required report fields: ${missing.join(", ")}`,
-    });
+    throw new Error(`Missing required report fields: ${missing.join(", ")}`);
   }
-});
+}
 
-const arraySeedSchema = z.array(rawIndicatorSchema).min(1, "Seed must include at least one indicator");
+function normalizeIndicators(value: unknown): RawIndicator[] {
+  if (!Array.isArray(value) || value.length === 0) {
+    throw new Error("Seed must include at least one indicator");
+  }
 
-const objectSeedSchema = z
-  .object({
-    indicadores: arraySeedSchema,
-    reportesAgrupados: z.array(rawGroupedReportSchema).default([]),
-  })
-  .passthrough();
+  value.forEach((item, index) => assertIndicatorShape(item, index));
+  return value as RawIndicator[];
+}
 
-const indicatorSeedSchema = z.union([arraySeedSchema, objectSeedSchema]);
+function normalizeReports(value: unknown): RawGroupedReport[] {
+  if (value === undefined) return [];
+  if (!Array.isArray(value)) {
+    throw new Error("reportesAgrupados must be an array when present");
+  }
+
+  value.forEach((item, index) => assertReportShape(item, index));
+  return value as RawGroupedReport[];
+}
 
 export type ParsedIndicatorSeed = {
   format: "array" | "object";
@@ -88,19 +93,24 @@ export type ParsedIndicatorSeed = {
 };
 
 export function loadIndicatorSeed(source: unknown): ParsedIndicatorSeed {
-  const parsed = indicatorSeedSchema.parse(source);
-
-  if (Array.isArray(parsed)) {
+  if (Array.isArray(source)) {
     return {
       format: "array",
-      rawIndicators: parsed as RawIndicator[],
+      rawIndicators: normalizeIndicators(source),
       rawReports: [],
     };
   }
 
+  if (!isRecord(source)) {
+    throw new Error("Indicator seed must be an array or an object with indicadores");
+  }
+
+  const rawIndicators = normalizeIndicators(source.indicadores);
+  const rawReports = normalizeReports(source.reportesAgrupados);
+
   return {
     format: "object",
-    rawIndicators: parsed.indicadores as RawIndicator[],
-    rawReports: parsed.reportesAgrupados as RawGroupedReport[],
+    rawIndicators,
+    rawReports,
   };
 }
