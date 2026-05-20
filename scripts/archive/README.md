@@ -9,6 +9,8 @@ Esta carpeta agrupa scripts de trabajo puntual, exploracion, capturas o apoyo do
 - inspeccion de endpoints o paginas especificas
 - experimentos tecnicos de una etapa concreta
 
+Algunos de estos scripts escriben insumos en `outputs/brief_diseno_docs/` o rutas similares de trabajo local; esos artefactos no forman parte del producto y deben seguir fuera del flujo normal.
+
 ## Regla
 
 No usar estos scripts como dependencia implicita del producto.

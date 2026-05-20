@@ -109,7 +109,7 @@ export default function FooterUCT() {
           </div>
 
           <div className="flex flex-col items-center justify-between border-t border-gray-700 pt-6 text-xs text-gray-400 md:flex-row">
-            <p>TODO EL CONTENIDO © UCT 2025</p>
+            <p>© UCT 2025</p>
             <p className="mt-4 md:mt-0">
               Universidad Católica de Temuco | Dirección de Género y Observatorio de Indicadores de Género
             </p>

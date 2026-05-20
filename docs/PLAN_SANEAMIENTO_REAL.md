@@ -91,6 +91,7 @@ Este documento reemplaza el uso operativo de `OPTIMIZATION_PLAN.md` como referen
   - capturas
   - utilidades externas
 - `scripts/node_modules/` dentro del repo es una anomalia que debe salir del arbol versionado o al menos quedar ignorada
+- algunos scripts historicos siguen escribiendo en `outputs/brief_diseno_docs/` u otras rutas de trabajo local; esos artefactos no son producto y deben permanecer fuera del flujo normal
 
 ### Documentacion (`docs/`)
 
