@@ -257,7 +257,7 @@ export default function Indicadores() {
                         className="w-full px-4 py-2.5 rounded-lg font-semibold text-sm text-white"
                         style={{ backgroundColor: color.text }}
                       >
-                        Ver indicador ->
+                        Ver indicador
                       </button>
                     </div>
                   </div>
