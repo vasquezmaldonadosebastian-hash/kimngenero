@@ -31,7 +31,7 @@ Este documento reemplaza el uso operativo de `OPTIMIZATION_PLAN.md` como referen
 - `docs/` mezcla documentacion tecnica nuclear con briefs de diseno, reportes y material auxiliar no esencial
 - `outputs/` esta dentro del repo y no esta ignorado
 - `scripts/` contiene scripts experimentales y ademas un `scripts/node_modules/` completo dentro del repositorio
-- hay archivos y componentes que no parecen pertenecer al dominio real o no tienen uso actual
+- hay archivos y componentes que no parecen pertenecer al dominio real o no tienen uso actual; varios ya fueron removidos
 - hay problemas visibles de codificacion de caracteres en codigo y docs
 
 ## 3. Hallazgos reales por area
@@ -64,14 +64,9 @@ Este documento reemplaza el uso operativo de `OPTIMIZATION_PLAN.md` como referen
   - `IndicatorsContext.tsx` usa `apiGetJson()`
   - `IndicadorPage.tsx` y `EstadoAgrupado.tsx` ya fueron unificados a `apiGetJson()`
 - hay problemas de codificacion visibles en varias vistas
-- persisten archivos dudosos o no integrados:
-  - `client/src/lib/mocks.ts`
-  - `client/src/components/ManusDialog.tsx`
-  - `client/src/components/Map.tsx`
-  - `client/src/components/DashboardViewer.tsx`
-  - `client/src/hooks/useIndicators.ts`
+- persiste un artefacto especial de tooling:
   - `client/public/assets/debug-collector.js`
-- varios de esos archivos contienen lenguaje, dominio o tooling que no coincide con KimnGenero
+- ese asset sigue referenciado por `vite.config.ts` para diagnostico de desarrollo, asi que debe tratarse como dependencia tecnica activa y no como basura
 
 ### Tipos compartidos (`shared/`)
 
@@ -230,14 +225,7 @@ Tareas:
 
 1. Inventario de codigo huerfano
    - revisar y clasificar:
-     - `mocks.ts`
-     - `ManusDialog.tsx`
      - `debug-collector.js`
-     - `Map.tsx`
-     - `DashboardViewer.tsx`
-     - `useIndicators.ts`
-     - `Header.tsx`
-     - `Footer.tsx`
    - aceptacion: cada archivo queda en una de estas categorias:
      - activo
      - archivable
@@ -323,20 +311,12 @@ Tareas:
 
 ### Muy probable basura o residuo
 
-- `client/src/lib/mocks.ts`
-- `client/src/components/ManusDialog.tsx`
-- `client/public/assets/debug-collector.js`
 - `scripts/node_modules/`
 - `outputs/`
 - `Informe_de_cambios_Fase_1.txt`
 
 ### Probable codigo huerfano o no integrado
 
-- `client/src/components/Map.tsx`
-- `client/src/components/DashboardViewer.tsx`
-- `client/src/hooks/useIndicators.ts`
-- `client/src/components/Header.tsx`
-- `client/src/components/Footer.tsx`
 - `config/index.ts`
 
 ### Documentacion a mantener pero actualizar
