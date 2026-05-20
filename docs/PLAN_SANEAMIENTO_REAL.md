@@ -225,7 +225,6 @@ Tareas:
 
 1. Inventario de codigo huerfano
    - revisar y clasificar:
-     - `debug-collector.js`
    - aceptacion: cada archivo queda en una de estas categorias:
      - activo
      - archivable
