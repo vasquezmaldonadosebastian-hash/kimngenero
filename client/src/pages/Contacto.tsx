@@ -1,10 +1,5 @@
-/*
- * Contacto — Observatorio de Indicadores de Género
- * Design: Clean contact form with institutional info
- */
-
+import { Mail, MapPin, MessageSquare, Phone, Send } from "lucide-react";
 import { useState } from "react";
-import { Mail, Phone, MapPin, Send, MessageSquare } from "lucide-react";
 import { toast } from "sonner";
 
 export default function Contacto() {
@@ -33,105 +28,113 @@ export default function Contacto() {
 
   return (
     <div className="min-h-screen bg-[#F5F4F8]">
-      {/* Header */}
       <div
-        className="bg-white border-b border-[#E8F2FF]"
+        className="border-b border-[#E8F2FF] bg-white"
         style={{ background: "linear-gradient(180deg, #E8F2FF 0%, #FFFFFF 100%)" }}
       >
         <div className="container py-10">
-          <div className="flex items-center gap-2 mb-2">
-            <MessageSquare className="w-5 h-5 text-[#0176DE]" />
-            <span className="text-xs font-semibold text-[#0176DE] uppercase tracking-wider">Comunicaciones</span>
+          <div className="mb-2 flex items-center gap-2">
+            <MessageSquare className="h-5 w-5 text-[#0176DE]" />
+            <span className="text-xs font-semibold uppercase tracking-wider text-[#0176DE]">Comunicaciones</span>
           </div>
-          <h1
-            className="text-3xl font-bold text-[#1A0A2E] mb-3"
-            style={{ fontFamily: 'Montserrat, sans-serif' }}
-          >
+          <h1 className="mb-3 text-3xl font-bold text-[#1A0A2E]" style={{ fontFamily: "Montserrat, sans-serif" }}>
             Contacto
           </h1>
-          <p className="text-gray-600 max-w-2xl leading-relaxed">
-            Para consultas sobre los datos, solicitudes de información o colaboraciones institucionales, utilice el formulario o los canales de contacto indicados.
+          <p className="max-w-2xl leading-relaxed text-gray-600">
+            Para consultas sobre los datos, solicitudes de información o colaboraciones institucionales, utilice el
+            formulario o los canales de contacto indicados.
           </p>
         </div>
       </div>
 
       <div className="container py-10">
-        <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Contact info */}
+        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 lg:grid-cols-3">
           <div className="space-y-4">
-            <div className="bg-white rounded-xl p-6 border border-[#E8F2FF] shadow-sm">
-              <h2
-                className="font-bold text-[#1A0A2E] mb-4 text-sm uppercase tracking-wider"
-                style={{ fontFamily: 'Montserrat, sans-serif' }}
-              >
+            <div className="rounded-xl border border-[#E8F2FF] bg-white p-6 shadow-sm">
+              <h2 className="mb-4 text-sm font-bold uppercase tracking-wider text-[#1A0A2E]" style={{ fontFamily: "Montserrat, sans-serif" }}>
                 Información de Contacto
               </h2>
               <ul className="space-y-4">
                 <li className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-[#E8F2FF] flex items-center justify-center flex-shrink-0">
-                    <Mail className="w-4 h-4 text-[#0176DE]" />
+                  <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-[#E8F2FF]">
+                    <Mail className="h-4 w-4 text-[#0176DE]" />
                   </div>
                   <div>
-                    <div className="text-xs text-gray-400 mb-0.5">Correo electrónico</div>
-                    <a href="mailto:observatorio@uct.cl" className="text-sm text-[#0176DE] hover:underline font-medium">
+                    <div className="mb-0.5 text-xs text-gray-400">Correo electrónico</div>
+                    <a href="mailto:observatorio@uct.cl" className="text-sm font-medium text-[#0176DE] hover:underline">
                       observatorio@uct.cl
                     </a>
                   </div>
                 </li>
+
                 <li className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-[#E8F2FF] flex items-center justify-center flex-shrink-0">
-                    <Phone className="w-4 h-4 text-[#0176DE]" />
+                  <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-[#E8F2FF]">
+                    <Phone className="h-4 w-4 text-[#0176DE]" />
                   </div>
                   <div>
-                    <div className="text-xs text-gray-400 mb-0.5">Teléfono</div>
-                    <span className="text-sm text-gray-700 font-medium">+56 2 XXXX XXXX</span>
+                    <div className="mb-0.5 text-xs text-gray-400">Dirección de Género</div>
+                    <a href="tel:+56452685126" className="text-sm font-medium text-gray-700 hover:text-[#0176DE]">
+                      (45) 2 685126
+                    </a>
                   </div>
                 </li>
+
                 <li className="flex items-start gap-3">
-                  <div className="w-8 h-8 rounded-lg bg-[#E8F2FF] flex items-center justify-center flex-shrink-0">
-                    <MapPin className="w-4 h-4 text-[#0176DE]" />
+                  <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-[#E8F2FF]">
+                    <Phone className="h-4 w-4 text-[#0176DE]" />
                   </div>
                   <div>
-                    <div className="text-xs text-gray-400 mb-0.5">Dirección</div>
-                    <span className="text-sm text-gray-700">Av. Caupolicán 1296<br />Temuco, Chile</span>
+                    <div className="mb-0.5 text-xs text-gray-400">Observatorio de Género</div>
+                    <a href="tel:+56452685057" className="text-sm font-medium text-gray-700 hover:text-[#0176DE]">
+                      (45) 2 685057
+                    </a>
+                  </div>
+                </li>
+
+                <li className="flex items-start gap-3">
+                  <div className="flex h-8 w-8 flex-shrink-0 items-center justify-center rounded-lg bg-[#E8F2FF]">
+                    <MapPin className="h-4 w-4 text-[#0176DE]" />
+                  </div>
+                  <div>
+                    <div className="mb-0.5 text-xs text-gray-400">Dirección</div>
+                    <span className="text-sm text-gray-700">
+                      Manuel Montt 56, Campus San Francisco,
+                      <br />
+                      Edificio 03, 4° Nivel
+                    </span>
                   </div>
                 </li>
               </ul>
             </div>
 
-            <div className="bg-[#1A0A2E] rounded-xl p-6 text-white">
-              <h3
-                className="font-semibold text-white mb-2 text-sm"
-                style={{ fontFamily: 'Montserrat, sans-serif' }}
-              >
+            <div className="rounded-xl bg-[#1A0A2E] p-6 text-white">
+              <h3 className="mb-2 text-sm font-semibold" style={{ fontFamily: "Montserrat, sans-serif" }}>
                 Horario de atención
               </h3>
-              <p className="text-xs text-gray-300 leading-relaxed">
-                Lunes a viernes<br />
-                09:00 – 18:00 hrs.<br />
+              <p className="text-xs leading-relaxed text-gray-300">
+                Lunes a viernes
+                <br />
+                09:00 - 18:00 hrs.
+                <br />
                 <span className="text-gray-400">(Hora de Santiago, GMT-3)</span>
               </p>
-              <div className="mt-4 pt-4 border-t border-white/10">
-                <p className="text-xs text-gray-400 leading-relaxed">
+              <div className="mt-4 border-t border-white/10 pt-4">
+                <p className="text-xs leading-relaxed text-gray-400">
                   El tiempo de respuesta habitual es de 2 a 5 días hábiles.
                 </p>
               </div>
             </div>
           </div>
 
-          {/* Form */}
           <div className="lg:col-span-2">
-            <div className="bg-white rounded-xl p-8 border border-[#E8F2FF] shadow-sm">
-              <h2
-                className="font-bold text-[#1A0A2E] mb-6"
-                style={{ fontFamily: 'Montserrat, sans-serif' }}
-              >
+            <div className="rounded-xl border border-[#E8F2FF] bg-white p-8 shadow-sm">
+              <h2 className="mb-6 font-bold text-[#1A0A2E]" style={{ fontFamily: "Montserrat, sans-serif" }}>
                 Enviar consulta
               </h2>
               <form onSubmit={handleSubmit} className="space-y-4">
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                   <div>
-                    <label className="block text-xs font-semibold text-gray-700 mb-1.5">
+                    <label className="mb-1.5 block text-xs font-semibold text-gray-700">
                       Nombre completo <span className="text-red-500">*</span>
                     </label>
                     <input
@@ -141,26 +144,25 @@ export default function Contacto() {
                       onChange={handleChange}
                       required
                       placeholder="Su nombre"
-                      className="w-full px-3.5 py-2.5 border border-[#E8F2FF] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0176DE]/30 focus:border-[#0176DE] bg-[#E8F2FF] placeholder:text-gray-300"
+                      className="w-full rounded-lg border border-[#E8F2FF] bg-[#E8F2FF] px-3.5 py-2.5 text-sm placeholder:text-gray-300 focus:border-[#0176DE] focus:outline-none focus:ring-2 focus:ring-[#0176DE]/30"
                     />
                   </div>
+
                   <div>
-                    <label className="block text-xs font-semibold text-gray-700 mb-1.5">
-                      Institución
-                    </label>
+                    <label className="mb-1.5 block text-xs font-semibold text-gray-700">Institución</label>
                     <input
                       type="text"
                       name="institucion"
                       value={form.institucion}
                       onChange={handleChange}
                       placeholder="Organización o institución"
-                      className="w-full px-3.5 py-2.5 border border-[#E8F2FF] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0176DE]/30 focus:border-[#0176DE] bg-[#E8F2FF] placeholder:text-gray-300"
+                      className="w-full rounded-lg border border-[#E8F2FF] bg-[#E8F2FF] px-3.5 py-2.5 text-sm placeholder:text-gray-300 focus:border-[#0176DE] focus:outline-none focus:ring-2 focus:ring-[#0176DE]/30"
                     />
                   </div>
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-gray-700 mb-1.5">
+                  <label className="mb-1.5 block text-xs font-semibold text-gray-700">
                     Correo electrónico <span className="text-red-500">*</span>
                   </label>
                   <input
@@ -170,12 +172,12 @@ export default function Contacto() {
                     onChange={handleChange}
                     required
                     placeholder="correo@ejemplo.cl"
-                    className="w-full px-3.5 py-2.5 border border-[#E8F2FF] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0176DE]/30 focus:border-[#0176DE] bg-[#E8F2FF] placeholder:text-gray-300"
+                    className="w-full rounded-lg border border-[#E8F2FF] bg-[#E8F2FF] px-3.5 py-2.5 text-sm placeholder:text-gray-300 focus:border-[#0176DE] focus:outline-none focus:ring-2 focus:ring-[#0176DE]/30"
                   />
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-gray-700 mb-1.5">
+                  <label className="mb-1.5 block text-xs font-semibold text-gray-700">
                     Asunto <span className="text-red-500">*</span>
                   </label>
                   <select
@@ -183,7 +185,7 @@ export default function Contacto() {
                     value={form.asunto}
                     onChange={handleChange}
                     required
-                    className="w-full px-3.5 py-2.5 border border-[#E8F2FF] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0176DE]/30 focus:border-[#0176DE] bg-[#E8F2FF] text-gray-700"
+                    className="w-full rounded-lg border border-[#E8F2FF] bg-[#E8F2FF] px-3.5 py-2.5 text-sm text-gray-700 focus:border-[#0176DE] focus:outline-none focus:ring-2 focus:ring-[#0176DE]/30"
                   >
                     <option value="">Seleccione un asunto</option>
                     <option value="consulta-datos">Consulta sobre datos o indicadores</option>
@@ -195,7 +197,7 @@ export default function Contacto() {
                 </div>
 
                 <div>
-                  <label className="block text-xs font-semibold text-gray-700 mb-1.5">
+                  <label className="mb-1.5 block text-xs font-semibold text-gray-700">
                     Mensaje <span className="text-red-500">*</span>
                   </label>
                   <textarea
@@ -205,7 +207,7 @@ export default function Contacto() {
                     required
                     rows={5}
                     placeholder="Describa su consulta con el mayor detalle posible..."
-                    className="w-full px-3.5 py-2.5 border border-[#E8F2FF] rounded-lg text-sm focus:outline-none focus:ring-2 focus:ring-[#0176DE]/30 focus:border-[#0176DE] bg-[#E8F2FF] placeholder:text-gray-300 resize-none"
+                    className="resize-none w-full rounded-lg border border-[#E8F2FF] bg-[#E8F2FF] px-3.5 py-2.5 text-sm placeholder:text-gray-300 focus:border-[#0176DE] focus:outline-none focus:ring-2 focus:ring-[#0176DE]/30"
                   />
                 </div>
 
@@ -216,16 +218,16 @@ export default function Contacto() {
                   <button
                     type="submit"
                     disabled={enviando}
-                    className="inline-flex items-center gap-2 px-6 py-3 bg-[#0176DE] text-white font-semibold rounded-lg hover:bg-[#03122E] transition-colors text-sm disabled:opacity-60 disabled:cursor-not-allowed shadow-sm"
+                    className="inline-flex items-center gap-2 rounded-lg bg-[#0176DE] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#03122E] disabled:cursor-not-allowed disabled:opacity-60"
                   >
                     {enviando ? (
                       <>
-                        <div className="w-4 h-4 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                        <div className="h-4 w-4 animate-spin rounded-full border-2 border-white/30 border-t-white" />
                         Enviando...
                       </>
                     ) : (
                       <>
-                        <Send className="w-4 h-4" />
+                        <Send className="h-4 w-4" />
                         Enviar mensaje
                       </>
                     )}
