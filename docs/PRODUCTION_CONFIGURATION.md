@@ -87,11 +87,8 @@ CSP_REPORT_ONLY=true
 
 ## Configuraciones faltantes hoy
 
-- No existe `env.example`.
+- `env.example` ya existe en la raiz del repo como punto de partida para desarrollo local.
 - No existe separacion documentada por ambiente adicional (`staging`, `preview`).
-- No hay convencion formal de gestion de secretos ni rotacion.
-
-## Validacion
 
 - Confirmar variables resueltas en ambiente de despliegue.
 - Ejecutar `pnpm run build` y `pnpm run start`.
@@ -108,3 +105,4 @@ CSP_REPORT_ONLY=true
 - `server/src/createApp.ts`
 - `server/src/config/repositoryFactory.ts`
 - `server/src/config/security.ts`
+

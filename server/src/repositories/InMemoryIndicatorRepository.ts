@@ -6,7 +6,7 @@ import type {
   RawIndicator,
 } from "../../../shared/types/indicators";
 import type { IndicatorRepository } from "./IndicatorRepository";
-import { groupByCategory, mapItem } from "../services/normalizers";
+import { groupIndicatorsByArea, mapItem } from "../services/normalizers";
 
 function mapGroupedReport(item: RawGroupedReport): GroupedReport {
   return {
@@ -40,7 +40,7 @@ export class InMemoryIndicatorRepository implements IndicatorRepository {
   async initialize(): Promise<void> {
     if (this.initialized) return;
     this.indicators = this.rawIndicators.map(mapItem);
-    this.categories = groupByCategory(this.rawIndicators);
+    this.categories = groupIndicatorsByArea(this.indicators);
     this.groupedReports = this.rawReports.map(mapGroupedReport);
     this.initialized = true;
   }

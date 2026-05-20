@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ChevronRight } from "lucide-react";
 import type { GroupedReport } from "@shared/types/indicators";
+import { apiGetJson } from "@/lib/apiClient";
 
 export default function EstadoAgrupado() {
   const [reports, setReports] = useState<GroupedReport[]>([]);
@@ -11,11 +12,7 @@ export default function EstadoAgrupado() {
     const fetchReports = async () => {
       try {
         setLoading(true);
-        const response = await fetch("/api/reportes-agrupados");
-        if (!response.ok) {
-          throw new Error("No se pudieron cargar los reportes agrupados");
-        }
-        const data = await response.json();
+        const data = await apiGetJson<GroupedReport[]>("/api/reportes-agrupados");
         setReports(data);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Error desconocido");
@@ -23,6 +20,7 @@ export default function EstadoAgrupado() {
         setLoading(false);
       }
     };
+
     fetchReports();
   }, []);
 
@@ -40,7 +38,7 @@ export default function EstadoAgrupado() {
     return (
       <div className="min-h-screen bg-[#F5F4F8] flex items-center justify-center text-center">
         <div>
-          <div className="text-6xl mb-4">âš ï¸</div>
+          <div className="text-6xl mb-4">!</div>
           <h1 className="text-2xl font-bold mb-2">Error al cargar reportes</h1>
           <p>{error || "No se encontraron reportes agrupados."}</p>
         </div>
@@ -63,7 +61,7 @@ export default function EstadoAgrupado() {
             Estado Agrupado de Indicadores
           </h1>
           <p className="text-gray-600 max-w-2xl">
-            Visualiza el estado consolidado de los indicadores por Ã¡reas estratÃ©gicas y
+            Visualiza el estado consolidado de los indicadores por areas estrategicas y
             dimensiones.
           </p>
         </div>
@@ -73,15 +71,15 @@ export default function EstadoAgrupado() {
         <div className="w-full overflow-hidden rounded-lg shadow-sm border border-gray-200 bg-white mb-8">
           <div className="p-4">
             <div className="w-full max-w-[1000px] mx-auto aspect-[1000/1200]">
-            <iframe
-              src={report.iframeSrc}
-              title={report.titulo}
-              width="100%"
-              height="100%"
-              frameBorder="0"
-              allowFullScreen={true}
-            ></iframe>
-          </div>
+              <iframe
+                src={report.iframeSrc}
+                title={report.titulo}
+                width="100%"
+                height="100%"
+                frameBorder="0"
+                allowFullScreen={true}
+              />
+            </div>
           </div>
         </div>
       </div>

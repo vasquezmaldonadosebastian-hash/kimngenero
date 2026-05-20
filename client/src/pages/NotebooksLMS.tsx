@@ -247,9 +247,9 @@ export default function NotebooksLMS() {
             </h1>
 
             <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/85 md:text-xl">
-              KimnIA: Kimün es la palabra para el conocimiento, la sabiduría o el saber ancestral.
-              KimnIA refleja que este módulo dentro de KimnGenero es un espacio de aprendizaje y
-              sabiduría sobre género, impulsado por tecnología.
+              KimnIA: Kimun es la palabra para el conocimiento, la sabiduria o el saber ancestral.
+              KimnIA refleja que este modulo dentro de KimnGenero es un espacio de aprendizaje y
+              sabiduria sobre genero, impulsado por tecnologia.
             </p>
 
             <div className="mt-8 flex flex-wrap gap-3">
@@ -257,7 +257,7 @@ export default function NotebooksLMS() {
                 href="#catalogo"
                 className="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-[#03122E] transition-colors hover:bg-[#E8F2FF]"
               >
-                Explorar catálogo
+                Explorar catalogo
                 <ArrowRight className="h-4 w-4" />
               </a>
               <a
@@ -294,7 +294,7 @@ export default function NotebooksLMS() {
           <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
             <div className="max-w-3xl">
               <p className="text-xs font-semibold uppercase tracking-[0.22em] text-[#0176DE]">
-                Exploración rápida
+                Exploracion rapida
               </p>
               <h2
                 className="mt-2 text-3xl font-extrabold tracking-tight text-[#1A0A2E]"
@@ -303,7 +303,7 @@ export default function NotebooksLMS() {
                 {stats.total} {notebookLabel} disponibles en KimnIA
               </h2>
               <p className="mt-3 max-w-2xl text-sm leading-relaxed text-slate-600 md:text-base">
-                Usa la búsqueda para filtrar por palabra clave o abre cualquiera de los cuadernos
+                Usa la busqueda para filtrar por palabra clave o abre cualquiera de los cuadernos
                 directamente en NotebookLM.
               </p>
             </div>
@@ -316,7 +316,7 @@ export default function NotebooksLMS() {
                 type="search"
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
-                placeholder="Buscar por título o palabra clave..."
+                placeholder="Buscar por titulo o palabra clave..."
                 className="w-full rounded-2xl border border-slate-200 bg-slate-50 py-3 pl-11 pr-4 text-sm text-slate-700 outline-none transition focus:border-[#0176DE] focus:bg-white focus:ring-4 focus:ring-[#0176DE]/10"
               />
             </label>
@@ -348,7 +348,7 @@ export default function NotebooksLMS() {
               No encontramos coincidencias
             </h2>
             <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-slate-600">
-              Prueba con otro término o limpia la búsqueda para volver a ver los notebooks
+              Prueba con otro termino o limpia la busqueda para volver a ver los notebooks
               disponibles.
             </p>
             <button
@@ -356,7 +356,7 @@ export default function NotebooksLMS() {
               onClick={() => setQuery("")}
               className="mt-6 rounded-xl bg-[#0176DE] px-5 py-3 text-sm font-semibold text-white transition-colors hover:bg-[#03122E]"
             >
-              Limpiar búsqueda
+              Limpiar busqueda
             </button>
           </div>
         ) : (

@@ -1,13 +1,14 @@
 /*
- * IndicadorPage — Página dinámica de indicador individual
+ * IndicadorPage - Pagina dinamica de indicador individual
  * Carga datos de la API y renderiza con el componente IndicadorDetail
  */
 
 import { useEffect, useState } from "react";
-import { useParams, useLocation } from "wouter";
-import IndicadorDetail from "../components/IndicadorDetail";
+import { useLocation, useParams } from "wouter";
 import { ArrowLeft } from "lucide-react";
 import type { Indicator } from "@shared/types/indicators";
+import { apiGetJson } from "@/lib/apiClient";
+import IndicadorDetail from "../components/IndicadorDetail";
 
 export default function IndicadorPage() {
   const { id } = useParams<{ id: string }>();
@@ -20,10 +21,7 @@ export default function IndicadorPage() {
     const loadIndicador = async () => {
       try {
         setLoading(true);
-        const response = await fetch(`/api/indicadores/${id}`);
-        if (!response.ok) throw new Error("No se pudo cargar el indicador");
-
-        const data = await response.json();
+        const data = await apiGetJson<Indicator>(`/api/indicadores/${id}`);
         setIndicador(data);
       } catch (err) {
         setError(err instanceof Error ? err.message : "Error desconocido");
@@ -50,7 +48,7 @@ export default function IndicadorPage() {
     return (
       <div className="min-h-screen flex items-center justify-center bg-[#F8F9FA]">
         <div className="text-center max-w-md">
-          <div className="text-6xl mb-4">⚠️</div>
+          <div className="text-6xl mb-4">!</div>
           <h1 className="text-2xl font-bold text-gray-900 mb-2">Error al cargar</h1>
           <p className="text-gray-600 mb-6">{error || "Indicador no encontrado"}</p>
           <button
@@ -67,7 +65,6 @@ export default function IndicadorPage() {
 
   return (
     <>
-      {/* Back button */}
       <div className="bg-white border-b border-gray-200 sticky top-16 z-40">
         <div className="max-w-6xl mx-auto px-6 py-3">
           <button
@@ -80,7 +77,6 @@ export default function IndicadorPage() {
         </div>
       </div>
 
-      {/* Indicador Detail */}
       <IndicadorDetail indicador={indicador} />
     </>
   );

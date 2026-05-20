@@ -9,7 +9,7 @@ El dominio principal expone indicadores y categorias via API, y consume datos lo
 
 ## 2) Requisitos
 
-- Node.js 20+ (recomendado)
+- Node.js 20+ recomendado
 - pnpm 10+
 
 Verificacion rapida:
@@ -27,20 +27,20 @@ pnpm -v
 pnpm install
 ```
 
-2. (Opcional) Variables de entorno minimas:
+2. Variables de entorno minimas opcionales:
 
-- `INDICATOR_REPOSITORY`: `memory` (default) o `sqlite`.
-- `NODE_ENV`: `development` para trabajo local.
+- Copia `env.example` como punto de partida para tu entorno local.
+- `INDICATOR_REPOSITORY`: `memory` por defecto o `sqlite`
+- `NODE_ENV`: `development` para trabajo local
 
 Si no defines variables, el proyecto funciona con defaults para desarrollo.
-
 ## 4) Comandos principales
 
 ```bash
-pnpm run dev            # levanta app en modo desarrollo
-pnpm run build          # build cliente + bundle server
-pnpm run test           # ejecuta tests (vitest)
-pnpm run lint           # revisa estilo y reglas de eslint
+pnpm run dev
+pnpm run build
+pnpm run test
+pnpm run lint
 ```
 
 Comandos utiles adicionales:
@@ -49,6 +49,7 @@ Comandos utiles adicionales:
 pnpm run test:coverage
 pnpm run build:analyze
 pnpm run preview
+pnpm run format
 ```
 
 ## 5) Estructura del repositorio
@@ -57,13 +58,13 @@ pnpm run preview
 - `server/`: API Express y capa de servicios/repositorios
 - `shared/`: tipos compartidos
 - `docs/`: documentacion tecnica y operativa
-- `data/`: fuentes de datos locales (ej. `indicadores.json`)
-- `scripts/`: utilidades de soporte
+- `data/`: fuentes de datos locales como `indicadores.json`
+- `scripts/`: utilidades de soporte y herramientas auxiliares
 
 ## 6) Flujo basico de contribucion
 
-1. Crear rama desde `main` (convencion sugerida: `feat/*`, `fix/*`, `docs/*`).
-2. Implementar cambios pequeños y enfocados.
+1. Crear rama desde `main` con convenciones como `feat/*`, `fix/*` o `docs/*`.
+2. Implementar cambios pequenos y enfocados.
 3. Ejecutar antes de abrir PR:
 
 ```bash
@@ -77,29 +78,35 @@ pnpm run build
 ## 7) Indice de documentacion
 
 - [Arquitectura](docs/ARCHITECTURE.md)
+- [Estado de la Documentacion](docs/DOCUMENTATION_STATUS.md)
+- [Plan de Saneamiento Real](docs/PLAN_SANEAMIENTO_REAL.md)
 - [Gap Analysis de Documentacion](docs/GAP_ANALYSIS.md)
 - [Contrato de Errores API](docs/API_ERROR_CONTRACT.md)
+- [Superficie API](docs/API_SURFACE.md)
 - [Pipeline de Datos](docs/DATA_PIPELINE.md)
+- [Diccionario de Datos](docs/DATA_DICTIONARY.md)
 - [Despliegue](docs/DEPLOYMENT.md)
 - [Configuracion de Produccion](docs/PRODUCTION_CONFIGURATION.md)
 - [Seguridad, Red y Endpoints](docs/SECURITY_NETWORK.md)
 - [Estrategia de Pruebas](docs/TEST_STRATEGY.md)
 - [Lineamientos de UX/UI](docs/UI_UX_GUIDELINES.md)
-- [Superficie API](docs/API_SURFACE.md)
 - [Checklist de Release](docs/RELEASE_CHECKLIST.md)
 - [Operacion de SQLite](docs/SQLITE_OPERATIONS.md)
 - [Contribucion Avanzada](docs/CONTRIBUTING_ADVANCED.md)
 - [Indice de Decisiones Arquitectonicas](docs/ADR_INDEX.md)
-- [Diccionario de Datos](docs/DATA_DICTIONARY.md)
 - [Operacion Minima (SLO + tablero)](docs/OPERATIONS.md)
 - [Auditoria de Dependencias](docs/DEPENDENCY_AUDIT.md)
 - [Evaluacion del Parche Wouter](docs/WOUTER_PATCH_EVALUATION.md)
 - [Plantilla de Documento Tecnico](docs/DOCUMENT_TEMPLATE.md)
+- [Politica de Artefactos](docs/ARTIFACT_POLICY.md)
+- [Archivo documental auxiliar](docs/archive/README.md)
 
-## 8) Primer recorrido recomendado (<= 15 minutos)
+## 8) Primer recorrido recomendado
 
 1. `pnpm install`
 2. `pnpm run dev`
 3. Abrir la URL local mostrada por Vite
 4. Ejecutar `pnpm run test`
-5. Leer `docs/ARCHITECTURE.md` para entender el flujo principal
+5. Leer `docs/ARCHITECTURE.md`
+6. Revisar `docs/DOCUMENTATION_STATUS.md` para distinguir documentacion normativa de material auxiliar
+

@@ -1,100 +1,85 @@
 # Gap Analysis de Documentacion
 
+Estado: actualizado a revision del repo real
+Uso recomendado: referencia secundaria para detectar brechas activas; no reemplaza `ARCHITECTURE.md`, `API_SURFACE.md`, `TEST_STRATEGY.md` ni `PLAN_SANEAMIENTO_REAL.md`
+
 ## Objetivo
 
-Consolidar que conocimiento tecnico ya esta documentado en `KimnGenero` y dejar explicitadas las brechas mas relevantes para mantenibilidad, flujo de datos y paso a produccion.
+Identificar que partes de la documentacion ya estan cubiertas, cuales siguen vigentes y donde aun quedan vacios reales para mantener `KimnGenero` de forma segura.
 
-## Alcance
+## Lo que hoy si esta cubierto
 
-- Cubre onboarding, arquitectura, datos, despliegue, testing, seguridad y UX/UI.
-- Cubre el estado documental actual del repositorio.
-- No cubre cambios de codigo ni redisenos arquitectonicos.
+- onboarding tecnico base en `README.md`
+- arquitectura general en `docs/ARCHITECTURE.md`
+- contrato de errores en `docs/API_ERROR_CONTRACT.md`
+- superficie HTTP en `docs/API_SURFACE.md`
+- politica de artefactos en `docs/ARTIFACT_POLICY.md`
+- estrategia de pruebas actual en `docs/TEST_STRATEGY.md`
+- operacion minima y metricas en `docs/OPERATIONS.md`
+- seguridad, CSP y red en `docs/SECURITY_NETWORK.md`
+- despliegue y configuracion de produccion en:
+  - `docs/DEPLOYMENT.md`
+  - `docs/PRODUCTION_CONFIGURATION.md`
+- flujo de datos y operacion de SQLite en:
+  - `docs/DATA_PIPELINE.md`
+  - `docs/DATA_DICTIONARY.md`
+  - `docs/SQLITE_OPERATIONS.md`
+- decisiones tecnicas clave en:
+  - `docs/WOUTER_PATCH_EVALUATION.md`
+  - `docs/ADR_INDEX.md`
+  - `docs/DEPENDENCY_AUDIT.md`
 
-## 1. Mapa de lo resuelto
-
-- `README.md`: onboarding local, scripts, estructura del repo y flujo basico de contribucion.
-- `docs/ARCHITECTURE.md`: arquitectura macro de frontend/backend, repositorio `memory|sqlite` y flujo principal de request.
-- `docs/API_ERROR_CONTRACT.md`: shape de errores, codigos y ejemplos de payload.
-- `docs/OPERATIONS.md`: SLO inicial y uso de `/api/metrics`.
-- `docs/WOUTER_PATCH_EVALUATION.md`: decision tecnica sobre el parche de `wouter`.
-- `docs/DEPENDENCY_AUDIT.md`: auditoria de dependencias UI y criterio de poda.
-- `docs/DOCUMENT_TEMPLATE.md`: base comun para documentos nuevos.
-- `.github/workflows/ci.yml` y `.github/workflows/bundle-analysis.yml`: automatizacion basica de calidad, aun poco reflejada en docs.
-
-## 2. Brechas criticas
-
-### Datos e ingesta
-
-- No existe un documento que describa el ciclo de vida de `data/indicadores.json`.
-- Falta documentar como se siembra SQLite a partir del dataset raw.
-- No hay guia para refrescar datos, regenerar base o validar cambios de shape.
-- No existen scripts ETL dedicados en `scripts/`.
-- No hay definicion formal de validaciones, responsables y checklist de calidad de datos.
-
-### Despliegue y CI/CD
-
-- Falta una guia de despliegue extremo a extremo.
-- No hay matriz de variables de entorno por ambiente.
-- No esta documentada la estrategia de hosting ni la persistencia de SQLite.
-- Existe CI para lint/test y bundle analysis, pero no hay CD documentado.
-- No hay criterios operativos de rollback ni smoke check post-deploy.
-
-### Testing y QA
-
-- No existe documento de estrategia de pruebas.
-- El repo tiene tests unitarios, de rutas API y de contrato `memory vs sqlite`, pero no estan consolidados en una guia.
-- No hay piramide de testing ni definicion de responsabilidades por capa.
-- No hay E2E documentado ni checklist de release QA.
-
-### Seguridad y red
-
-- Existe `helmet`, CSP y allowlist de iframes, pero falta una guia operativa de seguridad.
-- No hay documentacion explicita de CORS ni de superficie expuesta de la API.
-- Falta una politica de secretos y configuracion sensible.
-- No hay una nota de hardening de produccion para headers, CSP y embeds externos.
-
-### Sistema de diseno y UX/UI
-
-- No existe documento de tokens visuales ni reglas de consistencia.
-- Falta una guia de uso de componentes base tras la auditoria de Radix UI.
-- No estan formalizados patrones de interaccion: filtros, tooltips, estados de carga, errores y vacios.
-- No hay criterios documentados para dashboards, cards e indicadores.
-- No existe una guia explicita de accesibilidad frontend.
-
-## 3. Roadmap sugerido
+## Brechas documentales reales
 
 ### Alta prioridad
 
-1. `docs/DATA_PIPELINE.md`
-2. `docs/DEPLOYMENT.md`
-3. `docs/TEST_STRATEGY.md`
-4. `docs/PRODUCTION_CONFIGURATION.md`
-5. `docs/SECURITY_NETWORK.md`
-6. `docs/UI_UX_GUIDELINES.md`
+1. Gobernanza de documentacion historica y auxiliar
+   - el inventario ya separa documentos normativos, historicos y auxiliares
+   - falta solo mantener esa clasificacion viva cuando entren documentos nuevos
 
-### Media / baja prioridad
+2. Estado de scripts y herramientas auxiliares
+   - falta una referencia corta que explique que scripts son parte del flujo normal del proyecto y cuales son experimentales o de apoyo
 
-1. `docs/API_SURFACE.md`
-2. `docs/RELEASE_CHECKLIST.md`
-3. `docs/SQLITE_OPERATIONS.md`
-4. `docs/CONTRIBUTING_ADVANCED.md`
-5. `docs/ADR_INDEX.md`
-6. `docs/DATA_DICTIONARY.md`
+3. Problemas de codificacion de caracteres
+   - varios documentos y partes del frontend ya fueron saneados, pero hay que sostener la politica para evitar reintroducciones
+
+### Prioridad media
+
+1. Variables de entorno de desarrollo
+   - `env.example` ya existe en la raiz del repo y sirve como base para nuevos entornos
+2. Politica de artefactos de analisis
+   - ya existe `docs/ARTIFACT_POLICY.md`; falta difundirla y aplicarla de forma consistente
+3. Flujo de validacion manual
+   - `TEST_STRATEGY.md` cubre bien la bateria automatizada, pero aun puede resumirse mejor la validacion manual minima por tipo de cambio
+
+## Brechas tecnicas que la documentacion ya evidencia
+
+- coexistencia de `memory` y `sqlite` con necesidad de seguir cuidando la paridad
+- deuda activa del parche de `wouter`
+- ausencia de una estrategia E2E/browser formal
+- necesidad de una politica mas clara para scripts y artefactos auxiliares
+
+## Recomendaciones documentales concretas
+
+1. Mantener `README.md` como indice de entrada y no mezclarlo con reportes historicos.
+2. Mantener `docs/DOCUMENTATION_STATUS.md` como inventario vivo de docs normativas, auxiliares e historicas.
+3. Archivar o etiquetar cualquier documento que describa un estado previo del repo.
+4. Evitar crear nuevos docs tecnicos fuera de `docs/` salvo que sean reportes transitorios claramente marcados.
 
 ## Validacion
 
-- Un integrante nuevo debe poder explicar desde docs como levantar, probar, actualizar datos y desplegar.
-- Un frontend engineer debe poder agregar o ajustar vistas sin inventar paleta, patrones o manejo de estados.
-- Un responsable de operaciones debe poder identificar variables de entorno, riesgos de SQLite y pasos de rollback.
-
-## Riesgos y consideraciones
-
-- Riesgo: que las nuevas guias documenten una vision ideal y no el estado real. Mitigacion: basar cada doc en codigo y workflows existentes.
-- Riesgo: que produccion y datos sigan dependiendo de conocimiento tacito. Mitigacion: priorizar primero pipeline, deploy y configuracion.
+- un integrante nuevo debe poder identificar rapidamente:
+  - que docs son normativas
+  - que docs son historicas
+  - donde mirar para arquitectura, API, testing y despliegue
+- el equipo no deberia volver a usar `OPTIMIZATION_PLAN.md` como plan vigente
 
 ## Referencias
 
 - `README.md`
+- `docs/DOCUMENTATION_STATUS.md`
+- `docs/PLAN_SANEAMIENTO_REAL.md`
 - `docs/ARCHITECTURE.md`
-- `docs/API_ERROR_CONTRACT.md`
-- `docs/OPERATIONS.md`
+- `docs/API_SURFACE.md`
+- `docs/TEST_STRATEGY.md`
+

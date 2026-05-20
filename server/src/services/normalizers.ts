@@ -50,25 +50,32 @@ export function mapItem(item: RawIndicator): Indicator {
   };
 }
 
-export function groupByCategory(data: RawIndicator[]): IndicatorCategory[] {
+export function slugifyCategory(value: string) {
+  return value
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, "-")
+    .replace(/^-*|-*$/g, "");
+}
+
+export function groupIndicatorsByArea(indicators: Indicator[]): IndicatorCategory[] {
   const categoryMap = new Map<string, IndicatorCategory>();
-  data.forEach((item) => {
-    const categoryName = item.area ?? item["Área"];
-    if (!categoryName) return;
-    if (!categoryMap.has(categoryName)) {
-      categoryMap.set(categoryName, {
-        id: categoryName
-          .toLowerCase()
-          .replace(/[^a-z0-9]+/g, "-")
-          .replace(/^-*|-*$/g, ""),
-        label: categoryName,
+  for (const ind of indicators) {
+    const area = ind.area;
+    if (!area) continue;
+    if (!categoryMap.has(area)) {
+      categoryMap.set(area, {
+        id: slugifyCategory(area),
+        label: area,
         icono: "",
-        descripcion: `Indicadores relacionados con ${categoryName.toLowerCase()}`,
+        descripcion: `Indicadores relacionados con ${area.toLowerCase()}`,
         indicadores: [],
       });
     }
-    categoryMap.get(categoryName)!.indicadores.push(mapItem(item));
-  });
+    categoryMap.get(area)!.indicadores.push(ind);
+  }
   return Array.from(categoryMap.values());
 }
 
+export function groupByCategory(data: RawIndicator[]): IndicatorCategory[] {
+  return groupIndicatorsByArea(data.map(mapItem));
+}

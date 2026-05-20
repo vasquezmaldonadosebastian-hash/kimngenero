@@ -4,12 +4,11 @@ import fs from "node:fs";
 import type {
   GroupedReport,
   Indicator,
-  IndicatorCategory,
   RawGroupedReport,
   RawIndicator,
 } from "../../../shared/types/indicators";
 import type { IndicatorRepository } from "./IndicatorRepository";
-import { mapItem } from "../services/normalizers";
+import { groupIndicatorsByArea, mapItem } from "../services/normalizers";
 
 type DatabaseSync = import("node:sqlite").DatabaseSync;
 type DatabaseSyncCtor = typeof import("node:sqlite").DatabaseSync;
@@ -144,30 +143,4 @@ export class SqliteIndicatorRepository implements IndicatorRepository {
   getGroupedReports(): GroupedReport[] {
     return this.groupedReports;
   }
-}
-
-function slugify(value: string) {
-  return value
-    .toLowerCase()
-    .replace(/[^a-z0-9]+/g, "-")
-    .replace(/^-*|-*$/g, "");
-}
-
-function groupIndicatorsByArea(indicators: Indicator[]): IndicatorCategory[] {
-  const categoryMap = new Map<string, IndicatorCategory>();
-  for (const ind of indicators) {
-    const area = ind.area;
-    if (!area) continue;
-    if (!categoryMap.has(area)) {
-      categoryMap.set(area, {
-        id: slugify(area),
-        label: area,
-        icono: "",
-        descripcion: `Indicadores relacionados con ${area.toLowerCase()}`,
-        indicadores: [],
-      });
-    }
-    categoryMap.get(area)!.indicadores.push(ind);
-  }
-  return Array.from(categoryMap.values());
 }

@@ -1,4 +1,3 @@
-import React from "react";
 import type { Indicator } from "@shared/types/indicators";
 import { ChevronDown, ExternalLink } from "lucide-react";
 import { useMemo, useState } from "react";
@@ -19,7 +18,7 @@ export default function FormulaBlock({ indicador }: FormulaBlockProps) {
   const tieneInstructivo =
     Boolean(indicador.instructivoCalculo) &&
     indicador.instructivoCalculo !== "falta" &&
-    indicador.instructivoCalculo !== "A la espera de validación" &&
+    indicador.instructivoCalculo !== "A la espera de validacion" &&
     indicador.instructivoCalculo !== "-" &&
     indicador.instructivoCalculo !== "None";
 
@@ -44,28 +43,30 @@ export default function FormulaBlock({ indicador }: FormulaBlockProps) {
   }, [indicador.variables]);
 
   return (
-    <div className="bg-white rounded-lg shadow-sm overflow-hidden mb-3">
+    <div className="mb-3 overflow-hidden rounded-lg bg-white shadow-sm">
       <button
-        className="w-full flex items-center justify-between px-6 py-4 hover:bg-[#E8F2FF] transition-colors"
+        className="flex w-full items-center justify-between px-6 py-4 transition-colors hover:bg-[#E8F2FF]"
         onClick={() => setOpen((v) => !v)}
       >
         <div className="flex items-center gap-3">
-          <div className="w-8 h-8 rounded-lg bg-[#E8F2FF] flex items-center justify-center text-[#0176DE]">fx</div>
+          <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#E8F2FF] text-[#0176DE]">
+            fx
+          </div>
           <div className="text-left">
             <h3 className="font-bold text-gray-900">Metodologia</h3>
             <p className="text-xs text-gray-500">Formula de calculo e instructivo</p>
           </div>
         </div>
-        <ChevronDown className={`w-5 h-5 text-gray-400 transition-transform ${open ? "rotate-180" : ""}`} />
+        <ChevronDown className={`h-5 w-5 text-gray-400 transition-transform ${open ? "rotate-180" : ""}`} />
       </button>
 
       {open && (
-        <div className="px-6 py-4 border-t border-gray-100 space-y-4">
+        <div className="space-y-4 border-t border-gray-100 px-6 py-4">
           <div>
-            <p className="text-xs text-gray-500 font-semibold mb-2">FORMULA MATEMATICA</p>
-            <div className="bg-[#EEF2FF] rounded-lg p-4 border border-[#C7D2FE] overflow-hidden">
+            <p className="mb-2 text-xs font-semibold text-gray-500">FORMULA MATEMATICA</p>
+            <div className="overflow-hidden rounded-lg border border-[#C7D2FE] bg-[#EEF2FF] p-4">
               {formulaLarga && (
-                <p className="font-semibold text-[#3730A3] mb-2">Nota: formula simplificada</p>
+                <p className="mb-2 font-semibold text-[#3730A3]">Nota: formula simplificada</p>
               )}
               <div className="overflow-x-auto">
                 <Latex>{`$$${safeFormulaForDisplay(formulaMostrar)}$$`}</Latex>
@@ -74,14 +75,14 @@ export default function FormulaBlock({ indicador }: FormulaBlockProps) {
           </div>
 
           <div>
-            <p className="text-xs text-gray-500 font-semibold mb-2">VARIABLES</p>
+            <p className="mb-2 text-xs font-semibold text-gray-500">VARIABLES</p>
             {variablesParsed.length > 0 ? (
-              <div className="bg-white rounded-lg p-4 border border-gray-200">
-                <p className="text-sm font-bold text-gray-900 mb-3">Variables de la formula:</p>
+              <div className="rounded-lg border border-gray-200 bg-white p-4">
+                <p className="mb-3 text-sm font-bold text-gray-900">Variables de la formula:</p>
                 <ul className="space-y-2 text-sm text-gray-700">
                   {variablesParsed.map((v, index) => (
-                    <li key={index} className="flex items-center gap-3 bg-gray-50 p-3 rounded-md border border-gray-100">
-                      <span className="font-bold text-[#0176DE] bg-[#E8F2FF] px-3 py-1 rounded text-center min-w-[60px]">
+                    <li key={index} className="flex items-center gap-3 rounded-md border border-gray-100 bg-gray-50 p-3">
+                      <span className="min-w-[60px] rounded bg-[#E8F2FF] px-3 py-1 text-center font-bold text-[#0176DE]">
                         <Latex>{`$${v.simbolo}$`}</Latex>
                       </span>
                       <span className="leading-relaxed">{v.descripcion}</span>
@@ -90,23 +91,23 @@ export default function FormulaBlock({ indicador }: FormulaBlockProps) {
                 </ul>
               </div>
             ) : (
-              <div className="bg-white rounded-lg p-4 border border-gray-200">
-                <p className="text-sm font-bold text-gray-900 mb-3">Donde:</p>
+              <div className="rounded-lg border border-gray-200 bg-white p-4">
+                <p className="mb-3 text-sm font-bold text-gray-900">Donde:</p>
                 <ul className="space-y-2 text-sm text-gray-700">
                   <li className="flex gap-3">
-                    <span className="text-[#0176DE] font-bold">•</span>
+                    <span className="font-bold text-[#0176DE]">-</span>
                     <span>
                       <strong>Numerador:</strong> Cantidad de elementos que cumplen el criterio de evaluacion.
                     </span>
                   </li>
                   <li className="flex gap-3">
-                    <span className="text-[#0176DE] font-bold">•</span>
+                    <span className="font-bold text-[#0176DE]">-</span>
                     <span>
                       <strong>Denominador:</strong> Total de elementos evaluados en el periodo.
                     </span>
                   </li>
                   <li className="flex gap-3">
-                    <span className="text-[#0176DE] font-bold">•</span>
+                    <span className="font-bold text-[#0176DE]">-</span>
                     <span>
                       <strong>x 100:</strong> Factor de conversion a porcentaje (%).
                     </span>
@@ -118,29 +119,29 @@ export default function FormulaBlock({ indicador }: FormulaBlockProps) {
 
           {indicador.notasMetodologicas && (
             <div>
-              <p className="text-xs text-gray-500 font-semibold mb-2">NOTAS METODOLOGICAS</p>
-              <p className="text-sm text-gray-600 leading-relaxed">{indicador.notasMetodologicas}</p>
+              <p className="mb-2 text-xs font-semibold text-gray-500">NOTAS METODOLOGICAS</p>
+              <p className="text-sm leading-relaxed text-gray-600">{indicador.notasMetodologicas}</p>
             </div>
           )}
 
           {tieneInstructivo ? (
             <div>
-              <p className="text-xs text-gray-500 font-semibold mb-2">INSTRUCTIVO DETALLADO</p>
+              <p className="mb-2 text-xs font-semibold text-gray-500">INSTRUCTIVO DETALLADO</p>
               {instructivoEsUrl ? (
                 <a
                   href={indicador.instructivoCalculo}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="text-[#0176DE] text-sm font-semibold hover:underline flex items-center gap-2"
+                  className="flex items-center gap-2 text-sm font-semibold text-[#0176DE] hover:underline"
                 >
-                  Ver documento de instructivo <ExternalLink className="w-3 h-3" />
+                  Ver documento de instructivo <ExternalLink className="h-3 w-3" />
                 </a>
               ) : (
-                <p className="text-sm text-gray-600 italic">{indicador.instructivoCalculo}</p>
+                <p className="text-sm italic text-gray-600">{indicador.instructivoCalculo}</p>
               )}
             </div>
           ) : (
-            <div className="bg-[#FEF3C7] rounded-lg p-3 border border-[#FCD34D] text-xs text-[#92400E]">
+            <div className="rounded-lg border border-[#FCD34D] bg-[#FEF3C7] p-3 text-xs text-[#92400E]">
               <p>
                 <strong>Instructivo:</strong> En proceso de validacion
               </p>
