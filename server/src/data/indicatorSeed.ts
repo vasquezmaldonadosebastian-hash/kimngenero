@@ -25,8 +25,8 @@ function isValidIdentifier(value: unknown): boolean {
   return typeof value === "string" || typeof value === "number";
 }
 
-function hasAnyValue(record: RecordLike, keys: readonly string[]) {
-  return keys.some((key) => isNonEmptyString(record[key]));
+function hasAnyValue(record: RecordLike, keys: readonly string[], predicate: (value: unknown) => boolean) {
+  return keys.some((key) => predicate(record[key]));
 }
 
 function assertIndicatorShape(record: unknown, index: number) {
@@ -35,15 +35,15 @@ function assertIndicatorShape(record: unknown, index: number) {
   }
 
   const missing = [
-    !hasAnyValue(record, indicatorIdentifierKeys) ? "id" : null,
-    !hasAnyValue(record, indicatorTitleKeys) ? "nombre" : null,
-    !hasAnyValue(record, indicatorCodeKeys) ? "codigo" : null,
-    !hasAnyValue(record, indicatorDescriptionKeys) ? "descripcion" : null,
-    !hasAnyValue(record, indicatorObjectiveKeys) ? "objetivo" : null,
-    !hasAnyValue(record, indicatorAreaKeys) ? "area" : null,
-    !hasAnyValue(record, indicatorDimensionKeys) ? "dimension" : null,
-    !hasAnyValue(record, indicatorStatusKeys) ? "estado" : null,
-    !hasAnyValue(record, indicatorCutoffKeys) ? "fechaCorte" : null,
+    !hasAnyValue(record, indicatorIdentifierKeys, isValidIdentifier) ? "id" : null,
+    !hasAnyValue(record, indicatorTitleKeys, isNonEmptyString) ? "nombre" : null,
+    !hasAnyValue(record, indicatorCodeKeys, isNonEmptyString) ? "codigo" : null,
+    !hasAnyValue(record, indicatorDescriptionKeys, isNonEmptyString) ? "descripcion" : null,
+    !hasAnyValue(record, indicatorObjectiveKeys, isNonEmptyString) ? "objetivo" : null,
+    !hasAnyValue(record, indicatorAreaKeys, isNonEmptyString) ? "area" : null,
+    !hasAnyValue(record, indicatorDimensionKeys, isNonEmptyString) ? "dimension" : null,
+    !hasAnyValue(record, indicatorStatusKeys, isNonEmptyString) ? "estado" : null,
+    !hasAnyValue(record, indicatorCutoffKeys, isNonEmptyString) ? "fechaCorte" : null,
   ].filter((value): value is string => Boolean(value));
 
   if (missing.length > 0) {
