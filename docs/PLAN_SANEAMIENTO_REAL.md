@@ -297,17 +297,16 @@ Objetivo: dejar base mantenible y verificable.
 Tareas:
 
 1. Validacion automatica del dataset
-   - definir schema del formato soportado por `data/indicadores.json`
-   - aceptacion: cambios de datos invalidos fallan temprano
+   - completado: el arranque valida el seed y falla temprano ante shapes invalidos
 
 2. Revisar si el formato dual del seed debe mantenerse
    - hoy se soporta array y objeto
-   - decidir si se consolida a uno solo
-   - aceptacion: documentacion y codigo coinciden en un formato objetivo
+   - decision: el formato objeto queda como canonico; el array permanece como compatibilidad de lectura
+   - aceptacion: documentacion y codigo coinciden en el formato objetivo y en la compatibilidad permitida
 
 3. Revisar continuidad del parche de `wouter`
-   - aceptacion: decision vigente, documentada y ligada a consumidor real del global
-
+   - estado: deuda controlada por ahora; no se encontro consumidor interno directo de `window.__WOUTER_ROUTES__`
+   - aceptacion: decision vigente, documentada y ligada a uso real de tooling o diagnostico externo
 ## 6. Orden recomendado de ejecucion
 
 1. Arreglar `.gitignore`

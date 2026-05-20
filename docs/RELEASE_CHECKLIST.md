@@ -24,7 +24,7 @@ pnpm run build
 ```
 
 3. Si el cambio toca datos o repositorio:
-   - validar `data/indicadores.json`
+   - validar `data/indicadores.json` y su esquema de carga
    - revisar impacto en `INDICATOR_REPOSITORY=sqlite`
 4. Si el cambio toca UI:
    - revisar estados de carga, vacio y error

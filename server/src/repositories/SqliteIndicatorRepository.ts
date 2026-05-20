@@ -4,6 +4,7 @@ import fs from "node:fs";
 import type {
   GroupedReport,
   Indicator,
+  IndicatorCategory,
   RawGroupedReport,
   RawIndicator,
 } from "../../../shared/types/indicators";

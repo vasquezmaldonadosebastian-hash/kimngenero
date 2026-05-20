@@ -17,10 +17,9 @@ Documentar el flujo actual de datos de indicadores, desde la fuente versionada e
 - `server/src/app.ts` admite dos formatos de entrada:
   1. un arreglo top-level de indicadores.
   2. un objeto con `indicadores` y `reportesAgrupados`.
-- En arranque, el backend separa `rawIndicators` y `rawReports`, crea el repositorio configurado y ejecuta `initialize()`.
-- En modo `memory`, los datos quedan cargados en memoria.
-- En modo `sqlite`, los datos se usan como seed inicial si la base esta vacia.
-
+- En arranque, el backend separa `rawIndicators` y `rawReports`, valida el seed con `server/src/data/indicatorSeed.ts`, crea el repositorio configurado y ejecuta `initialize()`.
+- Formato canonico recomendado: objeto con `indicadores` y `reportesAgrupados`.
+- El formato arreglo queda como compatibilidad de lectura para migraciones o seeds historicos.
 ## Flujo operativo actual
 
 1. Editar o reemplazar `data/indicadores.json`.
@@ -59,8 +58,7 @@ pnpm run build
 - Cada indicador debe tener `id`, `codigo`, `nombre/titulo`, `area`, `dimension`, `estado` y metadatos minimos suficientes para render.
 - Si existe `enlaceVisualizacion`, debe ser una URL valida de Power BI o Tableau publico.
 - Si se usa el formato objeto, `reportesAgrupados` debe ser consistente con `/api/reportes-agrupados`.
-- Cualquier cambio de codificacion de caracteres debe revisarse en frontend y dashboards.
-
+- Se valida estructura base del seed en arranque; los cambios invalidos fallan antes de construir el repositorio.
 ## Calidad y ownership
 
 - Estado actual: no hay owner ni proceso ETL formal documentado dentro del repo.
@@ -72,9 +70,7 @@ pnpm run build
 ## Brechas conocidas
 
 - No hay scripts de ingesta automatica.
-- No hay esquema formal de validacion de `indicadores.json` previo a merge.
-- No hay proceso documentado para diffs de datos, migraciones de shape o refresh de SQLite en ambientes persistentes.
-
+- No existe versionado formal del esquema ni migraciones de shape para cambios futuros.
 ## Validacion
 
 - `pnpm run test`
@@ -84,11 +80,12 @@ pnpm run build
 ## Riesgos y consideraciones
 
 - Riesgo: asumir que cambiar `indicadores.json` actualiza SQLite existente. Mitigacion: regenerar o recrear DB cuando el seed deba reaplicarse.
-- Riesgo: introducir datos con shape compatible pero semanticamente incorrecto. Mitigacion: agregar futura validacion estructural y checklist de negocio.
+- Riesgo: introducir datos con shape compatible pero semanticamente incorrecto. Mitigacion: mantener la validacion estructural y sumar checklist de negocio.
 
 ## Referencias
 
 - `data/indicadores.json`
 - `server/src/app.ts`
 - `server/src/config/repositoryFactory.ts`
+- `server/src/data/indicatorSeed.ts`
 - `server/src/repositories/SqliteIndicatorRepository.ts`

@@ -4,6 +4,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import { createApp } from "./createApp";
 import { createIndicatorRepository } from "./config/repositoryFactory";
+import { loadIndicatorSeed } from "./data/indicatorSeed";
 import { IndicatorService } from "./services/indicatorService";
 import indicadoresData from "../../data/indicadores.json";
 
@@ -11,14 +12,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 async function startServer() {
-  // Handle both old { indicadores, reportesAgrupados } and new [ ... ] formats
-  const rawIndicators = Array.isArray(indicadoresData) 
-    ? indicadoresData 
-    : (indicadoresData as any).indicadores || [];
-  
-  const rawReports = Array.isArray(indicadoresData) 
-    ? [] 
-    : (indicadoresData as any).reportesAgrupados || [];
+  const { rawIndicators, rawReports } = loadIndicatorSeed(indicadoresData);
 
   const indicatorRepository = createIndicatorRepository({ rawIndicators, rawReports });
   await indicatorRepository.initialize();

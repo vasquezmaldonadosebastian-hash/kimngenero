@@ -93,6 +93,7 @@ Implicancia:
 
 ## Validacion
 
+- el seed valida estructura base en `server/src/data/indicatorSeed.ts` antes de construir el repositorio
 - revisar tipos compartidos en `shared/types/indicator-domain.ts`
 - ejecutar:
 
@@ -105,10 +106,11 @@ pnpm run test
 ## Riesgos y consideraciones
 
 - el dataset actual mezcla convenciones de nombres y posibles problemas de codificacion
-- sin versionado del esquema raw, cualquier cambio aguas arriba puede romper la normalizacion silenciosamente
+- la validacion estructural reduce fallos silenciosos, pero no reemplaza la revision de negocio
 
 ## Referencias
 
 - `docs/DATA_PIPELINE.md`
+- `server/src/data/indicatorSeed.ts`
 - `shared/types/indicator-domain.ts`
 - `server/src/services/normalizers.ts`
