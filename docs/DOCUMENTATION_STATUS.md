@@ -33,6 +33,7 @@ Separar la documentacion que hoy sirve como referencia operativa real de la docu
 - `UI_UX_GUIDELINES.md`
 - `ARTIFACT_POLICY.md`
 - `PLAN_SANEAMIENTO_REAL.md`
+- `RELEASE_NOTE_SANAMIENTO_2026-05-20.md`
 - `GAP_ANALYSIS.md`
   - contiene brechas detectadas en una revision anterior; parte de ellas ya fue cubierta
 

@@ -80,6 +80,7 @@ pnpm run build
 - [Arquitectura](docs/ARCHITECTURE.md)
 - [Estado de la Documentacion](docs/DOCUMENTATION_STATUS.md)
 - [Plan de Saneamiento Real](docs/PLAN_SANEAMIENTO_REAL.md)
+- [Release Note de Saneamiento](docs/RELEASE_NOTE_SANAMIENTO_2026-05-20.md)
 - [Gap Analysis de Documentacion](docs/GAP_ANALYSIS.md)
 - [Contrato de Errores API](docs/API_ERROR_CONTRACT.md)
 - [Superficie API](docs/API_SURFACE.md)

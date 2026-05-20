@@ -280,6 +280,8 @@ Tareas:
 
 ### Fase 3 - Hardening realista
 
+Estado: completada
+
 Objetivo: dejar base mantenible y verificable.
 
 Tareas:
@@ -295,7 +297,20 @@ Tareas:
 3. Revisar continuidad del parche de `wouter`
    - estado: deuda controlada por ahora; no se encontro consumidor interno directo de `window.__WOUTER_ROUTES__`
    - aceptacion: decision vigente, documentada y ligada a uso real de tooling o diagnostico externo
-## 6. Orden recomendado de ejecucion
+
+4. Pulido final de copy y docs
+   - completado: se limpiaron paginas y documentos con mojibake visible, se cerraron referencias historicas y se dejo trazabilidad del saneamiento
+## 6. Cierre del saneamiento
+
+El saneamiento operativo del repositorio quedo completado en tres niveles:
+
+- contencion y limpieza base
+- orden estructural y reduccion de residuos
+- hardening realista con validacion del dataset y cierre documental
+
+La referencia vigente para mantenimiento incremental sigue siendo este documento junto con `docs/DOCUMENTATION_STATUS.md` y `docs/RELEASE_NOTE_SANAMIENTO_2026-05-20.md`.
+
+## 7. Orden recomendado de ejecucion
 
 1. Arreglar `.gitignore`
 2. Marcar documentacion historica y auxiliar
@@ -307,7 +322,7 @@ Tareas:
 8. Formalizar scripts y artefactos
 9. Agregar schema de datos y `env.example`
 
-## 7. Archivos candidatos a revision inmediata
+## 8. Archivos candidatos a revision inmediata
 
 ### Muy probable basura o residuo
 
@@ -325,13 +340,13 @@ Tareas:
 - `DEPENDENCY_AUDIT.md`
 - `README.md`
 
-## 8. Limitaciones de esta revision
+## 9. Limitaciones de esta revision
 
 - no se pudieron ejecutar `pnpm`, `node` ni `npm` en esta sesion por restriccion del entorno local de ejecucion
 - por eso, esta revision es fuerte en estructura y consistencia estatica, pero no valida runtime en esta corrida
 - aun asi, la evidencia del arbol, los tests presentes, los workflows y el contenido de archivos alcanza para ajustar el plan con mucha mas precision que antes
 
-## 9. Siguiente accion concreta
+## 10. Siguiente accion concreta
 
 Tomar este documento como plan vigente y ejecutar primero una limpieza no destructiva:
 
