@@ -232,7 +232,7 @@ export default function NotebooksLMS() {
         <div className="absolute left-[-5rem] top-12 h-56 w-56 rounded-full bg-white/10 blur-3xl" />
         <div className="absolute right-[-4rem] top-8 h-64 w-64 rounded-full bg-[#9fd4ff]/20 blur-3xl" />
 
-        <div className="container relative z-10 py-16 lg:py-20">
+      <div className="container relative z-10 py-12 sm:py-16 lg:py-20">
           <div className="max-w-4xl">
             <div className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/10 px-4 py-2 text-xs font-semibold uppercase tracking-[0.22em] text-white/80 backdrop-blur">
               <Sparkles className="h-3.5 w-3.5" />
@@ -240,29 +240,29 @@ export default function NotebooksLMS() {
             </div>
 
             <h1
-              className="mt-6 text-4xl font-extrabold tracking-tight md:text-5xl lg:text-6xl"
+              className="mt-6 text-3xl font-extrabold tracking-tight sm:text-4xl md:text-5xl lg:text-6xl"
               style={{ fontFamily: "Montserrat, sans-serif" }}
             >
               KimnIA
             </h1>
 
-            <p className="mt-6 max-w-3xl text-lg leading-relaxed text-white/85 md:text-xl">
+            <p className="mt-6 max-w-3xl text-base leading-relaxed text-white/85 md:text-lg lg:text-xl">
               KimnIA: Kimun es la palabra para el conocimiento, la sabiduria o el saber ancestral.
               KimnIA refleja que este modulo dentro de KimnGenero es un espacio de aprendizaje y
               sabiduria sobre genero, impulsado por tecnologia.
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-3">
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
               <a
                 href="#catalogo"
-                className="inline-flex items-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-[#03122E] transition-colors hover:bg-[#E8F2FF]"
+                className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl bg-white px-5 py-3 text-sm font-semibold text-[#03122E] transition-colors hover:bg-[#E8F2FF] sm:w-auto"
               >
                 Explorar catalogo
                 <ArrowRight className="h-4 w-4" />
               </a>
               <a
                 href="#notebook-01"
-                className="inline-flex items-center gap-2 rounded-xl border border-white/20 bg-white/10 px-5 py-3 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/15"
+                className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-5 py-3 text-sm font-semibold text-white backdrop-blur transition-colors hover:bg-white/15 sm:w-auto"
               >
                 Ir al primero
                 <BookOpen className="h-4 w-4" />
@@ -297,7 +297,7 @@ export default function NotebooksLMS() {
                 Exploracion rapida
               </p>
               <h2
-                className="mt-2 text-3xl font-extrabold tracking-tight text-[#1A0A2E]"
+              className="mt-2 text-2xl font-extrabold tracking-tight text-[#1A0A2E] sm:text-3xl"
                 style={{ fontFamily: "Montserrat, sans-serif" }}
               >
                 {stats.total} {notebookLabel} disponibles en KimnIA
@@ -317,7 +317,7 @@ export default function NotebooksLMS() {
                 value={query}
                 onChange={(event) => setQuery(event.target.value)}
                 placeholder="Buscar por titulo o palabra clave..."
-                className="w-full rounded-2xl border border-slate-200 bg-slate-50 py-3 pl-11 pr-4 text-sm text-slate-700 outline-none transition focus:border-[#0176DE] focus:bg-white focus:ring-4 focus:ring-[#0176DE]/10"
+              className="w-full rounded-2xl border border-slate-200 bg-slate-50 py-3 pl-11 pr-4 text-sm text-slate-700 outline-none transition focus:border-[#0176DE] focus:bg-white focus:ring-4 focus:ring-[#0176DE]/10"
               />
             </label>
             {query && (

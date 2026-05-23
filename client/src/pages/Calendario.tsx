@@ -26,7 +26,7 @@ export default function Calendario() {
           }}
         />
         
-        <div className="container relative z-10 py-12 lg:py-16">
+        <div className="container relative z-10 py-10 sm:py-12 lg:py-16">
           <div className="max-w-4xl">
             {/* Breadcrumb style */}
             <div className="text-white/80 text-xs mb-6">
@@ -35,14 +35,14 @@ export default function Calendario() {
 
             {/* Title */}
             <h1
-              className="text-3xl lg:text-4xl font-extrabold text-white leading-tight mb-6"
+              className="mb-5 text-3xl font-extrabold leading-tight text-white lg:text-4xl"
               style={{ fontFamily: 'Montserrat, sans-serif' }}
             >
               Calendario de actualizaciones
             </h1>
 
             {/* Description */}
-            <p className="text-sm lg:text-base text-white/90 leading-relaxed max-w-3xl">
+            <p className="max-w-3xl text-sm leading-relaxed text-white/90 lg:text-base">
               El calendario de actualización de indicadores de género es una herramienta estratégica de comunicación que permite a la Universidad Católica de Temuco informar oportunamente a personas e instituciones interesadas sobre las fechas y procesos de actualización de estos indicadores. Facilita la planificación, el seguimiento y la toma de decisiones con enfoque de género, promoviendo la transparencia, la coordinación interinstitucional y el acceso equitativo a información clave a nivel nacional.
             </p>
           </div>
@@ -50,28 +50,27 @@ export default function Calendario() {
       </section>
 
       {/* ─── CALENDAR CONTENT ─── */}
-      <section className="w-full py-12 px-4 flex flex-col items-center">
-        <div className="w-full max-w-7xl overflow-hidden rounded-lg shadow-sm border border-gray-200 bg-white p-4 mb-8">
-          <div className="w-full overflow-x-auto">
-            <iframe 
+      <section className="flex w-full flex-col items-center px-4 py-8 sm:py-12">
+        <div className="mb-6 w-full max-w-7xl overflow-hidden rounded-2xl border border-gray-200 bg-white p-3 shadow-sm sm:p-4">
+          <iframe 
               src="https://calendar.google.com/calendar/embed?src=c_7aa6cfd290f787a674e8f2bed624e22ee309900e32135a3c9c3678eafa5e9a63%40group.calendar.google.com&ctz=America%2FSantiago" 
-              style={{ border: "0", minWidth: "800px" }} 
+              style={{ border: "0" }} 
               width="100%" 
-              height="600" 
+              height="720" 
               frameBorder="0" 
-              scrolling="no"
+              scrolling="yes"
               title="Calendario de actualizaciones"
+              className="h-[72vh] min-h-[620px] w-full"
             ></iframe>
-          </div>
         </div>
 
         {/* Add Calendar Button */}
-        <div className="flex justify-center">
+        <div className="flex w-full max-w-7xl justify-center">
           <a 
             href="https://calendar.google.com/calendar/u/0?cid=c_7aa6cfd290f787a674e8f2bed624e22ee309900e32135a3c9c3678eafa5e9a63%40group.calendar.google.com"
             target="_blank"
             rel="noopener noreferrer"
-            className="inline-flex items-center px-6 py-2.5 bg-[#0176DE] text-white font-semibold rounded-md hover:bg-[#0165c0] transition-colors shadow-sm text-sm"
+            className="inline-flex min-h-11 w-full items-center justify-center rounded-md bg-[#0176DE] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#0165c0] sm:w-auto"
           >
             Añadir Calendario
           </a>

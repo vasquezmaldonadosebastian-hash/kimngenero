@@ -52,7 +52,7 @@ function App() {
       <ThemeProvider defaultTheme="light">
         <IndicatorsProvider>
           <TooltipProvider>
-            <Toaster position="top-right" />
+            <Toaster position="bottom-center" />
             <div className="flex flex-col min-h-screen">
               <HeaderUCT />
               <main className="flex-1">

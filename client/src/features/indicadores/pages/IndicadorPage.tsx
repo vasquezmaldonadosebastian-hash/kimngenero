@@ -65,11 +65,11 @@ export default function IndicadorPage() {
 
   return (
     <>
-      <div className="bg-white border-b border-gray-200 sticky top-16 z-40">
-        <div className="max-w-6xl mx-auto px-6 py-3">
+      <div className="sticky top-[72px] z-40 border-b border-gray-200 bg-white/95 backdrop-blur sm:top-16">
+        <div className="mx-auto max-w-6xl px-4 py-3 sm:px-6">
           <button
             onClick={() => navigate("/indicadores")}
-            className="inline-flex items-center gap-2 text-[#0176DE] font-semibold hover:text-[#03122E] transition-colors"
+            className="inline-flex min-h-11 items-center gap-2 rounded-lg px-2 py-2 font-semibold text-[#0176DE] transition-colors hover:bg-[#E8F2FF] hover:text-[#03122E]"
           >
             <ArrowLeft className="w-4 h-4" />
             Volver a Indicadores

@@ -119,7 +119,7 @@ export default function Metodologia() {
         className="bg-white border-b border-[#E8F2FF]"
         style={{ background: "linear-gradient(180deg, #E8F2FF 0%, #FFFFFF 100%)" }}
       >
-        <div className="container py-10">
+        <div className="container py-8 sm:py-10">
           <div className="flex items-center gap-2 mb-2">
             <BookOpen className="w-5 h-5 text-[#0176DE]" />
             <span className="text-xs font-semibold text-[#0176DE] uppercase tracking-wider">Documentación</span>
@@ -136,11 +136,11 @@ export default function Metodologia() {
         </div>
       </div>
 
-      <div className="container py-10">
-        <div className="max-w-4xl mx-auto space-y-10">
+      <div className="container py-8 sm:py-10">
+        <div className="mx-auto max-w-4xl space-y-6 sm:space-y-10">
 
           {/* 1. Definición del Modelo */}
-          <section className="bg-white rounded-xl p-8 shadow-sm border border-[#E8F2FF]">
+          <section className="rounded-xl border border-[#E8F2FF] bg-white p-5 shadow-sm sm:p-8">
             <h2
               className="text-xl font-bold text-[#1A0A2E] mb-4"
               style={{ fontFamily: 'Montserrat, sans-serif' }}
@@ -156,7 +156,7 @@ export default function Metodologia() {
           </section>
 
           {/* 2. Estado del Arte */}
-          <section className="bg-white rounded-xl p-8 shadow-sm border border-[#E8F2FF]">
+          <section className="rounded-xl border border-[#E8F2FF] bg-white p-5 shadow-sm sm:p-8">
             <h2
               className="text-xl font-bold text-[#1A0A2E] mb-6"
               style={{ fontFamily: 'Montserrat, sans-serif' }}
@@ -192,7 +192,7 @@ export default function Metodologia() {
           </section>
 
           {/* 3. Metodología de Implementación */}
-          <section className="bg-white rounded-xl p-8 shadow-sm border border-[#E8F2FF]">
+          <section className="rounded-xl border border-[#E8F2FF] bg-white p-5 shadow-sm sm:p-8">
             <h2
               className="text-xl font-bold text-[#1A0A2E] mb-6"
               style={{ fontFamily: 'Montserrat, sans-serif' }}
@@ -204,9 +204,9 @@ export default function Metodologia() {
               <h3 className="font-semibold text-[#1A0A2E] mb-4" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                 Ciclo PHVA (Planificar, Hacer, Verificar, Actuar)
               </h3>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div className="grid grid-cols-1 gap-3 md:grid-cols-3 md:gap-4">
                 {etapas.map((etapa) => (
-                  <div key={etapa.numero} className="bg-[#E8F2FF] rounded-lg p-5 border border-[#E8F2FF]">
+                <div key={etapa.numero} className="rounded-lg border border-[#E8F2FF] bg-[#E8F2FF] p-4 sm:p-5">
                     <div className="flex items-center gap-3 mb-3">
                       <div className="w-8 h-8 rounded-full bg-[#0176DE] text-white flex items-center justify-center text-sm font-bold">
                         {etapa.numero}
@@ -230,7 +230,7 @@ export default function Metodologia() {
               </p>
               <div className="space-y-3">
                 {estandares.map((est) => (
-                  <div key={est.nivel} className={`${est.color} rounded-lg p-4 border border-[#E8F2FF]`}>
+                  <div key={est.nivel} className={`${est.color} rounded-lg border border-[#E8F2FF] p-4`}>
                     <div className={`font-semibold ${est.textColor} mb-1`} style={{ fontFamily: 'Montserrat, sans-serif' }}>
                       {est.nivel}
                     </div>
@@ -247,9 +247,9 @@ export default function Metodologia() {
               <p className="text-gray-700 leading-relaxed text-sm mb-4">
                 El trabajo se organiza en cuatro ejes transversales:
               </p>
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
                 {ambitos.map((ambito) => (
-                  <div key={ambito.titulo} className="bg-[#E8F2FF] rounded-lg p-5 border border-[#E8F2FF]">
+                  <div key={ambito.titulo} className="rounded-lg border border-[#E8F2FF] bg-[#E8F2FF] p-4 sm:p-5">
                     <div className="text-2xl mb-2">{ambito.icono}</div>
                     <h4 className="font-semibold text-[#1A0A2E] mb-2 text-sm" style={{ fontFamily: 'Montserrat, sans-serif' }}>
                       {ambito.titulo}
@@ -262,7 +262,7 @@ export default function Metodologia() {
           </section>
 
           {/* 4. Plan de Trabajo */}
-          <section className="bg-white rounded-xl p-8 shadow-sm border border-[#E8F2FF]">
+          <section className="rounded-xl border border-[#E8F2FF] bg-white p-5 shadow-sm sm:p-8">
             <h2
               className="text-xl font-bold text-[#1A0A2E] mb-6"
               style={{ fontFamily: 'Montserrat, sans-serif' }}
@@ -292,7 +292,7 @@ export default function Metodologia() {
               </h3>
               <div className="space-y-3">
                 {fases.map((fase) => (
-                  <div key={fase.numero} className="bg-[#E8F2FF] rounded-lg p-5 border border-[#E8F2FF]">
+                  <div key={fase.numero} className="rounded-lg border border-[#E8F2FF] bg-[#E8F2FF] p-4 sm:p-5">
                     <div className="flex items-start gap-4">
                       <div className="w-8 h-8 rounded-full bg-[#0176DE] text-white flex items-center justify-center text-sm font-bold flex-shrink-0">
                         {fase.numero}
@@ -318,9 +318,9 @@ export default function Metodologia() {
             >
               5. Principios Rectores
             </h2>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
               {principios.map((p) => (
-                <div key={p.titulo} className="bg-white rounded-xl p-6 border border-[#E8F2FF] shadow-sm">
+                <div key={p.titulo} className="rounded-xl border border-[#E8F2FF] bg-white p-5 shadow-sm sm:p-6">
                   <div className="flex items-center gap-3 mb-3">
                     <div className="w-9 h-9 rounded-lg bg-[#E8F2FF] flex items-center justify-center">
                       {p.icono}
@@ -339,7 +339,7 @@ export default function Metodologia() {
           </section>
 
           {/* Disclaimer */}
-          <div className="bg-[#1A0A2E] rounded-xl p-6 text-white">
+          <div className="rounded-xl bg-[#1A0A2E] p-5 text-white sm:p-6">
             <div className="flex items-start gap-3">
               <div className="w-8 h-8 rounded-full bg-[#0176DE]/30 flex items-center justify-center flex-shrink-0 mt-0.5">
                 <span className="text-[#FEC60D] text-sm font-bold">i</span>

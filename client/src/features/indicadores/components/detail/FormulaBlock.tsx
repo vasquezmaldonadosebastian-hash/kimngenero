@@ -45,8 +45,10 @@ export default function FormulaBlock({ indicador }: FormulaBlockProps) {
   return (
     <div className="mb-3 overflow-hidden rounded-lg bg-white shadow-sm">
       <button
-        className="flex w-full items-center justify-between px-6 py-4 transition-colors hover:bg-[#E8F2FF]"
+        type="button"
+        className="flex min-h-11 w-full items-center justify-between gap-4 px-4 py-4 text-left transition-colors hover:bg-[#E8F2FF] sm:px-6"
         onClick={() => setOpen((v) => !v)}
+        aria-expanded={open}
       >
         <div className="flex items-center gap-3">
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-[#E8F2FF] text-[#0176DE]">
@@ -61,7 +63,7 @@ export default function FormulaBlock({ indicador }: FormulaBlockProps) {
       </button>
 
       {open && (
-        <div className="space-y-4 border-t border-gray-100 px-6 py-4">
+        <div className="space-y-4 border-t border-gray-100 px-4 py-4 sm:px-6">
           <div>
             <p className="mb-2 text-xs font-semibold text-gray-500">FORMULA MATEMATICA</p>
             <div className="overflow-hidden rounded-lg border border-[#C7D2FE] bg-[#EEF2FF] p-4">
@@ -81,7 +83,7 @@ export default function FormulaBlock({ indicador }: FormulaBlockProps) {
                 <p className="mb-3 text-sm font-bold text-gray-900">Variables de la formula:</p>
                 <ul className="space-y-2 text-sm text-gray-700">
                   {variablesParsed.map((v, index) => (
-                    <li key={index} className="flex items-center gap-3 rounded-md border border-gray-100 bg-gray-50 p-3">
+                    <li key={index} className="flex flex-col gap-2 rounded-md border border-gray-100 bg-gray-50 p-3 sm:flex-row sm:items-center">
                       <span className="min-w-[60px] rounded bg-[#E8F2FF] px-3 py-1 text-center font-bold text-[#0176DE]">
                         <Latex>{`$${v.simbolo}$`}</Latex>
                       </span>

@@ -1,9 +1,15 @@
-import { Menu, Search, X } from "lucide-react";
-import { useState } from "react";
-import { Link } from "wouter";
+import { ChevronRight, Menu, Search, X } from "lucide-react";
+import { useEffect, useState } from "react";
+import { Link, useLocation } from "wouter";
+import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 
 export default function HeaderUCT() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [location] = useLocation();
+
+  useEffect(() => {
+    setMobileMenuOpen(false);
+  }, [location]);
 
   const topLinks = [
     { label: "CONECTA", href: "#" },
@@ -29,7 +35,7 @@ export default function HeaderUCT() {
   return (
     <>
       <div className="bg-[#0073CC] text-white">
-        <div className="mx-auto flex h-10 max-w-7xl items-center justify-center px-4">
+        <div className="mx-auto hidden h-10 max-w-7xl items-center justify-center px-4 lg:flex">
           <div className="hidden items-center text-[11px] font-semibold tracking-wider lg:flex">
             {topLinks.map((link, idx) => (
               <div key={idx} className="flex items-center">
@@ -68,14 +74,20 @@ export default function HeaderUCT() {
 
       <header className="sticky top-0 z-50 border-b border-gray-100 bg-gray-100 shadow-sm">
         <div className="mx-auto max-w-7xl px-4 py-3">
-          <div className="flex items-center justify-between gap-6">
+          <div className="flex items-center justify-between gap-3 sm:gap-6">
             <Link href="/">
-              <div className="cursor-pointer transition-opacity hover:opacity-90">
+              <div className="flex items-center gap-3 transition-opacity hover:opacity-90">
                 <img
                   src="/assets/logo_KIMN_gris-scaled.webp"
                   alt="Logo KIMN"
-                  className="h-10 w-auto object-contain md:h-14"
+                  className="h-9 w-auto object-contain sm:h-10 md:h-14"
                 />
+                <div className="hidden leading-tight sm:block">
+                  <p className="text-[10px] font-semibold uppercase tracking-[0.22em] text-[#0073CC]">
+                    Observatorio
+                  </p>
+                  <p className="text-sm font-bold text-[#03122E]">KimnGenero</p>
+                </div>
               </div>
             </Link>
 
@@ -90,32 +102,90 @@ export default function HeaderUCT() {
             </nav>
 
             <div className="flex items-center gap-4">
-              <button className="hidden rounded-full p-2 transition-colors hover:bg-gray-50 lg:block">
+              <button
+                className="hidden rounded-full p-2 transition-colors hover:bg-gray-50 lg:block"
+                aria-label="Buscar"
+              >
                 <Search className="h-5 w-5 stroke-[2.5] text-[#0073CC]" />
               </button>
 
               <button
-                className="rounded-lg p-2 text-gray-600 transition-colors hover:bg-gray-100 lg:hidden"
+                className="rounded-xl p-2.5 text-gray-600 transition-colors hover:bg-gray-100 lg:hidden"
                 onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+                aria-label={mobileMenuOpen ? "Cerrar menu" : "Abrir menu"}
+                aria-expanded={mobileMenuOpen}
+                aria-controls="mobile-navigation"
               >
                 {mobileMenuOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
               </button>
             </div>
           </div>
-
-          {mobileMenuOpen && (
-            <nav className="mt-4 flex flex-col gap-2 border-t border-gray-200 pt-4 lg:hidden">
-              {mainNavLinks.map((link, idx) => (
-                <Link key={idx} href={link.href}>
-                  <a className="block rounded-md px-3 py-2 text-sm font-bold text-gray-700 transition-colors hover:bg-gray-50 hover:text-[#0073CC]">
-                    {link.label}
-                  </a>
-                </Link>
-              ))}
-            </nav>
-          )}
         </div>
       </header>
+
+      <Dialog open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+        <DialogContent
+          showCloseButton={false}
+          id="mobile-navigation"
+          className="!fixed !inset-x-0 !bottom-0 !top-auto !left-0 !right-0 !translate-x-0 !translate-y-0 !max-w-none !rounded-t-[1.5rem] !rounded-b-none border-t border-gray-200 p-0 shadow-2xl sm:!rounded-t-[2rem]"
+        >
+          <div className="max-h-[85vh] overflow-y-auto">
+            <DialogHeader className="border-b border-gray-100 px-4 py-4 text-left sm:px-6">
+              <div className="flex items-center justify-between gap-4">
+                <div>
+                  <DialogTitle className="text-sm font-bold uppercase tracking-[0.22em] text-[#0073CC]">
+                    Navegacion
+                  </DialogTitle>
+                  <p className="mt-1 text-lg font-bold text-[#03122E]">KimnGenero</p>
+                </div>
+                <button
+                  type="button"
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-full bg-gray-100 text-gray-600 transition-colors hover:bg-gray-200"
+                  aria-label="Cerrar menu"
+                >
+                  <X className="h-5 w-5" />
+                </button>
+              </div>
+            </DialogHeader>
+
+            <div className="space-y-6 px-4 py-4 sm:px-6 sm:py-6">
+              <div>
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gray-400">
+                  Secciones
+                </p>
+                <nav className="mt-3 grid gap-2" aria-label="Navegacion principal movil">
+                  {mainNavLinks.map((link) => (
+                    <Link key={link.href} href={link.href}>
+                      <a className="flex min-h-12 items-center justify-between rounded-xl border border-gray-200 bg-gray-50 px-4 py-3 text-sm font-semibold text-gray-700 transition-colors hover:border-[#0073CC]/20 hover:bg-white hover:text-[#0073CC]">
+                        <span>{link.label}</span>
+                        <ChevronRight className="h-4 w-4 text-gray-400" />
+                      </a>
+                    </Link>
+                  ))}
+                </nav>
+              </div>
+
+              <div className="border-t border-gray-100 pt-6">
+                <p className="text-xs font-semibold uppercase tracking-[0.22em] text-gray-400">
+                  Accesos institucionales
+                </p>
+                <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                  {topLinks.map((link) => (
+                    <a
+                      key={link.label}
+                      href={link.href}
+                      className="flex min-h-11 items-center rounded-xl border border-gray-200 px-4 py-3 text-sm font-medium text-gray-700 transition-colors hover:border-[#0073CC]/20 hover:bg-gray-50 hover:text-[#0073CC]"
+                    >
+                      {link.label}
+                    </a>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </DialogContent>
+      </Dialog>
     </>
   );
 }

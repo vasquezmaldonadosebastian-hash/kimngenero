@@ -14,17 +14,19 @@ export default function TechnicalSheet({ indicador }: TechnicalSheetProps) {
   const cobertura = [indicador.area, indicador.dimension].filter(Boolean).join(" — ") || "Por definir";
 
   return (
-    <section className="mb-12">
+    <section className="mb-10 sm:mb-12">
       <div className="flex items-center gap-3 mb-6">
         <h2 className="text-2xl font-bold text-[#1A0A2E]" style={{ fontFamily: "Montserrat, sans-serif" }}>
           Ficha Tecnica
         </h2>
       </div>
 
-      <div className="bg-white rounded-lg shadow-sm overflow-hidden mb-3">
+      <div className="mb-3 overflow-hidden rounded-lg bg-white shadow-sm">
         <button
-          className="w-full flex items-center justify-between px-6 py-4 hover:bg-[#E8F2FF] transition-colors"
+          type="button"
+          className="flex min-h-11 w-full items-center justify-between gap-4 px-4 py-4 text-left transition-colors hover:bg-[#E8F2FF] sm:px-6"
           onClick={() => setOpenFuentes((v) => !v)}
+          aria-expanded={openFuentes}
         >
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-lg bg-[#FEF3C7] flex items-center justify-center text-[#92400E]">DB</div>
@@ -37,7 +39,7 @@ export default function TechnicalSheet({ indicador }: TechnicalSheetProps) {
         </button>
 
         {openFuentes && (
-          <div className="px-6 py-4 border-t border-gray-100 space-y-3">
+          <div className="space-y-3 border-t border-gray-100 px-4 py-4 sm:px-6">
             <div>
               <p className="text-xs text-gray-500 font-semibold mb-1">Fuente administrativa</p>
               <p className="text-sm text-gray-700">{indicador.fuenteAdministrativa || "Por definir"}</p>
@@ -66,10 +68,12 @@ export default function TechnicalSheet({ indicador }: TechnicalSheetProps) {
         )}
       </div>
 
-      <div className="bg-white rounded-lg shadow-sm overflow-hidden">
+      <div className="overflow-hidden rounded-lg bg-white shadow-sm">
         <button
-          className="w-full flex items-center justify-between px-6 py-4 hover:bg-[#E8F2FF] transition-colors"
+          type="button"
+          className="flex min-h-11 w-full items-center justify-between gap-4 px-4 py-4 text-left transition-colors hover:bg-[#E8F2FF] sm:px-6"
           onClick={() => setOpenInfo((v) => !v)}
+          aria-expanded={openInfo}
         >
           <div className="flex items-center gap-3">
             <div className="w-8 h-8 rounded-lg bg-[#D1FAE5] flex items-center justify-center text-[#065F46]">i</div>
@@ -82,7 +86,7 @@ export default function TechnicalSheet({ indicador }: TechnicalSheetProps) {
         </button>
 
         {openInfo && (
-          <div className="px-6 py-4 border-t border-gray-100 space-y-3">
+          <div className="space-y-3 border-t border-gray-100 px-4 py-4 sm:px-6">
             <div>
               <p className="text-xs font-semibold text-gray-700 mb-1">Unidad</p>
               <p className="text-sm text-gray-600">{indicador.unidad || "Por definir"}</p>

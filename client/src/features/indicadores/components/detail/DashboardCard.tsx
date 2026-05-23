@@ -66,9 +66,9 @@ export default function DashboardCard({ indicador }: DashboardCardProps) {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden mb-12">
-      <div className="flex items-center justify-between px-6 py-4 bg-[#E8F2FF] border-b border-[#E5D4F0]">
-        <div className="flex items-center gap-3">
+    <div className="mb-10 overflow-hidden rounded-xl bg-white shadow-md sm:mb-12">
+      <div className="flex flex-col gap-4 border-b border-[#E5D4F0] bg-[#E8F2FF] px-4 py-4 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+        <div className="flex items-start gap-3">
           <div className={`w-3 h-3 rounded-full ${tieneIframe ? "bg-[#27AE60]" : "bg-[#F59E0B]"}`} />
           <div>
             <div
@@ -81,21 +81,21 @@ export default function DashboardCard({ indicador }: DashboardCardProps) {
           </div>
         </div>
         {tieneIframe && (
-          <div className="flex items-center gap-2">
-            <button onClick={handleRefresh} className="p-2 hover:bg-white/50 rounded-lg transition-colors" title="Actualizar dashboard">
+          <div className="flex flex-wrap gap-2">
+            <button onClick={handleRefresh} className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg p-2 transition-colors hover:bg-white/50" title="Actualizar dashboard">
               <RefreshCw className="w-4 h-4 text-gray-600" />
             </button>
-            <button onClick={handleFullscreen} className="p-2 hover:bg-white/50 rounded-lg transition-colors" title="Pantalla completa">
+            <button onClick={handleFullscreen} className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg p-2 transition-colors hover:bg-white/50" title="Pantalla completa">
               <Expand className="w-4 h-4 text-gray-600" />
             </button>
-            <button onClick={handleShare} className="p-2 hover:bg-white/50 rounded-lg transition-colors" title="Compartir">
+            <button onClick={handleShare} className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg p-2 transition-colors hover:bg-white/50" title="Compartir">
               <Share2 className="w-4 h-4 text-gray-600" />
             </button>
           </div>
         )}
       </div>
 
-      <div className="relative w-full bg-gradient-to-br from-[#E8F2FF] to-[#E8F2FF] h-[75vh] min-h-[700px]">
+      <div className="relative h-[72vh] min-h-[420px] w-full bg-gradient-to-br from-[#E8F2FF] to-[#E8F2FF] md:h-[75vh] md:min-h-[700px]">
         {tieneIframe ? (
           <iframe
             ref={iframeRef}
@@ -111,13 +111,13 @@ export default function DashboardCard({ indicador }: DashboardCardProps) {
             }
             frameBorder="0"
             allowFullScreen={true}
-            className="w-full h-full absolute inset-0"
+            className="absolute inset-0 h-full w-full"
             style={{ display: "block" }}
             sandbox="allow-scripts allow-same-origin allow-forms allow-popups allow-presentation"
             loading="lazy"
           />
         ) : (
-          <div className="flex flex-col items-center justify-center h-full py-16 px-6">
+          <div className="flex h-full flex-col items-center justify-center px-6 py-12">
             <div className="w-20 h-20 rounded-3xl bg-[#E8F2FF] flex items-center justify-center mb-6">
               <span className="text-4xl">Dashboard</span>
             </div>
@@ -135,13 +135,13 @@ export default function DashboardCard({ indicador }: DashboardCardProps) {
       </div>
 
       {tieneIframe && (
-        <div className="flex items-center justify-between px-6 py-3 bg-[#F8F9FA] border-t border-gray-100 flex-wrap gap-3">
-          <span className="text-xs text-gray-600 flex items-center gap-2">
+        <div className="flex flex-col gap-3 border-t border-gray-100 bg-[#F8F9FA] px-4 py-3 sm:flex-row sm:items-center sm:justify-between sm:px-6">
+          <span className="flex items-center gap-2 text-xs text-gray-600">
             <Info className="w-4 h-4 text-[#0176DE]" />
             Los datos se actualizan siguiendo el cronograma institucional de indicadores.
           </span>
           <div className="flex gap-2">
-            <button onClick={handleDownload} className="p-2 hover:bg-gray-200 rounded-lg transition-colors" title="Descargar">
+            <button onClick={handleDownload} className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg p-2 transition-colors hover:bg-gray-200" title="Descargar">
               <Download className="w-4 h-4 text-gray-600" />
             </button>
           </div>

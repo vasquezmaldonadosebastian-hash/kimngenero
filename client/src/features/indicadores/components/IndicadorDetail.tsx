@@ -14,11 +14,11 @@ export default function IndicadorDetail({ indicador }: IndicadorDetailProps) {
     <div className="min-h-screen bg-[#F8F9FA]">
       <Hero indicador={indicador} />
       <div
-        className="w-full h-12 bg-[#F8F9FA]"
+        className="h-8 w-full bg-[#F8F9FA] sm:h-12"
         style={{ clipPath: "ellipse(55% 100% at 50% 0%)", marginTop: "-1px" }}
       />
 
-      <div className="max-w-6xl mx-auto px-6 py-12">
+      <div className="mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12">
         <DashboardCard indicador={indicador} />
         <FormulaBlock indicador={indicador} />
         <TechnicalSheet indicador={indicador} />

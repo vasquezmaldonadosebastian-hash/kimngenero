@@ -38,8 +38,8 @@ export default function IndicadoresSidebar({
   };
 
   return (
-    <aside className="w-full lg:w-64 xl:w-72 flex-shrink-0">
-      <div className="bg-[#1A0A2E] rounded-xl overflow-hidden shadow-lg sticky top-20">
+    <aside className="w-full flex-shrink-0 lg:w-64 xl:w-72">
+      <div className="sticky top-4 max-h-[calc(100dvh-1rem)] overflow-hidden rounded-xl bg-[#1A0A2E] shadow-lg lg:top-20">
         {/* Sidebar header */}
         <div className="px-4 py-4 border-b border-white/10">
           <h3
@@ -54,7 +54,7 @@ export default function IndicadoresSidebar({
         </div>
 
         {/* Categories */}
-        <nav className="py-2">
+        <nav className="max-h-[calc(100dvh-10rem)] overflow-y-auto py-2">
           {categorias.map((cat) => {
             const isExpanded = expandedCats.has(cat.id);
             const isCatActive = cat.id === categoriaActiva;
@@ -63,7 +63,7 @@ export default function IndicadoresSidebar({
               <div key={cat.id}>
                 {/* Category header */}
                 <button
-                  className={`w-full flex items-center justify-between px-4 py-3 text-left transition-all duration-150 ${
+                  className={`flex min-h-11 w-full items-center justify-between px-4 py-3 text-left transition-all duration-150 ${
                     isCatActive
                       ? "text-white"
                       : "text-gray-300 hover:text-white hover:bg-white/5"
@@ -99,7 +99,7 @@ export default function IndicadoresSidebar({
                       return (
                         <button
                           key={ind.id}
-                          className={`sidebar-item w-full text-left ml-0 ${isActive ? "active" : ""}`}
+                          className={`sidebar-item ml-0 w-full text-left ${isActive ? "active" : ""}`}
                           onClick={() => onSelect(cat.id, ind.id)}
                           style={{ paddingLeft: "2.5rem" }}
                         >

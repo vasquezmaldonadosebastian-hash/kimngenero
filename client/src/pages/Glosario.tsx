@@ -134,10 +134,10 @@ export default function Glosario() {
         </div>
       </div>
 
-      <div className="container py-8">
+        <div className="container py-8 sm:py-10">
         <div className="mx-auto max-w-4xl">
-          <div className="mb-6 rounded-xl border border-[#E8F2FF] bg-white p-5 shadow-sm">
-            <div className="flex flex-col gap-3 sm:flex-row">
+          <div className="mb-6 rounded-xl border border-[#E8F2FF] bg-white p-4 shadow-sm sm:p-5">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-end">
               <div className="relative flex-1">
                 <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-400" />
                 <input
@@ -145,15 +145,15 @@ export default function Glosario() {
                   placeholder="Buscar termino o definicion..."
                   value={busqueda}
                   onChange={(e) => setBusqueda(e.target.value)}
-                  className="w-full rounded-lg border border-[#E8F2FF] bg-[#E8F2FF] py-2.5 pl-9 pr-4 text-sm focus:border-[#0176DE] focus:outline-none focus:ring-2 focus:ring-[#0176DE]/30"
+                  className="w-full rounded-lg border border-[#E8F2FF] bg-[#E8F2FF] py-3 pl-9 pr-4 text-sm focus:border-[#0176DE] focus:outline-none focus:ring-2 focus:ring-[#0176DE]/30"
                 />
               </div>
-              <div className="flex flex-wrap gap-2">
+              <div className="flex flex-wrap gap-2 sm:justify-end">
                 {categorias.map((cat) => (
                   <button
                     key={cat}
                     onClick={() => setCategoriaFiltro(cat)}
-                    className={`rounded-lg px-3 py-2 text-xs font-medium transition-all ${
+                    className={`min-h-11 rounded-lg px-3 py-2 text-xs font-medium transition-all ${
                       categoriaFiltro === cat
                         ? "bg-[#0176DE] text-white"
                         : "border border-[#E8F2FF] bg-[#E8F2FF] text-gray-600 hover:bg-[#E8F2FF]"
@@ -173,7 +173,7 @@ export default function Glosario() {
             {terminosFiltrados.map((t) => (
               <div
                 key={t.termino}
-                className="rounded-xl border border-[#E8F2FF] bg-white p-6 shadow-sm transition-colors hover:border-[#0176DE]/30"
+                className="rounded-xl border border-[#E8F2FF] bg-white p-5 shadow-sm transition-colors hover:border-[#0176DE]/30 sm:p-6"
               >
                 <div className="mb-2 flex items-start justify-between gap-4">
                   <h3 className="text-base font-bold text-[#1A0A2E]" style={{ fontFamily: "Montserrat, sans-serif" }}>

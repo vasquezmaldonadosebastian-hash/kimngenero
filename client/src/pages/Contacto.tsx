@@ -32,7 +32,7 @@ export default function Contacto() {
         className="border-b border-[#E8F2FF] bg-white"
         style={{ background: "linear-gradient(180deg, #E8F2FF 0%, #FFFFFF 100%)" }}
       >
-        <div className="container py-10">
+        <div className="container py-8 sm:py-10">
           <div className="mb-2 flex items-center gap-2">
             <MessageSquare className="h-5 w-5 text-[#0176DE]" />
             <span className="text-xs font-semibold uppercase tracking-wider text-[#0176DE]">Comunicaciones</span>
@@ -47,10 +47,10 @@ export default function Contacto() {
         </div>
       </div>
 
-      <div className="container py-10">
-        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-8 lg:grid-cols-3">
+      <div className="container py-8 sm:py-10">
+        <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 lg:grid-cols-3">
           <div className="space-y-4">
-            <div className="rounded-xl border border-[#E8F2FF] bg-white p-6 shadow-sm">
+            <div className="rounded-xl border border-[#E8F2FF] bg-white p-5 shadow-sm sm:p-6">
               <h2 className="mb-4 text-sm font-bold uppercase tracking-wider text-[#1A0A2E]" style={{ fontFamily: "Montserrat, sans-serif" }}>
                 Información de Contacto
               </h2>
@@ -107,7 +107,7 @@ export default function Contacto() {
               </ul>
             </div>
 
-            <div className="rounded-xl bg-[#1A0A2E] p-6 text-white">
+            <div className="rounded-xl bg-[#1A0A2E] p-5 text-white sm:p-6">
               <h3 className="mb-2 text-sm font-semibold" style={{ fontFamily: "Montserrat, sans-serif" }}>
                 Horario de atención
               </h3>
@@ -127,7 +127,7 @@ export default function Contacto() {
           </div>
 
           <div className="lg:col-span-2">
-            <div className="rounded-xl border border-[#E8F2FF] bg-white p-8 shadow-sm">
+            <div className="rounded-xl border border-[#E8F2FF] bg-white p-5 shadow-sm sm:p-8">
               <h2 className="mb-6 font-bold text-[#1A0A2E]" style={{ fontFamily: "Montserrat, sans-serif" }}>
                 Enviar consulta
               </h2>
@@ -211,14 +211,14 @@ export default function Contacto() {
                   />
                 </div>
 
-                <div className="flex items-center justify-between pt-2">
+                <div className="flex flex-col gap-3 pt-2 sm:flex-row sm:items-center sm:justify-between">
                   <p className="text-xs text-gray-400">
                     <span className="text-red-500">*</span> Campos obligatorios
                   </p>
                   <button
                     type="submit"
                     disabled={enviando}
-                    className="inline-flex items-center gap-2 rounded-lg bg-[#0176DE] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#03122E] disabled:cursor-not-allowed disabled:opacity-60"
+                    className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-lg bg-[#0176DE] px-6 py-3 text-sm font-semibold text-white shadow-sm transition-colors hover:bg-[#03122E] disabled:cursor-not-allowed disabled:opacity-60 sm:w-auto"
                   >
                     {enviando ? (
                       <>

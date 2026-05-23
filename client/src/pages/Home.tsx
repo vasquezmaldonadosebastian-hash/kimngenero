@@ -57,12 +57,12 @@ function KpiCard({ label, value, trend }: { label: string; value: string; trend:
   return (
     <div
       ref={ref as React.RefObject<HTMLDivElement>}
-      className="kpi-card opacity-0 animate-slide-up"
+      className="kpi-card opacity-0 animate-slide-up p-4 sm:p-5"
       style={{ animationFillMode: "forwards" }}
     >
       <div className="flex items-start justify-between mb-1">
         <div
-          className="text-3xl font-extrabold text-[#0176DE]"
+          className="text-2xl font-extrabold text-[#0176DE] sm:text-3xl"
           style={{ fontFamily: 'Montserrat, sans-serif' }}
         >
           {display}
@@ -121,7 +121,7 @@ export default function Home() {
         className="relative overflow-hidden"
         style={{
           background: "linear-gradient(135deg, #1A0A2E 0%, #03122E 40%, #0176DE 100%)",
-          minHeight: "55vh",
+          minHeight: "48vh",
         }}
       >
         {/* Background image overlay */}
@@ -145,7 +145,7 @@ export default function Home() {
           </svg>
         </div>
 
-        <div className="container relative z-10 py-16 lg:py-24">
+        <div className="container relative z-10 py-12 sm:py-16 lg:py-24">
           <div className="max-w-3xl">
             {/* Badge */}
             <div
@@ -158,7 +158,7 @@ export default function Home() {
 
             {/* Title */}
             <h1
-              className="text-4xl lg:text-5xl xl:text-6xl font-extrabold text-white leading-tight mb-4 opacity-0 animate-slide-up stagger-1"
+              className="text-3xl font-extrabold leading-tight mb-4 text-white opacity-0 animate-slide-up stagger-1 sm:text-4xl lg:text-5xl xl:text-6xl"
               style={{ fontFamily: 'Montserrat, sans-serif', animationFillMode: "forwards" }}
             >
               Kimn
@@ -168,7 +168,7 @@ export default function Home() {
 
             {/* Subtitle */}
             <p
-              className="text-lg text-white/75 leading-relaxed mb-8 max-w-xl opacity-0 animate-slide-up stagger-2"
+              className="mb-8 max-w-xl text-base leading-relaxed text-white/75 opacity-0 animate-slide-up stagger-2 sm:text-lg"
               style={{ animationFillMode: "forwards" }}
             >
               Plataforma interactiva para la visualización y análisis de datos desagregados por sexo. Evidencia para el diseño de políticas públicas con enfoque de género.
@@ -176,17 +176,17 @@ export default function Home() {
 
             {/* CTA */}
             <div
-              className="flex flex-wrap gap-3 opacity-0 animate-slide-up stagger-3"
+              className="flex flex-col gap-3 opacity-0 animate-slide-up stagger-3 sm:flex-row sm:flex-wrap"
               style={{ animationFillMode: "forwards" }}
             >
               <Link href="/indicadores">
-                <span className="inline-flex items-center gap-2 px-6 py-3 bg-white text-[#03122E] font-semibold rounded-lg hover:bg-[#E8F2FF] transition-colors shadow-lg text-sm">
+                <span className="inline-flex w-full items-center justify-center gap-2 rounded-lg bg-white px-6 py-3 text-sm font-semibold text-[#03122E] shadow-lg transition-colors hover:bg-[#E8F2FF] sm:w-auto">
                   Explorar Indicadores
                   <ArrowRight className="w-4 h-4" />
                 </span>
               </Link>
               <Link href="/metodologia">
-                <span className="inline-flex items-center gap-2 px-6 py-3 bg-white/10 text-white font-semibold rounded-lg hover:bg-white/20 transition-colors border border-white/20 text-sm">
+                <span className="inline-flex w-full items-center justify-center gap-2 rounded-lg border border-white/20 bg-white/10 px-6 py-3 text-sm font-semibold text-white transition-colors hover:bg-white/20 sm:w-auto">
                   <BookOpen className="w-4 h-4" />
                   Ver Metodología
                 </span>
@@ -205,7 +205,7 @@ export default function Home() {
 
       {/* ─── KPIs ─── */}
       <section className="container -mt-2 pb-12">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
           <KpiCard label="Indicadores Totales" value={totalIndicadores.toString()} trend="up" />
           <KpiCard label="Areas estrategicas" value={"4"} trend="up" />
           <KpiCard label="Dimensiones" value={dimensionStats.length.toString()} trend="up" />
@@ -215,7 +215,7 @@ export default function Home() {
 
       {/* ─── INTRO ─── */}
       <section className="container pb-16">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 items-center gap-8 lg:grid-cols-2 lg:gap-12">
           <div>
             <div className="inline-flex items-center gap-2 px-3 py-1 bg-[#E8F2FF] text-[#03122E] rounded-full text-xs font-semibold mb-4">
               <Users className="w-3.5 h-3.5" />
@@ -242,16 +242,16 @@ export default function Home() {
           </div>
 
           {/* Dimension cards */}
-          <div className="grid grid-cols-2 gap-3">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-2">
             {!loading && dimensionStats.map((stat, i) => (
               <Link key={stat.dimension} href={`/indicadores?dimension=${encodeURIComponent(stat.dimension)}`}>
                 <div
-                  className="bg-white rounded-xl p-4 border border-[#E8F2FF] hover:border-[#0176DE] hover:shadow-md transition-all duration-200 cursor-pointer group opacity-0 animate-slide-up"
+                  className="group cursor-pointer rounded-xl border border-[#E8F2FF] bg-white p-4 opacity-0 transition-all duration-200 hover:border-[#0176DE] hover:shadow-md animate-slide-up"
                   style={{ animationDelay: `${i * 80}ms`, animationFillMode: "forwards" }}
                 >
                   <div className="text-2xl mb-2">{stat.config.icon}</div>
                   <div
-                    className="text-sm font-semibold text-[#03122E] group-hover:text-[#0176DE] transition-colors leading-tight"
+                    className="text-sm font-semibold leading-tight text-[#03122E] transition-colors group-hover:text-[#0176DE]"
                     style={{ fontFamily: 'Montserrat, sans-serif' }}
                   >
                     {stat.dimension}
@@ -269,7 +269,7 @@ export default function Home() {
       {/* ─── CTA BANNER ─── */}
       <section className="container pb-16">
         <div
-          className="rounded-2xl p-8 lg:p-12 text-white relative overflow-hidden"
+          className="relative overflow-hidden rounded-2xl p-6 text-white sm:p-8 lg:p-12"
           style={{ background: "linear-gradient(135deg, #0176DE 0%, #173F8A 100%)" }}
         >
           <div className="absolute inset-0 opacity-10">
@@ -282,14 +282,14 @@ export default function Home() {
               <rect width="100%" height="100%" fill="url(#dots)" />
             </svg>
           </div>
-          <div className="relative z-10 flex flex-col lg:flex-row items-center justify-between gap-6">
+          <div className="relative z-10 flex flex-col items-start justify-between gap-6 md:flex-row md:items-center">
             <div>
               <div className="flex items-center gap-2 mb-3">
                 <Shield className="w-5 h-5 text-[#FEC60D]" />
                 <span className="text-[#FEC60D] text-sm font-semibold uppercase tracking-wider">Datos abiertos</span>
               </div>
               <h3
-                className="text-2xl lg:text-3xl font-bold mb-2"
+                className="mb-2 text-2xl font-bold lg:text-3xl"
                 style={{ fontFamily: 'Montserrat, sans-serif' }}
               >
                 Explore los indicadores interactivos
@@ -299,7 +299,7 @@ export default function Home() {
               </p>
             </div>
             <Link href="/indicadores">
-              <span className="flex-shrink-0 inline-flex items-center gap-2 px-8 py-4 bg-white text-[#0176DE] font-bold rounded-xl hover:bg-[#E8F2FF] transition-colors shadow-xl text-sm">
+              <span className="inline-flex w-full flex-shrink-0 items-center justify-center gap-2 rounded-xl bg-white px-8 py-4 text-sm font-bold text-[#0176DE] shadow-xl transition-colors hover:bg-[#E8F2FF] md:w-auto">
                 Ir a Indicadores
                 <ArrowRight className="w-4 h-4" />
               </span>

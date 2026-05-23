@@ -36,6 +36,7 @@ export default function Indicadores() {
   const [filterDimension, setFilterDimension] = useState("todos");
   const [visibleIndicators, setVisibleIndicators] = useState<Indicator[]>([]);
   const [loadingFiltered, setLoadingFiltered] = useState(false);
+  const [filtersReady, setFiltersReady] = useState(false);
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
@@ -60,6 +61,7 @@ export default function Indicadores() {
         setVisibleIndicators(indicators);
       } finally {
         setLoadingFiltered(false);
+        setFiltersReady(true);
       }
     };
 
@@ -83,7 +85,7 @@ export default function Indicadores() {
   }, [indicators]);
 
   const filtrados = useMemo(() => {
-    const base = visibleIndicators.length > 0 ? visibleIndicators : indicators;
+    const base = filtersReady || loadingFiltered ? visibleIndicators : indicators;
     const q = searchTerm.trim().toLowerCase();
     if (!q) return base;
 
@@ -94,7 +96,7 @@ export default function Indicadores() {
         ind.descripcion?.toLowerCase().includes(q)
       );
     });
-  }, [visibleIndicators, indicators, searchTerm]);
+  }, [visibleIndicators, indicators, searchTerm, filtersReady, loadingFiltered]);
 
   const getColorForDimension = (dimension: string | undefined) => {
     if (!dimension) return DEFAULT_COLOR;
@@ -131,35 +133,35 @@ export default function Indicadores() {
   return (
     <div className="min-h-screen bg-[#F5F4F8]">
       <div className="bg-white border-b border-[#E8F2FF]">
-        <div className="container py-8">
-          <nav className="flex items-center gap-1.5 text-xs text-gray-400 mb-4">
+        <div className="container py-8 sm:py-10">
+          <nav className="mb-4 flex items-center gap-1.5 text-xs text-gray-400">
             <a href="/" className="hover:text-[#0176DE]">
               Inicio
             </a>
             <ChevronRight className="w-3 h-3" />
             <span className="text-[#0176DE] font-medium">Indicadores</span>
           </nav>
-          <h1 className="text-3xl font-black text-[#03122E] mb-2">
+          <h1 className="mb-2 text-3xl font-black text-[#03122E]">
             Sistema de Indicadores de Genero
           </h1>
-          <p className="text-gray-600 max-w-2xl">
+          <p className="max-w-2xl text-gray-600">
             Explora los {indicators.length} indicadores del observatorio institucional.
           </p>
         </div>
       </div>
 
-      <div className="container py-6">
+      <div className="container py-6 sm:py-8">
         {loadingFiltered && <div className="mb-4 text-sm text-gray-500">Cargando filtros...</div>}
 
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-8">
-          <div className="relative md:col-span-1">
+        <div className="mb-6 grid grid-cols-1 gap-3 md:grid-cols-[minmax(0,1.35fr)_minmax(0,0.8fr)_minmax(0,0.8fr)]">
+          <div className="relative">
             <Search className="absolute left-3 top-3.5 w-5 h-5 text-gray-400" />
             <input
               type="text"
               placeholder="Buscar..."
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full pl-10 pr-4 py-2.5 border border-[#E8F2FF] rounded-lg text-sm"
+              className="w-full rounded-lg border border-[#E8F2FF] py-3 pl-10 pr-4 text-sm focus:border-[#0176DE] focus:outline-none focus:ring-2 focus:ring-[#0176DE]/20"
             />
           </div>
 
@@ -168,7 +170,7 @@ export default function Indicadores() {
             <select
               value={filterArea}
               onChange={(e) => setFilterArea(e.target.value)}
-              className="flex-1 px-4 py-2.5 border border-[#E8F2FF] rounded-lg text-sm"
+              className="min-h-11 flex-1 rounded-lg border border-[#E8F2FF] px-4 py-3 text-sm focus:border-[#0176DE] focus:outline-none focus:ring-2 focus:ring-[#0176DE]/20"
             >
               <option value="todos">Todas las areas</option>
               {areas.filter((a) => a !== "todos").map((area) => (
@@ -184,7 +186,7 @@ export default function Indicadores() {
             <select
               value={filterDimension}
               onChange={(e) => setFilterDimension(e.target.value)}
-              className="flex-1 px-4 py-2.5 border border-[#E8F2FF] rounded-lg text-sm"
+              className="min-h-11 flex-1 rounded-lg border border-[#E8F2FF] px-4 py-3 text-sm focus:border-[#0176DE] focus:outline-none focus:ring-2 focus:ring-[#0176DE]/20"
             >
               <option value="todos">Todas las dimensiones</option>
               {dimensiones.filter((d) => d !== "todos").map((dimension) => (
@@ -197,12 +199,12 @@ export default function Indicadores() {
         </div>
 
         {filtrados.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
             {filtrados.map((indicador: Indicator) => {
               const color = getColorForDimension(indicador.dimension);
               return (
                 <Link key={indicador.id} href={`/indicador/${indicador.id}`} className="group h-full">
-                  <div className="h-full bg-white rounded-xl shadow-sm hover:shadow-lg transition-all border border-gray-100 overflow-hidden">
+                  <div className="h-full overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-all hover:shadow-lg">
                     <div
                       className="p-4"
                       style={{
@@ -227,10 +229,10 @@ export default function Indicadores() {
                       <p className="text-xs text-gray-600">{indicador.dimension}</p>
                     </div>
                     <div className="p-5">
-                      <h3 className="text-lg font-bold text-[#03122E] mb-2 line-clamp-2 group-hover:text-[#0176DE]">
+                      <h3 className="mb-2 text-lg font-bold text-[#03122E] line-clamp-2 group-hover:text-[#0176DE]">
                         {indicador.titulo}
                       </h3>
-                      <p className="text-sm text-gray-600 line-clamp-3 mb-4">
+                      <p className="mb-4 text-sm text-gray-600 line-clamp-3">
                         {indicador.descripcion}
                       </p>
                       <div className="space-y-2 mb-4 pt-4 border-t border-gray-100">
@@ -253,12 +255,12 @@ export default function Indicadores() {
                           </span>
                         </div>
                       </div>
-                      <button
-                        className="w-full px-4 py-2.5 rounded-lg font-semibold text-sm text-white"
+                      <div
+                        className="flex min-h-11 w-full items-center justify-center rounded-lg px-4 py-2.5 text-sm font-semibold text-white"
                         style={{ backgroundColor: color.text }}
                       >
                         Ver indicador
-                      </button>
+                      </div>
                     </div>
                   </div>
                 </Link>
@@ -266,12 +268,12 @@ export default function Indicadores() {
             })}
           </div>
         ) : (
-          <div className="flex flex-col items-center justify-center py-16 bg-white rounded-xl border border-[#E8F2FF]">
+          <div className="flex flex-col items-center justify-center rounded-xl border border-[#E8F2FF] bg-white py-16 text-center">
             <div className="text-5xl mb-4">?</div>
             <h3 className="text-lg font-bold mb-2">No se encontraron indicadores</h3>
             <button
               onClick={handleClearFilters}
-              className="mt-4 px-6 py-2.5 bg-[#0176DE] text-white font-semibold rounded-lg"
+              className="mt-4 min-h-11 rounded-lg bg-[#0176DE] px-6 py-3 font-semibold text-white"
             >
               Limpiar filtros
             </button>

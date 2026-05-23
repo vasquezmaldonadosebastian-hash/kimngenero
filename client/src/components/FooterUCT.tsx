@@ -3,13 +3,13 @@
 export default function FooterUCT() {
   return (
     <footer className="bg-[#1A1A2E] text-gray-100">
-      <div className="mx-auto max-w-7xl px-6 py-12">
-        <div className="mb-12 grid grid-cols-1 gap-12 md:grid-cols-3">
+      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12">
+        <div className="mb-10 grid grid-cols-1 gap-8 md:grid-cols-3">
           <div>
             <h3 className="mb-4 text-lg font-bold text-white" style={{ fontFamily: "Montserrat, sans-serif" }}>
               Direccion de Genero
             </h3>
-            <div className="space-y-3 text-sm">
+            <div className="space-y-3 text-sm leading-relaxed">
               <div className="flex items-start gap-3">
                 <MapPin className="mt-1 h-5 w-5 flex-shrink-0 text-[#0176DE]" />
                 <p>Manuel Montt 56, Campus San Francisco, Edificio 03, 4 Nivel</p>
@@ -33,7 +33,7 @@ export default function FooterUCT() {
             <h3 className="mb-4 text-lg font-bold text-white" style={{ fontFamily: "Montserrat, sans-serif" }}>
               Observatorio de Genero
             </h3>
-            <div className="space-y-3 text-sm">
+            <div className="space-y-3 text-sm leading-relaxed">
               <div className="flex items-start gap-3">
                 <MapPin className="mt-1 h-5 w-5 flex-shrink-0 text-[#0176DE]" />
                 <p>Manuel Montt 56, Campus San Francisco, Edificio 07, oficina 240</p>
@@ -57,7 +57,7 @@ export default function FooterUCT() {
             <h3 className="mb-4 text-lg font-bold text-white" style={{ fontFamily: "Montserrat, sans-serif" }}>
               Siguenos
             </h3>
-            <div className="mb-6 flex items-center gap-4">
+            <div className="mb-6 flex flex-wrap items-center gap-3">
               <a href="#" className="rounded-lg p-2 transition-colors hover:bg-[#0176DE]" title="Facebook">
                 <Facebook className="h-5 w-5" />
               </a>
@@ -92,7 +92,7 @@ export default function FooterUCT() {
         <div className="border-t border-gray-700 pt-8">
           <div className="mb-6">
             <h4 className="mb-3 text-sm font-bold text-white">Enlaces de Interes</h4>
-            <div className="grid grid-cols-2 gap-3 text-xs md:grid-cols-4">
+            <div className="grid grid-cols-1 gap-3 text-xs sm:grid-cols-2 lg:grid-cols-4">
               <a href="#" className="transition-colors hover:text-[#0176DE]">
                 Ministerio de la Mujer y Equidad de Genero
               </a>
@@ -108,9 +108,9 @@ export default function FooterUCT() {
             </div>
           </div>
 
-          <div className="flex flex-col items-center justify-between border-t border-gray-700 pt-6 text-xs text-gray-400 md:flex-row">
+          <div className="flex flex-col gap-2 border-t border-gray-700 pt-6 text-center text-xs text-gray-400 md:flex-row md:items-center md:justify-between md:text-left">
             <p>UCT 2025</p>
-            <p className="mt-4 md:mt-0">
+            <p className="md:mt-0">
               Universidad Catolica de Temuco | Direccion de Genero y Observatorio de Indicadores de Genero
             </p>
           </div>
