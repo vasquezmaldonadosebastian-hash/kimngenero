@@ -19,6 +19,7 @@ Este documento reemplaza el uso operativo de `OPTIMIZATION_PLAN.md` como referen
 ### Lo que si esta bien encaminado
 
 - hay una arquitectura backend clara en `server/src/createApp.ts`, `server/src/services`, `server/src/repositories`
+- el frontend vive de forma consistente en `client/src/` y el header real esta centralizado en `client/src/components/HeaderUCT.tsx`
 - existe contrato de errores en `server/src/middleware/error.middleware.ts` y `docs/API_ERROR_CONTRACT.md`
 - existe validacion con `zod` en rutas de indicadores
 - existe bateria inicial de tests de rutas, contrato `memory vs sqlite` y normalizadores
@@ -30,9 +31,10 @@ Este documento reemplaza el uso operativo de `OPTIMIZATION_PLAN.md` como referen
 - `OPTIMIZATION_PLAN.md` y `Informe_de_cambios_Fase_1.txt` quedaron archivados como documentos historicos, no como verdad actual
 - `docs/` mezcla documentacion tecnica nuclear con briefs de diseno, reportes y material auxiliar no esencial
 - `outputs/` esta dentro del repo y no esta ignorado
-- `scripts/` contiene scripts experimentales y ademas un `scripts/node_modules/` completo dentro del repositorio
+- `scripts/` contiene scripts experimentales y, en revisiones previas, llego a arrastrar un `scripts/node_modules/` que no debe volver al arbol versionado
 - hay archivos y componentes que no parecen pertenecer al dominio real o no tienen uso actual; varios ya fueron removidos
 - hay problemas visibles de codificacion de caracteres en codigo y docs
+- la navegacion superior necesita una correccion visual concreta: el header actual muestra marca textual redundante junto al logo y el menu mobile no calca la referencia institucional deseada
 
 ## 3. Hallazgos reales por area
 
@@ -64,6 +66,7 @@ Este documento reemplaza el uso operativo de `OPTIMIZATION_PLAN.md` como referen
   - `IndicatorsContext.tsx` usa `apiGetJson()`
   - `IndicadorPage.tsx` y `EstadoAgrupado.tsx` ya fueron unificados a `apiGetJson()`
 - hay problemas de codificacion visibles en varias vistas
+- `HeaderUCT.tsx` concentra la identidad institucional, el menu desktop y el panel mobile; ahi esta el ajuste de marca que hoy se ve mal
 - persiste un artefacto especial de tooling:
   - `client/public/assets/debug-collector.js`
 - ese asset sigue referenciado por `vite.config.ts` para diagnostico de desarrollo, asi que debe tratarse como dependencia tecnica activa y no como basura
@@ -90,7 +93,7 @@ Este documento reemplaza el uso operativo de `OPTIMIZATION_PLAN.md` como referen
   - scripts para briefs graficos
   - capturas
   - utilidades externas
-- `scripts/node_modules/` dentro del repo es una anomalia que debe salir del arbol versionado o al menos quedar ignorada
+- `scripts/node_modules/` dentro del repo es una anomalia historica que debe mantenerse fuera del arbol versionado o, como minimo, quedar ignorada
 - algunos scripts historicos siguen escribiendo en `outputs/brief_diseno_docs/` u otras rutas de trabajo local; esos artefactos no son producto y deben permanecer fuera del flujo normal
 
 ### Documentacion (`docs/`)
@@ -139,15 +142,23 @@ Problemas observados en estos briefs:
 
 ### Criticos
 
-1. Contaminacion del repo con artefactos no productivos
+1. Header y navegacion mobile no alineados con la referencia visual
+   - evidencia:
+     - `client/src/components/HeaderUCT.tsx` mezcla logo, texto de marca y navegacion en una jerarquia que hoy se ve cargada
+     - en desktop aparece el texto `Observatorio` + `KimnGenero` junto al logo
+     - en mobile el menu usa `Dialog`, pero la composicion visual aun no reproduce la referencia institucional
+   - impacto:
+     - marca duplicada, menor claridad visual, peor experiencia en smartphones
+
+2. Contaminacion del repo con artefactos no productivos
    - evidencia:
      - `outputs/` aun existe en disco pero queda ignorado
-     - `scripts/node_modules/` fue eliminado
+     - `scripts/node_modules/` ya no forma parte del arbol actual
      - multiples scripts de captura/inspeccion siguen viviendo en `scripts/archive/`
    - impacto:
      - ruido alto, diffs innecesarios, onboarding confuso, riesgo de commits accidentales
 
-2. Documentacion principal mezclada con material auxiliar y desactualizado
+3. Documentacion principal mezclada con material auxiliar y desactualizado
    - evidencia:
      - `OPTIMIZATION_PLAN.md` ya no representa el estado actual y ahora es historico
      - `GAP_ANALYSIS.md` ya fue actualizado para reflejar el estado real
@@ -155,7 +166,7 @@ Problemas observados en estos briefs:
    - impacto:
      - decisiones tomadas con referencias incorrectas
 
-3. Problemas de codificacion de caracteres
+4. Problemas de codificacion de caracteres
    - evidencia:
      - mojibake en `README.md`, varios docs, `Indicadores.tsx`, `IndicadorPage.tsx`, `EstadoAgrupado.tsx`, `normalizers.ts`
    - impacto:
@@ -218,6 +229,19 @@ Tareas:
    - riesgo: confundir a quien ya lo estaba usando
    - mitigacion: enlazar desde ese archivo al plan nuevo
 
+4. Priorizar la correccion del header
+   - alcance:
+     - `client/src/components/HeaderUCT.tsx`
+     - si hace falta, estilos globales de `client/src/index.css`
+   - aceptacion:
+     - el logo queda como unica marca principal
+     - se elimina el texto redundante `Observatorio` + `KimnGenero` del bloque visual principal
+     - desktop mantiene jerarquia clara y mobile se aproxima a la referencia compartida por el usuario
+   - riesgo:
+     - romper el comportamiento del menu mobile o el enlace a home
+   - mitigacion:
+     - validar escritorio y smartphone despues de cada ajuste visual
+
 ### Fase 1 - Limpieza de residuos y coherencia base
 
 Objetivo: quitar elementos que no hacen sentido con el dominio real.
@@ -250,6 +274,20 @@ Tareas:
    - aceptacion: no quedan textos rotos visibles en UI ni docs principales
    - riesgo: tocar keys raw historicas que aun hacen falta
    - mitigacion: corregir textos visibles primero; las keys raw se migran con pruebas
+
+4. Ajustar el layout mobile del header
+   - revisar:
+     - tamanio y espaciado del bloque superior
+     - icono de busqueda
+     - boton de abrir/cerrar menu
+     - lista vertical del dialogo mobile
+   - aceptacion:
+     - el menu mobile es legible y tactilmente comodo
+     - la composicion se parece a la referencia aportada por el usuario
+   - riesgo:
+     - introducir scroll o alturas raras en pantallas pequenas
+   - mitigacion:
+     - probar anchos comunes de telefono y tablet
 
 ### Fase 2 - Consolidacion estructural
 
@@ -352,7 +390,8 @@ Tomar este documento como plan vigente y ejecutar primero una limpieza no destru
 
 1. clasificar artefactos auxiliares
 2. corregir `.gitignore`
-3. corregir codificacion visible
-4. dejar una lista cerrada de archivos eliminables
+3. corregir el header y su version mobile
+4. corregir codificacion visible
+5. dejar una lista cerrada de archivos eliminables
 
 
