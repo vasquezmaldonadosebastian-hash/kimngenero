@@ -1,5 +1,6 @@
 import express from "express";
 import { createServer } from "http";
+import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
 import { createApp } from "./createApp";
@@ -21,10 +22,9 @@ async function startServer() {
   const app = createApp({ indicatorService });
   const server = createServer(app);
 
-  const staticPath =
-    process.env.NODE_ENV === "production"
-      ? path.resolve(__dirname, "public")
-      : path.resolve(__dirname, "..", "..", "dist", "public");
+  const bundledStaticPath = path.resolve(__dirname, "public");
+  const sourceStaticPath = path.resolve(__dirname, "..", "..", "dist", "public");
+  const staticPath = fs.existsSync(bundledStaticPath) ? bundledStaticPath : sourceStaticPath;
 
   app.use(
     express.static(staticPath, {

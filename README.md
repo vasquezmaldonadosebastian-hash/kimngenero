@@ -87,6 +87,7 @@ pnpm run build
 - [Pipeline de Datos](docs/DATA_PIPELINE.md)
 - [Diccionario de Datos](docs/DATA_DICTIONARY.md)
 - [Despliegue](docs/DEPLOYMENT.md)
+- [Despliegue Docker Institucional](docs/DOCKER_DEPLOYMENT.md)
 - [Configuracion de Produccion](docs/PRODUCTION_CONFIGURATION.md)
 - [Seguridad, Red y Endpoints](docs/SECURITY_NETWORK.md)
 - [Estrategia de Pruebas](docs/TEST_STRATEGY.md)

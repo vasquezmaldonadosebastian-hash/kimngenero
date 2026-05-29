@@ -49,6 +49,7 @@ La matriz detallada esta en `docs/PRODUCTION_CONFIGURATION.md`.
 ## Estrategia de hosting actual
 
 - Modelo recomendado actual: un solo servicio Node con filesystem local.
+- Camino institucional recomendado: despliegue Docker con `Dockerfile` y `docker-compose.yml`; ver `docs/DOCKER_DEPLOYMENT.md`.
 - Si el ambiente no garantiza disco persistente, `sqlite` no debe considerarse durable sin volumen dedicado.
 - Si se despliega en hosting efimero, `memory` es el modo mas seguro operativamente, con la limitacion de no persistir cambios.
 
@@ -76,9 +77,9 @@ La matriz detallada esta en `docs/PRODUCTION_CONFIGURATION.md`.
 - Estado actual: no existe pipeline de CD documentado ni automatizado en el repo.
 - Estado actual: no existe runbook formal de rollback.
 - Recomendacion minima mientras no haya CD:
-  1. ejecutar CI en PR
-  2. correr `pnpm run build` localmente antes de merge
-  3. desplegar un build reproducible desde `main`
+1. ejecutar CI en PR
+2. correr `pnpm run build` localmente antes de merge
+3. desplegar un build reproducible desde `main`
 4. conservar el ultimo artefacto estable o release previo para rollback manual
 
 ## Nota sobre desarrollo versus validacion productiva
@@ -94,7 +95,8 @@ La matriz detallada esta en `docs/PRODUCTION_CONFIGURATION.md`.
 3. Probar `GET /api/indicadores`.
 4. Probar `GET /api/categorias`.
 5. Probar `GET /api/metrics`.
-6. Verificar al menos un indicador con dashboard embebido.
+6. Probar `GET /health`.
+7. Verificar al menos un indicador con dashboard embebido.
 
 ## Validacion
 
@@ -112,5 +114,6 @@ La matriz detallada esta en `docs/PRODUCTION_CONFIGURATION.md`.
 
 - `package.json`
 - `server/src/app.ts`
+- `docs/DOCKER_DEPLOYMENT.md`
 - `.github/workflows/ci.yml`
 - `.github/workflows/bundle-analysis.yml`

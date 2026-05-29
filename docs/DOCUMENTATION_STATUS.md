@@ -24,6 +24,7 @@ Separar la documentacion que hoy sirve como referencia operativa real de la docu
 - `DATA_PIPELINE.md`
 - `DATA_DICTIONARY.md`
 - `DEPLOYMENT.md`
+- `DOCKER_DEPLOYMENT.md`
 - `PRODUCTION_CONFIGURATION.md`
 - `SECURITY_NETWORK.md`
 - `SQLITE_OPERATIONS.md`

@@ -71,6 +71,12 @@ GET /api/indicadores/02VGGE-04
 - Expone metricas operativas en JSON para observabilidad minima.
 - Su objetivo actual es inspeccion interna y smoke checks.
 
+#### `GET /health`
+
+- Expone una verificacion liviana de proceso vivo para Docker, proxy inverso o monitoreo basico.
+- Responde `200 OK` con `{ "status": "ok" }`.
+- No consulta servicios externos ni ejecuta validaciones profundas de negocio.
+
 ### 4. Contratos de respuesta
 
 - Las respuestas exitosas se serializan en JSON.
@@ -97,6 +103,7 @@ curl http://localhost:3000/api/indicadores?limit=5&offset=0
 curl http://localhost:3000/api/categorias
 curl http://localhost:3000/api/reportes-agrupados
 curl http://localhost:3000/api/metrics
+curl http://localhost:3000/health
 ```
 
 ## Riesgos y consideraciones

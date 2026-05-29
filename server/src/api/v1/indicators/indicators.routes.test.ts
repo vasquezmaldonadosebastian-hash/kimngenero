@@ -27,6 +27,16 @@ async function makeApp() {
   return createApp({ indicatorService });
 }
 
+describe("GET /health", () => {
+  it("returns a lightweight health payload", async () => {
+    const app = await makeApp();
+
+    const res = await request(app).get("/health");
+    expect(res.status).toBe(200);
+    expect(res.body).toEqual({ status: "ok" });
+  });
+});
+
 describe("GET /api/indicadores", () => {
   it("returns indicators list", async () => {
     const app = await makeApp();

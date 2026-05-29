@@ -47,6 +47,10 @@ export function createApp(deps: CreateAppDeps) {
   app.use(compression());
   app.use(express.json({ limit: "100kb" }));
 
+  app.get("/health", (_req, res) => {
+    res.json({ status: "ok" });
+  });
+
   app.use("/api", createIndicatorRoutes(deps.indicatorService));
 
   app.get("/api/reportes-agrupados", (_req, res, next) => {
