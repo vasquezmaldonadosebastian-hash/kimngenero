@@ -10,7 +10,7 @@ export const page2Resources: Page2ResourceCard[] = [
   {
     dimension: "1.- Institucionalización",
     title: "Institucionalización",
-    color: "#0176DE",
+    color: "#0E74CC",
     iconSrc: "/assets/kimn-genero/icons/dimension-01.svg",
     iconScale: 0.96,
   },

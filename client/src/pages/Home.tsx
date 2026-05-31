@@ -50,29 +50,28 @@ function ResourceCard({
 }) {
   return (
     <Link href={`/indicadores?dimension=${encodeURIComponent(dimension)}`}>
-      <article className="group min-h-[13.5rem] overflow-hidden rounded-lg border border-slate-200 bg-white transition-colors hover:border-[#0176DE]">
-        <div className="h-2" style={{ backgroundColor: color }} aria-hidden="true" />
-        <div className="flex h-full flex-col px-5 py-5">
-          <div
-            className="mb-5 flex h-[4.75rem] w-[4.75rem] items-center justify-center rounded-md text-xl font-extrabold text-white"
-            style={{ backgroundColor: color }}
-          >
+      <article
+        className="group flex min-h-[20rem] overflow-hidden bg-[#0176DE] text-white transition-[filter] hover:brightness-95 sm:min-h-[22rem]"
+        style={{ backgroundColor: color }}
+      >
+        <div className="flex h-full w-full flex-col px-7 py-10 sm:px-9 lg:px-10">
+          <div className="mb-auto flex h-24 w-24 items-center justify-center text-2xl font-extrabold text-white">
             {iconSrc ? (
               <img
                 src={iconSrc}
                 alt=""
                 aria-hidden="true"
-                className="h-14 w-14 object-contain"
+                className="h-20 w-20 object-contain"
                 style={{ transform: `scale(${iconScale})` }}
               />
             ) : (
               formatTwoDigits(index + 1)
             )}
           </div>
-          <h3 className="font-montserrat text-base font-bold leading-tight text-[#03122E] transition-colors group-hover:text-[#0176DE]">
+          <h3 className="font-montserrat mt-10 max-w-[20rem] text-[clamp(1.35rem,1.75vw,1.7rem)] font-extrabold leading-[1.08] text-white">
             {title}
           </h3>
-          <p className="mt-auto pt-5 text-sm font-semibold text-slate-500">
+          <p className="mt-5 inline-flex h-10 w-fit min-w-[10.5rem] items-center justify-center rounded-full border-2 border-white px-6 text-sm font-extrabold text-white">
             {count} indicador{count !== 1 ? "es" : ""}
           </p>
         </div>
@@ -111,7 +110,7 @@ export default function Home() {
   return (
     <main className="min-h-screen bg-white text-slate-700">
       <section className="bg-white">
-        <div className="container max-w-[920px] pb-11 pt-3 sm:pb-12 sm:pt-4">
+        <div className="w-full px-4 pb-11 pt-3 sm:px-8 sm:pb-12 sm:pt-4 lg:px-12 xl:px-16">
           <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-[1fr_0.92fr] md:gap-16">
             <div>
               <p className="font-montserrat text-lg font-bold leading-none text-[#858B91]">
@@ -166,34 +165,31 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="container max-w-[920px] pb-16">
-        <div className="mb-5 flex flex-col gap-2 sm:flex-row sm:items-end sm:justify-between">
+      <section className="w-full pb-16">
+        <div className="mb-5 flex flex-col gap-2 px-4 sm:flex-row sm:items-end sm:justify-between sm:px-8 lg:px-12 xl:px-16">
           <div>
             <h2 className="font-montserrat mt-1 text-2xl font-extrabold text-[#0176DE]">
               Explorar por dimensión
             </h2>
           </div>
-          <p className="max-w-md text-sm leading-relaxed text-slate-500">
-            Las tarjetas quedan preparadas para recibir los SVG finales sin reutilizar los iconos generados.
-          </p>
         </div>
 
-        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        <div className="grid grid-cols-1 gap-1 bg-white sm:grid-cols-2 lg:grid-cols-4">
           {resourceCards.map((resource, index) => (
             <ResourceCard
               key={resource.dimension}
               title={resource.title}
-                color={resource.color}
-                iconSrc={resource.iconSrc}
-                iconScale={resource.iconScale}
-                count={resource.count}
-                dimension={resource.dimension}
-                index={index}
+              color={resource.color}
+              iconSrc={resource.iconSrc}
+              iconScale={resource.iconScale}
+              count={resource.count}
+              dimension={resource.dimension}
+              index={index}
             />
           ))}
         </div>
 
-        <div className="mt-8 rounded-lg border border-[#0176DE]/20 bg-[#F6FAFF] p-5">
+        <div className="mx-4 mt-8 rounded-lg border border-[#0176DE]/20 bg-[#F6FAFF] p-5 sm:mx-8 lg:mx-12 xl:mx-16">
           <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
             <div>
               <p className="text-sm font-bold text-[#0176DE]">Datos para la igualdad de género</p>
