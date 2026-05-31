@@ -5,7 +5,7 @@
 
 import { useMemo } from "react";
 import { Link } from "wouter";
-import { ArrowRight, BookOpen } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { useIndicatorsContext } from "@/contexts/IndicatorsContext";
 import { page2Resources } from "@/lib/page2-resources";
 import indicadoresData from "@data/indicadores.json";
@@ -22,10 +22,10 @@ function formatTwoDigits(value: number) {
 
 function MetricCard({ label, value }: { label: string; value: string }) {
   return (
-    <div className="flex min-h-12 items-center justify-center rounded-lg border border-[#0176DE] bg-white px-4 py-3 text-center">
+    <div className="flex min-h-12 items-center justify-center rounded-full border-2 border-[#0176DE] bg-white px-6 py-3 text-center">
       <div className="flex flex-wrap items-baseline justify-center gap-x-2 text-[#0176DE]">
-        <span className="font-montserrat text-[1.35rem] font-extrabold leading-none">{value}</span>
-        <span className="font-montserrat text-[0.98rem] font-bold leading-none">{label}</span>
+        <span className="font-montserrat whitespace-nowrap text-[1.35rem] font-extrabold leading-none">{value}</span>
+        <span className="font-montserrat whitespace-nowrap text-[0.92rem] font-bold leading-none">{label}</span>
       </div>
     </div>
   );
@@ -51,27 +51,27 @@ function ResourceCard({
   return (
     <Link href={`/indicadores?dimension=${encodeURIComponent(dimension)}`}>
       <article
-        className="group flex min-h-[20rem] overflow-hidden bg-[#0176DE] text-white transition-[filter] hover:brightness-95 sm:min-h-[22rem]"
+        className="group flex h-[11.75rem] overflow-hidden bg-[#0176DE] text-white transition-[filter] hover:brightness-95"
         style={{ backgroundColor: color }}
       >
-        <div className="flex h-full w-full flex-col px-7 py-10 sm:px-9 lg:px-10">
-          <div className="mb-auto flex h-24 w-24 items-center justify-center text-2xl font-extrabold text-white">
+        <div className="flex h-full w-full flex-col px-4 py-4">
+          <div className="mb-auto flex h-9 w-9 items-center justify-center text-xs font-extrabold text-white">
             {iconSrc ? (
               <img
                 src={iconSrc}
                 alt=""
                 aria-hidden="true"
-                className="h-20 w-20 object-contain"
+                className="h-8 w-8 object-contain"
                 style={{ transform: `scale(${iconScale})` }}
               />
             ) : (
               formatTwoDigits(index + 1)
             )}
           </div>
-          <h3 className="font-montserrat mt-10 max-w-[20rem] text-[clamp(1.35rem,1.75vw,1.7rem)] font-extrabold leading-[1.08] text-white">
+          <h3 className="font-montserrat mt-4 text-[0.64rem] font-extrabold leading-[1.05] text-white sm:text-[0.66rem]">
             {title}
           </h3>
-          <p className="mt-5 inline-flex h-10 w-fit min-w-[10.5rem] items-center justify-center rounded-full border-2 border-white px-6 text-sm font-extrabold text-white">
+          <p className="mt-2 inline-flex h-4 w-fit min-w-[4.2rem] items-center justify-center rounded-full border border-white px-2.5 text-[0.38rem] font-extrabold text-white">
             {count} indicador{count !== 1 ? "es" : ""}
           </p>
         </div>
@@ -108,16 +108,16 @@ export default function Home() {
   const dimensionsCount = page2Resources.length || 8;
 
   return (
-    <main className="min-h-screen bg-white text-slate-700">
+    <div className="bg-white text-slate-700">
       <section className="bg-white">
-        <div className="w-full px-4 pb-11 pt-3 sm:px-8 sm:pb-12 sm:pt-4 lg:px-12 xl:px-16">
-          <div className="grid grid-cols-1 items-start gap-10 md:grid-cols-[1fr_0.92fr] md:gap-16">
+        <div className="mx-auto max-w-[1120px] px-6 pb-14 pt-24 sm:px-8 sm:pb-16 sm:pt-28 lg:px-10">
+          <div className="grid grid-cols-1 items-end gap-12 md:grid-cols-[0.92fr_1fr] md:gap-20">
             <div>
               <p className="font-montserrat text-lg font-bold leading-none text-[#858B91]">
                 Plataforma Institucional de Datos
               </p>
 
-              <h1 className="font-montserrat mt-7 text-[5rem] font-extrabold leading-[0.78] text-[#0176DE] sm:text-[6rem] md:text-[6.3rem]">
+              <h1 className="font-montserrat mt-7 text-[5rem] font-extrabold leading-[0.78] text-[#0176DE] sm:text-[6rem] md:text-[6.7rem]">
                 Kimn
                 <br />
                 Género
@@ -125,96 +125,103 @@ export default function Home() {
 
               <div className="mt-8 flex flex-col gap-3 sm:flex-row">
                 <Link href="/indicadores">
-                  <span className="inline-flex h-[31px] min-w-[132px] items-center justify-center rounded-lg bg-[#0176DE] px-5 text-[0.72rem] font-bold text-white transition-colors hover:bg-[#0668C0]">
+                  <span className="inline-flex h-[31px] min-w-[132px] items-center justify-center rounded-full bg-[#0176DE] px-5 text-[0.68rem] font-bold text-white transition-colors hover:bg-[#0668C0]">
                     Explorar Indicadores
                   </span>
                 </Link>
                 <Link href="/metodologia">
-                  <span className="inline-flex h-[31px] min-w-[132px] items-center justify-center rounded-lg bg-[#0176DE] px-5 text-[0.72rem] font-bold text-white transition-colors hover:bg-[#0668C0]">
+                  <span className="inline-flex h-[31px] min-w-[132px] items-center justify-center rounded-full bg-[#0176DE] px-5 text-[0.68rem] font-bold text-white transition-colors hover:bg-[#0668C0]">
                     Ver Metodología
                   </span>
                 </Link>
               </div>
             </div>
 
-            <div className="md:pt-[4.3rem]">
-              <p className="text-[0.76rem] font-bold text-[#7C838B]">Datos abiertos</p>
-              <h2 className="font-montserrat mt-4 max-w-[17rem] text-[1.18rem] font-extrabold leading-[1.05] text-[#0176DE]">
-                Explore los
-                <br />
-                indicadores interactivos
-              </h2>
-              <p className="mt-4 max-w-[25rem] text-[0.76rem] leading-snug text-slate-500">
-                Acceda a visualizaciones dinámicas de Power BI con datos actualizados sobre brechas de
-                género.
+            <div className="pb-7 md:pb-12">
+              <p className="font-montserrat max-w-[36rem] text-[1.55rem] font-bold leading-[1.18] text-[#858B91] md:text-[1.75rem]">
+                Plataforma interactiva para la visualización y análisis de datos desagregados por sexo.
+                Evidencia para el diseño de políticas públicas con enfoque de género.
               </p>
-              <Link href="/indicadores">
-                <span className="mt-4 inline-flex h-[18px] min-w-[77px] items-center justify-center rounded-full bg-[#0176DE] px-3 text-[0.48rem] font-bold text-white transition-colors hover:bg-[#0668C0]">
-                  Ir a indicadores
-                </span>
-              </Link>
             </div>
           </div>
 
-          <div className="mt-14 grid grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-4">
+          <div className="mx-auto mt-14 grid max-w-[760px] grid-cols-1 gap-3 sm:grid-cols-2 md:grid-cols-4">
             <MetricCard label="Indicadores" value={String(totalIndicators)} />
-            <MetricCard label="Áreas estrategicas" value="04" />
+            <MetricCard label="Áreas estratégicas" value="04" />
             <MetricCard label="Dimensiones" value={formatTwoDigits(dimensionsCount)} />
             <MetricCard label="Unidades" value="10" />
           </div>
         </div>
       </section>
 
-      <section className="w-full pb-16">
-        <div className="mb-5 flex flex-col gap-2 px-4 sm:flex-row sm:items-end sm:justify-between sm:px-8 lg:px-12 xl:px-16">
+      <section className="bg-white">
+        <div className="mx-auto grid max-w-[1120px] grid-cols-1 items-center gap-12 px-6 py-12 sm:px-8 lg:grid-cols-[350px_680px] lg:justify-between lg:px-10">
           <div>
-            <h2 className="font-montserrat mt-1 text-2xl font-extrabold text-[#0176DE]">
-              Explorar por dimensión
+            <h2 className="font-montserrat max-w-[18rem] text-[1.75rem] font-bold leading-[1.08] text-[#0176DE]">
+              Datos para la igualdad de género
             </h2>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 gap-1 bg-white sm:grid-cols-2 lg:grid-cols-4">
-          {resourceCards.map((resource, index) => (
-            <ResourceCard
-              key={resource.dimension}
-              title={resource.title}
-              color={resource.color}
-              iconSrc={resource.iconSrc}
-              iconScale={resource.iconScale}
-              count={resource.count}
-              dimension={resource.dimension}
-              index={index}
-            />
-          ))}
-        </div>
-
-        <div className="mx-4 mt-8 rounded-lg border border-[#0176DE]/20 bg-[#F6FAFF] p-5 sm:mx-8 lg:mx-12 xl:mx-16">
-          <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <div>
-              <p className="text-sm font-bold text-[#0176DE]">Datos para la igualdad de género</p>
-              <p className="mt-1 max-w-2xl text-sm leading-relaxed text-slate-600">
-                Plataforma institucional para consultar indicadores desagregados y apoyar el análisis de
-                brechas con enfoque de género.
+            <div className="mt-7 max-w-[21rem] space-y-5 text-[1rem] leading-[1.25] text-[#8B8B95]">
+              <p>
+                <strong className="font-montserrat font-extrabold text-[#858B91]">KimnGenero</strong> es una plataforma
+                institucional que pone a disposición del público indicadores desagregados en múltiples dimensiones
+                relacionadas con la equidad de género.
+              </p>
+              <p>
+                Los indicadores se producen a partir de fuentes oficiales y son actualizados periódicamente para
+                reflejar la situación actual de las brechas de género en la institución.
               </p>
             </div>
-            <div className="flex flex-col gap-2 sm:flex-row">
+          </div>
+
+          <div className="grid w-full grid-cols-1 gap-1 justify-self-center bg-white sm:grid-cols-2 md:grid-cols-4 lg:max-w-[680px]">
+            {resourceCards.map((resource, index) => (
+              <ResourceCard
+                key={resource.dimension}
+                title={resource.title}
+                color={resource.color}
+                iconSrc={resource.iconSrc}
+                iconScale={resource.iconScale}
+                count={resource.count}
+                dimension={resource.dimension}
+                index={index}
+              />
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section className="bg-white">
+        <div className="mx-auto grid max-w-[1120px] grid-cols-1 gap-14 px-6 pb-28 pt-10 sm:px-8 lg:grid-cols-[0.86fr_1.14fr] lg:px-10">
+          <figure className="max-w-[21rem] text-center">
+            <blockquote className="font-montserrat text-[1.08rem] font-extrabold italic leading-[1.22] text-[#0176DE]">
+              &quot;Un indicador de género es una medida que señala el estado o nivel de las diferencias entre hombres
+              y mujeres en un momento del tiempo, expresando en particular las desigualdades que resultan de la
+              diferencia sexual o de género.&quot;
+            </blockquote>
+            <figcaption className="mt-4 text-right text-sm text-[#858B91]">— INE, 2019</figcaption>
+          </figure>
+
+          <div className="max-w-[37rem]">
+            <p className="font-montserrat text-lg font-bold text-[#858B91]">Datos abiertos</p>
+            <h2 className="font-montserrat mt-6 max-w-[24rem] text-[1.85rem] font-bold leading-[1.05] text-[#0176DE]">
+              Explore los
+              <br />
+              indicadores interactivos
+            </h2>
+            <p className="mt-6 text-[1rem] leading-snug text-[#8B8B95]">
+              Acceda a visualizaciones dinámicas de Power BI con datos actualizados sobre brechas de género.
+            </p>
+            <div className="mt-7">
               <Link href="/indicadores">
-                <span className="inline-flex h-9 items-center justify-center gap-2 rounded-md bg-[#0176DE] px-4 text-sm font-semibold text-white transition-colors hover:bg-[#0668C0]">
-                  Indicadores
-                  <ArrowRight className="h-4 w-4" />
-                </span>
-              </Link>
-              <Link href="/metodologia">
-                <span className="inline-flex h-9 items-center justify-center gap-2 rounded-md border border-[#0176DE] bg-white px-4 text-sm font-semibold text-[#0176DE] transition-colors hover:bg-[#EAF3FF]">
-                  <BookOpen className="h-4 w-4" />
-                  Metodología
+                <span className="inline-flex h-8 min-w-[120px] items-center justify-center gap-2 rounded-full bg-[#0176DE] px-5 text-[0.6rem] font-bold text-white transition-colors hover:bg-[#0668C0]">
+                  Ir a indicadores
+                  <ArrowRight className="h-3 w-3" />
                 </span>
               </Link>
             </div>
           </div>
         </div>
       </section>
-    </main>
+    </div>
   );
 }
