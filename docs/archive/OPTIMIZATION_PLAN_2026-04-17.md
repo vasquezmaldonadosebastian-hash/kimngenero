@@ -131,7 +131,7 @@ Se revisaron exactamente los archivos solicitados:
 5. **Fecha potencialmente frágil**: en `IndicadorDetail`, `new Date(indicador.fechaCorte)` podría mostrar `Invalid Date` según calidad del origen.
 6. **Uso de `alert(...)` en UX productiva**: bloqueante, no accesible, difícil de testear.
 7. **No hay contrato de cliente API centralizado**: fetch directo en contexto sin wrapper reusable para headers/errores/reintentos.
-8. **Tipo `GroupedReport.tipo` demasiado abierto (`string`)**: se podría cerrar a unión literal (`powerbi | tableau | placeholder`).
+8. **Tipo `GroupedReport.tipo` demasiado abierto (`string`)**: se podría cerrar a unión literal (`powerbi | placeholder`).
 9. **No hay objetivo de performance explícito en API**: endpoints listan todo sin paginación ni caching semántico.
 
 ---
@@ -623,7 +623,7 @@ vite build --mode analyze
 #### 5) Seguridad
 
 - **Antes**: `sandbox` en iframe pero sin CSP integral en servidor.
-- **Después**: CSP explícita con `frame-src` de Power BI/Tableau permitidos y bloqueo por defecto.
+- **Después**: CSP explícita con `frame-src` de Power BI permitido y bloqueo por defecto.
 
 ### Snippets de código
 
@@ -669,7 +669,6 @@ export const securityMiddleware = helmet({
       frameSrc: [
         "'self'",
         "https://app.powerbi.com",
-        "https://public.tableau.com",
       ],
       connectSrc: ["'self'"],
     },

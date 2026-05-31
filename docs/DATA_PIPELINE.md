@@ -56,7 +56,7 @@ pnpm run build
 
 - El JSON debe parsear sin errores.
 - Cada indicador debe tener `id`, `codigo`, `nombre/titulo`, `area`, `dimension`, `estado` y metadatos minimos suficientes para render.
-- Si existe `enlaceVisualizacion`, debe ser una URL valida de Power BI o Tableau publico.
+- Si existe `enlaceVisualizacion`, debe ser una URL valida de Power BI publico.
 - Si se usa el formato objeto, `reportesAgrupados` debe ser consistente con `/api/reportes-agrupados`.
 - Se valida estructura base del seed en arranque; los cambios invalidos fallan antes de construir el repositorio.
 ## Calidad y ownership

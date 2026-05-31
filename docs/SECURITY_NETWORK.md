@@ -27,7 +27,7 @@ Documentar la postura actual de seguridad de `KimnGenero`, la configuracion de r
   - `contentSecurityPolicy`
   - `referrerPolicy: strict-origin-when-cross-origin`
 - CSP:
-  - `frame-src`: `'self'` + allowlist de Power BI/Tableau o `IFRAME_ALLOWLIST`
+  - `frame-src`: `'self'` + allowlist de Power BI o `IFRAME_ALLOWLIST`
   - `img-src`: `'self'`, `data:`, `https:`
   - `connect-src`: `'self'`, `https:`
   - `script-src`: `'self'`, `'unsafe-inline'`, `https:`
@@ -46,10 +46,8 @@ Observacion:
 - Allowlist por defecto actual:
   - `https://app.powerbi.com`
   - `https://*.powerbi.com`
-  - `https://public.tableau.com`
-  - `https://*.tableau.com`
 - Riesgo principal:
-  - cambiar CSP sin validar Power BI/Tableau puede romper vistas de indicadores y reportes agrupados.
+  - cambiar CSP sin validar Power BI puede romper vistas de indicadores y reportes agrupados.
 
 ## CORS
 

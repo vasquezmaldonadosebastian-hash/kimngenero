@@ -9,7 +9,7 @@ export interface Indicador {
   descripcion: string;
   iframeSrc: string;
   iframeHeight: number;
-  tipo: "powerbi" | "tableau" | "placeholder";
+  tipo: "powerbi" | "placeholder";
   fuentes: string[];
   ultimaActualizacion: string;
   notasMetodologicas: string;

@@ -10,13 +10,8 @@ export function getAllowedFrameSrc() {
   const fromEnv = parseCsv(process.env.IFRAME_ALLOWLIST);
   if (fromEnv.length > 0) return fromEnv;
 
-  // Defaults cover Power BI + Tableau public embeds.
-  return [
-    "https://app.powerbi.com",
-    "https://*.powerbi.com",
-    "https://public.tableau.com",
-    "https://*.tableau.com",
-  ];
+  // Defaults cover public Power BI embeds.
+  return ["https://app.powerbi.com", "https://*.powerbi.com"];
 }
 
 export function isCspReportOnly() {

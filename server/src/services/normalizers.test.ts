@@ -11,12 +11,14 @@ describe("resolveIframe", () => {
     expect(resolveIframe(item2)).toEqual({ iframeSrc: "", tipo: "placeholder" });
   });
 
-  it("returns provider type for valid urls", () => {
+  it("returns Power BI type for valid Power BI urls", () => {
     const powerbi: RawIndicator = { enlaceVisualizacion: "https://foo.powerbi.com/view" };
     expect(resolveIframe(powerbi).tipo).toBe("powerbi");
+  });
 
-    const tableau: RawIndicator = { enlaceVisualizacion: "https://public.tableau.com/views/x" };
-    expect(resolveIframe(tableau).tipo).toBe("tableau");
+  it("uses placeholder for unsupported visualization providers", () => {
+    const unsupported: RawIndicator = { enlaceVisualizacion: "https://example.com/views/x" };
+    expect(resolveIframe(unsupported)).toEqual({ iframeSrc: "", tipo: "placeholder" });
   });
 });
 
@@ -69,4 +71,3 @@ describe("groupByCategory", () => {
     expect(categories[0].indicadores.length).toBe(2);
   });
 });
-

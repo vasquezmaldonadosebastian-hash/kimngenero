@@ -2,7 +2,7 @@ import type { Indicator, IndicatorCategory, RawIndicator } from "../../../shared
 
 export type ResolveIframeResult = {
   iframeSrc: string;
-  tipo: "powerbi" | "tableau" | "placeholder";
+  tipo: "powerbi" | "placeholder";
 };
 
 export function resolveIframe(item: RawIndicator): ResolveIframeResult {
@@ -10,7 +10,10 @@ export function resolveIframe(item: RawIndicator): ResolveIframeResult {
   if (!enlace || enlace === "None" || enlace === "Visible" || enlace === "falta" || enlace === "-") {
     return { iframeSrc: "", tipo: "placeholder" };
   }
-  return { iframeSrc: enlace, tipo: enlace.includes("powerbi") ? "powerbi" : "tableau" };
+  if (!enlace.includes("powerbi")) {
+    return { iframeSrc: "", tipo: "placeholder" };
+  }
+  return { iframeSrc: enlace, tipo: "powerbi" };
 }
 
 export function mapItem(item: RawIndicator): Indicator {

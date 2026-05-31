@@ -171,6 +171,10 @@
     display: none;
   }
 
+  .font-montserrat {
+    font-family: 'Montserrat', sans-serif;
+  }
+
   @media (min-width: 640px) {
     .container {
       padding-left: 1.5rem;

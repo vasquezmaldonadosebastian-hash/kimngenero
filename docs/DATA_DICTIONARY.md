@@ -19,7 +19,7 @@ Campos normalizados principales:
 - `descripcion`: contexto textual del indicador
 - `iframeSrc`: URL del dashboard o visualizacion embebida
 - `iframeHeight`: alto sugerido para el embed
-- `tipo`: `powerbi`, `tableau` o `placeholder`
+- `tipo`: `powerbi` o `placeholder`
 - `fuentes`: lista de fuentes de informacion asociadas
 - `ultimaActualizacion`: texto de fecha de actualizacion
 - `notasMetodologicas`: contenido metodologico asociado

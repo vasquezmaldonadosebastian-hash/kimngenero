@@ -18,7 +18,7 @@ Centralizar las variables de entorno y defaults relevantes para operar `KimnGene
 | `PORT` | `3000` | Puerto HTTP del servicio Node | Si |
 | `INDICATOR_REPOSITORY` | `memory` | Selecciona backend de datos (`memory` o `sqlite`) | Si |
 | `SQLITE_DB_PATH` | `data/indicators.sqlite` | Ruta de la base SQLite cuando aplica | Solo si `INDICATOR_REPOSITORY=sqlite` |
-| `IFRAME_ALLOWLIST` | allowlist interna Power BI + Tableau | Origenes permitidos en `frame-src` | No |
+| `IFRAME_ALLOWLIST` | allowlist interna Power BI | Origenes permitidos en `frame-src` | No |
 | `CSP_REPORT_ONLY` | `true` | Define si CSP corre en modo report-only o enforcing | No |
 
 ## Comportamiento por variable
@@ -49,12 +49,12 @@ Centralizar las variables de entorno y defaults relevantes para operar `KimnGene
 ### `IFRAME_ALLOWLIST`
 
 - Formato: CSV de origenes.
-- Si no se define, se permiten embeds publicos de Power BI y Tableau.
+- Si no se define, se permiten embeds publicos de Power BI.
 
 Ejemplo:
 
 ```env
-IFRAME_ALLOWLIST=https://app.powerbi.com,https://public.tableau.com
+IFRAME_ALLOWLIST=https://app.powerbi.com
 ```
 
 ### `CSP_REPORT_ONLY`
