@@ -54,21 +54,21 @@ function ResourceCard({
         className="group flex h-[11.75rem] overflow-hidden bg-[#0176DE] text-white transition-[filter] hover:brightness-95"
         style={{ backgroundColor: color }}
       >
-        <div className="flex h-full w-full flex-col px-4 py-4">
-          <div className="mb-auto flex h-9 w-9 items-center justify-center text-xs font-extrabold text-white">
+        <div className="flex h-full w-full flex-col px-4 pb-4 pt-3">
+          <div className="mb-auto flex h-12 w-12 items-center justify-center text-sm font-extrabold text-white">
             {iconSrc ? (
               <img
                 src={iconSrc}
                 alt=""
                 aria-hidden="true"
-                className="h-8 w-8 object-contain"
+                className="h-11 w-11 object-contain"
                 style={{ transform: `scale(${iconScale})` }}
               />
             ) : (
               formatTwoDigits(index + 1)
             )}
           </div>
-          <h3 className="font-montserrat mt-4 text-[0.64rem] font-extrabold leading-[1.05] text-white sm:text-[0.66rem]">
+          <h3 className="font-montserrat mt-3 text-[0.64rem] font-extrabold leading-[1.05] text-white sm:text-[0.66rem]">
             {title}
           </h3>
           <p className="mt-2 inline-flex h-4 w-fit min-w-[4.2rem] items-center justify-center rounded-full border border-white px-2.5 text-[0.38rem] font-extrabold text-white">
