@@ -75,14 +75,14 @@ export default function HeaderUCT() {
       </div>
 
       <header className="sticky top-0 z-50 border-b border-gray-100 bg-white/95 shadow-sm backdrop-blur">
-        <div className="mx-auto max-w-7xl px-4 py-3 sm:px-6">
-          <div className="flex items-center justify-between gap-3 lg:gap-6">
+        <div className="mx-auto max-w-7xl px-3 py-3 sm:px-6">
+          <div className="flex min-w-0 items-center justify-between gap-1.5 sm:gap-3 lg:gap-6">
             <Link href="/">
-              <div className="flex items-center transition-opacity hover:opacity-90">
+              <div className="flex min-w-0 flex-1 items-center transition-opacity hover:opacity-90">
                 <img
                   src="/assets/logo_KIMN_gris-scaled.webp"
                   alt="Logo KIMN"
-                  className="h-10 w-auto object-contain sm:h-11 md:h-14"
+                  className="h-8 w-auto max-w-[64vw] object-contain sm:h-10 sm:max-w-[72vw] md:h-12 md:max-w-none lg:h-14"
                 />
               </div>
             </Link>
@@ -104,7 +104,7 @@ export default function HeaderUCT() {
               ))}
             </nav>
 
-            <div className="flex items-center gap-2 sm:gap-3">
+            <div className="flex shrink-0 items-center gap-2 sm:gap-3">
               <button
                 className="hidden rounded-full p-2 transition-colors hover:bg-gray-50 xl:inline-flex"
                 aria-label="Buscar"

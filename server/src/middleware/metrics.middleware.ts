@@ -94,7 +94,7 @@ export function getMetricsSnapshot() {
     status5xx: number;
     errorRate5xx: number;
   }> = [];
-  for (const [endpoint, b] of buckets.entries()) {
+  for (const [endpoint, b] of Array.from(buckets.entries())) {
     const sorted = [...b.durationsMs].sort((a, c) => a - c);
     out.push({
       endpoint,

@@ -1,119 +1,125 @@
-﻿import { Facebook, Instagram, Linkedin, Mail, MapPin, Phone, Twitter, Youtube } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
+
+const footerLogos = [
+  {
+    src: "/assets/footer/logo3.png",
+    alt: "Universidad acreditada nivel avanzado",
+    href: "https://www.cnachile.cl",
+  },
+  {
+    src: "/assets/footer/cruch_logo.webp",
+    alt: "Consejo de Rectoras y Rectores de las Universidades Chilenas",
+    href: "https://www.consejoderectores.cl",
+  },
+  {
+    src: "/assets/footer/g9-1.png",
+    alt: "Red G9",
+    href: "https://redg9.cl",
+  },
+  {
+    src: "/assets/footer/logoredcampusustentable.png",
+    alt: "Red Campus Sustentable",
+    href: "https://www.redcampussustentable.cl",
+  },
+];
 
 export default function FooterUCT() {
   return (
-    <footer className="bg-[#1A1A2E] text-gray-100">
-      <div className="mx-auto max-w-7xl px-4 py-10 sm:px-6 sm:py-12">
-        <div className="mb-10 grid grid-cols-1 gap-8 md:grid-cols-3">
-          <div>
-            <h3 className="mb-4 text-lg font-bold text-white" style={{ fontFamily: "Montserrat, sans-serif" }}>
-              Direccion de Genero
-            </h3>
-            <div className="space-y-3 text-sm leading-relaxed">
-              <div className="flex items-start gap-3">
-                <MapPin className="mt-1 h-5 w-5 flex-shrink-0 text-[#0176DE]" />
-                <p>Manuel Montt 56, Campus San Francisco, Edificio 03, 4 Nivel</p>
-              </div>
-              <div className="flex items-center gap-3">
-                <Phone className="h-5 w-5 flex-shrink-0 text-[#0176DE]" />
-                <a href="tel:+56452685126" className="transition-colors hover:text-[#0176DE]">
-                  (45) 2 685126
-                </a>
-              </div>
-              <div className="flex items-center gap-3">
-                <Mail className="h-5 w-5 flex-shrink-0 text-[#0176DE]" />
-                <a href="mailto:direcciondegenero@uct.cl" className="transition-colors hover:text-[#0176DE]">
-                  direcciondegenero@uct.cl
-                </a>
-              </div>
-            </div>
-          </div>
+    <footer className="border-t-8 border-[#0176DE] bg-white text-[#8B8B8B]">
+      <div className="mx-auto w-full max-w-[1200px] px-4 py-14 sm:px-6 lg:px-8">
+        <div className="grid grid-cols-1 gap-10 md:grid-cols-2 xl:grid-cols-[1.1fr_1.1fr_1.2fr_0.9fr] xl:gap-14">
+          <section>
+            <h2 className="font-montserrat mb-8 text-2xl font-extrabold text-[#4A4A4A]">KIMN es parte de</h2>
+            <a href="https://gobiernodedatos.uct.cl" target="_blank" rel="noreferrer" className="inline-flex">
+              <img
+                src="https://kimn.uct.cl/wp-content/uploads/2025/10/gobierno-de-datos.webp"
+                alt="Programa Gobierno de Datos"
+                className="h-auto w-52 max-w-full"
+              />
+            </a>
 
-          <div>
-            <h3 className="mb-4 text-lg font-bold text-white" style={{ fontFamily: "Montserrat, sans-serif" }}>
-              Observatorio de Genero
-            </h3>
-            <div className="space-y-3 text-sm leading-relaxed">
-              <div className="flex items-start gap-3">
-                <MapPin className="mt-1 h-5 w-5 flex-shrink-0 text-[#0176DE]" />
-                <p>Manuel Montt 56, Campus San Francisco, Edificio 07, oficina 240</p>
+            <h3 className="font-montserrat mb-5 mt-12 text-lg font-extrabold text-[#4A4A4A]">Impulsado por</h3>
+            <a href="https://gobiernodedatos.uct.cl" target="_blank" rel="noreferrer" className="inline-flex">
+              <img
+                src="https://kimn.uct.cl/wp-content/uploads/2025/10/dgob.webp"
+                alt="Direccion de Gobierno de Datos y Gestion de Informacion"
+                className="h-auto w-36"
+              />
+            </a>
+            <p className="font-montserrat mt-6 text-base font-medium text-[#999]">#SomosUCT</p>
+          </section>
+
+          <section>
+            <h2 className="font-montserrat mb-7 text-2xl font-extrabold text-[#4A4A4A]">Contactanos</h2>
+            <div className="space-y-5 text-base leading-relaxed">
+              <div className="flex items-start gap-4">
+                <MapPin className="mt-1 h-5 w-5 flex-shrink-0 text-[#8B8B8B]" />
+                <p>Av. Alemania 0422 Casona Malmus, Campus Mechaca Lira, Temuco</p>
               </div>
-              <div className="flex items-center gap-3">
-                <Phone className="h-5 w-5 flex-shrink-0 text-[#0176DE]" />
-                <a href="tel:+56452685057" className="transition-colors hover:text-[#0176DE]">
-                  (45) 2 685057
+              <div className="flex items-center gap-4">
+                <Phone className="h-5 w-5 flex-shrink-0 text-[#8B8B8B]" />
+                <a href="tel:+56452553706" className="font-medium text-[#0176DE] hover:underline">
+                  +56 45 2 553 706
                 </a>
               </div>
-              <div className="flex items-center gap-3">
-                <Mail className="h-5 w-5 flex-shrink-0 text-[#0176DE]" />
-                <a href="mailto:observatorio@uct.cl" className="transition-colors hover:text-[#0176DE]">
-                  observatorio@uct.cl
+              <div className="flex items-center gap-4">
+                <Mail className="h-5 w-5 flex-shrink-0 text-[#8B8B8B]" />
+                <a href="mailto:dgob@uct.cl" className="font-medium text-[#0176DE] hover:underline">
+                  dgob@uct.cl
                 </a>
               </div>
             </div>
-          </div>
+          </section>
 
-          <div>
-            <h3 className="mb-4 text-lg font-bold text-white" style={{ fontFamily: "Montserrat, sans-serif" }}>
-              Siguenos
-            </h3>
-            <div className="mb-6 flex flex-wrap items-center gap-3">
-              <a href="#" className="rounded-lg p-2 transition-colors hover:bg-[#0176DE]" title="Facebook">
-                <Facebook className="h-5 w-5" />
+          <section>
+            <h2 className="font-montserrat mb-7 text-2xl font-extrabold text-[#4A4A4A]">Links de interes</h2>
+            <nav className="space-y-4 text-base leading-snug">
+              <a href="https://www.uct.cl" target="_blank" rel="noreferrer" className="block hover:text-[#0176DE]">
+                Vicerrectoria de Calidad y Gestion Estrategica
               </a>
-              <a href="#" className="rounded-lg p-2 transition-colors hover:bg-[#0176DE]" title="Twitter">
-                <Twitter className="h-5 w-5" />
+              <a
+                href="https://gobiernodedatos.uct.cl"
+                target="_blank"
+                rel="noreferrer"
+                className="block hover:text-[#0176DE]"
+              >
+                Programa de Gobierno de Datos
               </a>
-              <a href="#" className="rounded-lg p-2 transition-colors hover:bg-[#0176DE]" title="Instagram">
-                <Instagram className="h-5 w-5" />
+              <a
+                href="https://catalogoindicadores.uct.cl"
+                target="_blank"
+                rel="noreferrer"
+                className="block hover:text-[#0176DE]"
+              >
+                Catalogo de Indicadores
               </a>
-              <a href="#" className="rounded-lg p-2 transition-colors hover:bg-[#0176DE]" title="LinkedIn">
-                <Linkedin className="h-5 w-5" />
+              <a href="https://kimn.uct.cl" target="_blank" rel="noreferrer" className="block hover:text-[#0176DE]">
+                KIMN UCT
               </a>
-              <a href="#" className="rounded-lg p-2 transition-colors hover:bg-[#0176DE]" title="YouTube">
-                <Youtube className="h-5 w-5" />
+              <a
+                href="https://escuchaactiva.uct.cl"
+                target="_blank"
+                rel="noreferrer"
+                className="block hover:text-[#0176DE]"
+              >
+                Escucha Activa
               </a>
-            </div>
+            </nav>
+          </section>
 
-            <div className="space-y-2 text-sm">
-              <a href="#" className="block transition-colors hover:text-[#0176DE]">
-                Politica de Privacidad
+          <section className="flex flex-wrap items-center gap-5 md:justify-start xl:flex-col xl:items-start xl:gap-8">
+            {footerLogos.map((logo) => (
+              <a key={logo.alt} href={logo.href} target="_blank" rel="noreferrer" className="inline-flex">
+                <span className="flex h-20 w-32 items-center justify-center sm:h-24 sm:w-36">
+                  <img src={logo.src} alt={logo.alt} className="max-h-full max-w-full object-contain" />
+                </span>
               </a>
-              <a href="#" className="block transition-colors hover:text-[#0176DE]">
-                Terminos de Uso
-              </a>
-              <a href="#" className="block transition-colors hover:text-[#0176DE]">
-                Accesibilidad
-              </a>
-            </div>
-          </div>
+            ))}
+          </section>
         </div>
 
-        <div className="border-t border-gray-700 pt-8">
-          <div className="mb-6">
-            <h4 className="mb-3 text-sm font-bold text-white">Enlaces de Interes</h4>
-            <div className="grid grid-cols-1 gap-3 text-xs sm:grid-cols-2 lg:grid-cols-4">
-              <a href="#" className="transition-colors hover:text-[#0176DE]">
-                Ministerio de la Mujer y Equidad de Genero
-              </a>
-              <a href="#" className="transition-colors hover:text-[#0176DE]">
-                Direccion de Genero
-              </a>
-              <a href="#" className="transition-colors hover:text-[#0176DE]">
-                Observatorio del Sistema Nacional de Ciencias
-              </a>
-              <a href="#" className="transition-colors hover:text-[#0176DE]">
-                Observatorio Igualdad de Genero CEPAL
-              </a>
-            </div>
-          </div>
-
-          <div className="flex flex-col gap-2 border-t border-gray-700 pt-6 text-center text-xs text-gray-400 md:flex-row md:items-center md:justify-between md:text-left">
-            <p>UCT 2025</p>
-            <p className="md:mt-0">
-              Universidad Catolica de Temuco | Direccion de Genero y Observatorio de Indicadores de Genero
-            </p>
-          </div>
+        <div className="mt-14 border-t border-[#E5E5E5] pt-6 text-sm text-[#999]">
+          Universidad Catolica de Temuco | Sistema de Informacion Institucional KIMN
         </div>
       </div>
     </footer>

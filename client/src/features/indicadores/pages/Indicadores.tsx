@@ -9,6 +9,7 @@ import { Link, useLocation } from "wouter";
 import { ChevronRight, Filter, Search } from "lucide-react";
 import type { Indicator } from "@shared/types/indicators";
 import { apiGetJson } from "@/lib/apiClient";
+import { page2Resources } from "@/lib/page2-resources";
 import { useIndicatorsContext } from "../../../contexts/IndicatorsContext";
 
 const COLOR_MAP: Record<string, { bg: string; border: string; text: string }> = {
@@ -27,6 +28,20 @@ const COLOR_MAP: Record<string, { bg: string; border: string; text: string }> = 
 };
 
 const DEFAULT_COLOR = { bg: "#F0F9FF", border: "#E0F2FE", text: "#0369A1" };
+
+const normalizeDimensionKey = (value: string) =>
+  value
+    .normalize("NFD")
+    .replace(/[\u0300-\u036f]/g, "")
+    .replace(/\s+/g, " ")
+    .trim()
+    .toLowerCase();
+
+const getResourceForDimension = (dimension: string | undefined) => {
+  if (!dimension) return undefined;
+  const key = normalizeDimensionKey(dimension);
+  return page2Resources.find((resource) => normalizeDimensionKey(resource.dimension) === key);
+};
 
 export default function Indicadores() {
   const { indicators, loading, error } = useIndicatorsContext();
@@ -100,6 +115,10 @@ export default function Indicadores() {
 
   const getColorForDimension = (dimension: string | undefined) => {
     if (!dimension) return DEFAULT_COLOR;
+    const resource = getResourceForDimension(dimension);
+    if (resource) {
+      return { bg: `${resource.color}14`, border: `${resource.color}33`, text: resource.color };
+    }
     return COLOR_MAP[dimension] ?? DEFAULT_COLOR;
   };
 
@@ -202,6 +221,7 @@ export default function Indicadores() {
           <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 xl:grid-cols-3">
             {filtrados.map((indicador: Indicator) => {
               const color = getColorForDimension(indicador.dimension);
+              const resource = getResourceForDimension(indicador.dimension);
               return (
                 <Link key={indicador.id} href={`/indicador/${indicador.id}`} className="group h-full">
                   <div className="h-full overflow-hidden rounded-2xl border border-gray-100 bg-white shadow-sm transition-all hover:shadow-lg">
@@ -213,12 +233,29 @@ export default function Indicadores() {
                       }}
                     >
                       <div className="flex items-start justify-between mb-2">
-                        <span
-                          className="px-2.5 py-1 rounded-full text-xs font-bold"
-                          style={{ backgroundColor: color.text, color: "white" }}
-                        >
-                          {indicador.codigo}
-                        </span>
+                        <div className="flex items-center gap-3">
+                          <span
+                            className="flex h-11 w-11 items-center justify-center rounded-xl shadow-sm"
+                            style={{ backgroundColor: color.text }}
+                            aria-hidden="true"
+                          >
+                            {resource?.iconSrc ? (
+                              <img
+                                src={resource.iconSrc}
+                                alt=""
+                                className="h-8 w-8 object-contain"
+                              />
+                            ) : (
+                              <span className="text-xs font-black text-white">{indicador.id}</span>
+                            )}
+                          </span>
+                          <span
+                            className="px-2.5 py-1 rounded-full text-xs font-bold"
+                            style={{ backgroundColor: color.text, color: "white" }}
+                          >
+                            {indicador.codigo}
+                          </span>
+                        </div>
                         <span className="text-xs font-semibold text-gray-500">
                           {indicador.frecuenciaMedicion}
                         </span>

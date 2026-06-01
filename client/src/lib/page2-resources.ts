@@ -11,56 +11,56 @@ export const page2Resources: Page2ResourceCard[] = [
     dimension: "1.- Institucionalización",
     title: "Institucionalización",
     color: "#0E74CC",
-    iconSrc: "/assets/kimn-genero/icons/dimension-01.svg",
+    iconSrc: "/assets/kimn-genero/icons/dimension-01-raw.svg",
     iconScale: 1,
   },
   {
     dimension: "2.- Violencia de Género",
     title: "Violencia de Género",
     color: "#14934E",
-    iconSrc: "/assets/kimn-genero/icons/dimension-02.svg",
+    iconSrc: "/assets/kimn-genero/icons/dimension-02-raw.svg",
     iconScale: 1,
   },
   {
     dimension: "3.- Corresponsabilidad en los cuidados",
     title: "Corresponsabilidad en los cuidados",
     color: "#D8002D",
-    iconSrc: "/assets/kimn-genero/icons/dimension-03.svg",
+    iconSrc: "/assets/kimn-genero/icons/dimension-03-raw.svg",
     iconScale: 1,
   },
   {
     dimension: "4.- Trayectorias laborales",
     title: "Trayectorias laborales",
     color: "#8E8E8E",
-    iconSrc: "/assets/kimn-genero/icons/dimension-04.svg",
-    iconScale: 1.02,
+    iconSrc: "/assets/kimn-genero/icons/dimension-04-raw.svg",
+    iconScale: 1,
   },
   {
     dimension: "5.- Trayectorias educativas",
     title: "Trayectorias educativas",
     color: "#8657E0",
-    iconSrc: "/assets/kimn-genero/icons/dimension-05.svg",
+    iconSrc: "/assets/kimn-genero/icons/dimension-05-raw.svg",
     iconScale: 1,
   },
   {
     dimension: "6.- Modelo educativo con perspectiva de género",
     title: "Modelo educativo con perspectiva de género",
     color: "#F96200",
-    iconSrc: "/assets/kimn-genero/icons/dimension-06.svg",
+    iconSrc: "/assets/kimn-genero/icons/dimension-06-raw.svg",
     iconScale: 1,
   },
   {
     dimension: "7.- Participación equilibrada en la divulgación científica",
     title: "Participación equilibrada en la divulgación científica",
     color: "#FEC300",
-    iconSrc: "/assets/kimn-genero/icons/dimension-07.svg",
-    iconScale: 1.04,
+    iconSrc: "/assets/kimn-genero/icons/dimension-07-raw.svg",
+    iconScale: 1,
   },
   {
     dimension: "8.- Visibilización del aporte de las mujeres en las áreas de conocimiento",
     title: "Visibilización del aporte de las mujeres en las áreas de conocimiento",
     color: "#232323",
-    iconSrc: "/assets/kimn-genero/icons/dimension-08.svg",
+    iconSrc: "/assets/kimn-genero/icons/dimension-08-raw.svg",
     iconScale: 1,
   },
 ];
@@ -68,3 +68,4 @@ export const page2Resources: Page2ResourceCard[] = [
 export function getPage2ResourceByDimension(dimension: string) {
   return page2Resources.find((item) => item.dimension === dimension);
 }
+
