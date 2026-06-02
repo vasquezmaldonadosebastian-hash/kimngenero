@@ -246,11 +246,11 @@ export default function Indicadores() {
                                 className="h-8 w-8 object-contain"
                               />
                             ) : (
-                              <span className="text-xs font-black text-white">{indicador.id}</span>
+                              <span className="text-[11px] font-black text-white">{indicador.id}</span>
                             )}
                           </span>
                           <span
-                            className="px-2.5 py-1 rounded-full text-xs font-bold"
+                            className="px-2.5 py-1 rounded-full text-[11px] font-bold tracking-wide"
                             style={{ backgroundColor: color.text, color: "white" }}
                           >
                             {indicador.codigo}
@@ -261,37 +261,21 @@ export default function Indicadores() {
                         </span>
                       </div>
                       <p className="text-[10px] uppercase tracking-wider font-bold text-gray-500 mb-1">
-                        {indicador.area}
+                        Área
+                      </p>
+                      <p className="text-xs text-gray-600">{indicador.area}</p>
+                      <p className="mt-3 text-[10px] uppercase tracking-wider font-bold text-gray-500 mb-1">
+                        Dimensión
                       </p>
                       <p className="text-xs text-gray-600">{indicador.dimension}</p>
                     </div>
                     <div className="p-5">
-                      <h3 className="mb-2 text-lg font-bold text-[#03122E] line-clamp-2 group-hover:text-[#0176DE]">
+                      <h3 className="mb-2 text-xl font-black leading-tight text-[#03122E] group-hover:text-[#0176DE]">
                         {indicador.titulo}
                       </h3>
                       <p className="mb-4 text-sm text-gray-600 line-clamp-3">
                         {indicador.descripcion}
                       </p>
-                      <div className="space-y-2 mb-4 pt-4 border-t border-gray-100">
-                        <div className="flex justify-between text-xs">
-                          <span className="text-gray-500">Unidad:</span>
-                          <span className="font-semibold">{indicador.unidad || "N/A"}</span>
-                        </div>
-                        <div className="flex justify-between text-xs">
-                          <span className="text-gray-500">Estado:</span>
-                          <span
-                            className="font-semibold px-2 py-1 rounded"
-                            style={{
-                              backgroundColor:
-                                indicador.estado === "Oficializado" ? "#D1FAE5" : "#FEF3C7",
-                              color:
-                                indicador.estado === "Oficializado" ? "#065F46" : "#92400E",
-                            }}
-                          >
-                            {indicador.estado || "N/A"}
-                          </span>
-                        </div>
-                      </div>
                       <div
                         className="flex min-h-11 w-full items-center justify-center rounded-lg px-4 py-2.5 text-sm font-semibold text-white"
                         style={{ backgroundColor: color.text }}
