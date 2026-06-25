@@ -2,7 +2,7 @@ ARG NODE_IMAGE=node:20-alpine
 
 FROM ${NODE_IMAGE} AS source
 
-ARG REPO_URL=https://github.com/vasquezmaldonadosebastian-hash/KimnGenero.git
+ARG REPO_URL=https://github.com/VasquezMaldonadoSebastian/KimnGenero.git
 ARG REPO_REF=main
 
 RUN apk add --no-cache git

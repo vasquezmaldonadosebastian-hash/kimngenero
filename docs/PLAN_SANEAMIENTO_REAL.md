@@ -67,9 +67,7 @@ Este documento reemplaza el uso operativo de `OPTIMIZATION_PLAN.md` como referen
   - `IndicadorPage.tsx` y `EstadoAgrupado.tsx` ya fueron unificados a `apiGetJson()`
 - hay problemas de codificacion visibles en varias vistas
 - `HeaderUCT.tsx` concentra la identidad institucional, el menu desktop y el panel mobile; ahi esta el ajuste de marca que hoy se ve mal
-- persiste un artefacto especial de tooling:
-  - `client/public/assets/debug-collector.js`
-- ese asset sigue referenciado por `vite.config.ts` para diagnostico de desarrollo, asi que debe tratarse como dependencia tecnica activa y no como basura
+- el tooling temporal de diagnostico externo fue removido del flujo activo y no debe reaparecer en la configuracion de Vite ni en assets publicos
 
 ### Tipos compartidos (`shared/`)
 

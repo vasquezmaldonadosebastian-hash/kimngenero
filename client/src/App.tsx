@@ -37,9 +37,7 @@ function Router() {
       <Route path="/calendario" component={Calendario} />
       <Route path="/estado-agrupado" component={EstadoAgrupado} />
       <Route path="/kimnia" component={KimnIA} />
-      <Route path="/kimnia/" component={KimnIA} />
       <Route path="/notebookslms" component={KimnIA} />
-      <Route path="/notebookslms/" component={KimnIA} />
       <Route path="/404" component={NotFound} />
       <Route component={NotFound} />
     </Switch>

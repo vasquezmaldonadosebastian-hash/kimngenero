@@ -7,10 +7,6 @@ Este directorio contiene utilidades de soporte para el proyecto.
 - `bundle-report.mjs`
   - complemento de `pnpm run build:analyze`
 
-Nota:
-
-- `client/public/assets/debug-collector.js` no vive en este directorio, pero si forma parte del tooling activo del frontend y se inyecta desde `vite.config.ts`.
-
 ## Scripts auxiliares o historicos
 
 Los scripts que no forman parte del flujo normal del proyecto deben vivir en `scripts/archive/`.
