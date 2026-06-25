@@ -35,6 +35,7 @@ function ResourceCard({
   title,
   color,
   iconSrc,
+  iconScale = 1,
   count,
   dimension,
   index,
@@ -42,6 +43,7 @@ function ResourceCard({
   title: string;
   color: string;
   iconSrc?: string;
+  iconScale?: number;
   count: number;
   dimension: string;
   index: number;
@@ -60,6 +62,7 @@ function ResourceCard({
                 alt=""
                 aria-hidden="true"
                 className="h-[3.5rem] w-[3.5rem] object-contain"
+                style={{ transform: `scale(${iconScale})` }}
               />
             ) : (
               formatTwoDigits(index + 1)
@@ -177,6 +180,7 @@ export default function Home() {
                 title={resource.title}
                 color={resource.color}
                 iconSrc={resource.iconSrc}
+                iconScale={resource.iconScale}
                 count={resource.count}
                 dimension={resource.dimension}
                 index={index}
