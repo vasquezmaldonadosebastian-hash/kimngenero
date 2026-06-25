@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import indicadoresData from "../../../../data/indicadores.json";
+import indicadoresData from "../../../data/indicadores.json";
 import { loadIndicatorSeed } from "./indicatorSeed";
 
 describe("loadIndicatorSeed", () => {

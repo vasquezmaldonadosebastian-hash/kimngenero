@@ -3,7 +3,7 @@
  * Design: Comprehensive academic layout with model definition, state of the art, implementation methodology, and work plan
  */
 
-import { BookOpen, Target, Database, RefreshCw, CheckCircle2, Layers, Zap, Users, BarChart3 } from "lucide-react";
+import { BookOpen, Target, Database, RefreshCw, CheckCircle2, Zap, BarChart3 } from "lucide-react";
 
 const principios = [
   {
