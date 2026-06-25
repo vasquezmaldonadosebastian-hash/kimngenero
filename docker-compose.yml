@@ -5,7 +5,7 @@ services:
       dockerfile: Dockerfile
       args:
         NODE_IMAGE: node:20-alpine
-        REPO_URL: https://github.com/vasquezmaldonadosebastian-hash/KimnGenero.git
+        REPO_URL: https://github.com/VasquezMaldonadoSebastian/KimnGenero.git
         REPO_REF: main
     container_name: kimngenero
     restart: unless-stopped
@@ -28,7 +28,7 @@ services:
   #     dockerfile: Dockerfile
   #     args:
   #       NODE_IMAGE: node:24-alpine
-  #       REPO_URL: https://github.com/vasquezmaldonadosebastian-hash/KimnGenero.git
+  #       REPO_URL: https://github.com/VasquezMaldonadoSebastian/KimnGenero.git
   #       REPO_REF: main
   #   container_name: kimngenero-sqlite
   #   restart: unless-stopped
