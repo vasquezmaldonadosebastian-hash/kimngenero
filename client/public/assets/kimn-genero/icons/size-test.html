@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>KimnGenero - prueba de tamaños de iconos</title>
+    <style>
+      :root {
+        --blue: #0176de;
+        --text: #03122e;
+        --muted: #6b7280;
+        font-family: Inter, Arial, sans-serif;
+      }
+
+      body {
+        margin: 0;
+        background: #f7fbff;
+        color: var(--text);
+      }
+
+      main {
+        max-width: 1040px;
+        margin: 0 auto;
+        padding: 32px 20px 48px;
+      }
+
+      h1 {
+        margin: 0 0 8px;
+        color: var(--blue);
+        font-family: Montserrat, Arial, sans-serif;
+        font-size: 28px;
+      }
+
+      p {
+        margin: 0 0 24px;
+        color: var(--muted);
+      }
+
+      .grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 18px;
+      }
+
+      .card {
+        border: 1px solid #d9e8ff;
+        border-radius: 8px;
+        background: white;
+        padding: 16px;
+      }
+
+      .swatch {
+        display: grid;
+        place-items: center;
+        width: 96px;
+        height: 96px;
+        border-radius: 8px;
+        margin-bottom: 12px;
+      }
+
+      .swatch img {
+        width: 72px;
+        height: 72px;
+        object-fit: contain;
+        transform: scale(var(--scale, 1));
+      }
+
+      .label {
+        font-weight: 700;
+        font-size: 14px;
+      }
+
+      .meta {
+        margin-top: 4px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <main>
+      <h1>Prueba de tamaños de iconos</h1>
+      <p>Todos los iconos se renderizan dentro de una caja visual de 72px, sobre un fondo de color fijo.</p>
+      <section class="grid">
+        <article class="card">
+          <div class="swatch" style="background:#0176DE;--scale:.96"><img src="./dimension-01.svg" alt="" /></div>
+          <div class="label">01 Institucionalización</div>
+          <div class="meta">dimension-01.svg · escala 0.96</div>
+        </article>
+        <article class="card">
+          <div class="swatch" style="background:#14934E;--scale:.96"><img src="./dimension-02.svg" alt="" /></div>
+          <div class="label">02 Violencia de Género</div>
+          <div class="meta">dimension-02.svg · escala 0.96</div>
+        </article>
+        <article class="card">
+          <div class="swatch" style="background:#D8002D;--scale:.9"><img src="./dimension-03.svg" alt="" /></div>
+          <div class="label">03 Corresponsabilidad</div>
+          <div class="meta">dimension-03.svg · escala 0.90</div>
+        </article>
+        <article class="card">
+          <div class="swatch" style="background:#8E8E8E;--scale:.92"><img src="./dimension-04.svg" alt="" /></div>
+          <div class="label">04 Trayectorias laborales</div>
+          <div class="meta">dimension-04.svg · escala 0.92</div>
+        </article>
+        <article class="card">
+          <div class="swatch" style="background:#8657E0;--scale:.92"><img src="./dimension-05.svg" alt="" /></div>
+          <div class="label">05 Trayectorias educativas</div>
+          <div class="meta">dimension-05.svg · escala 0.92</div>
+        </article>
+        <article class="card">
+          <div class="swatch" style="background:#F96200;--scale:.9"><img src="./dimension-06.svg" alt="" /></div>
+          <div class="label">06 Modelo educativo</div>
+          <div class="meta">dimension-06.svg · escala 0.90</div>
+        </article>
+        <article class="card">
+          <div class="swatch" style="background:#FEC300;--scale:.88"><img src="./dimension-07.svg" alt="" /></div>
+          <div class="label">07 Participación equilibrada</div>
+          <div class="meta">dimension-07.svg · escala 0.88</div>
+        </article>
+        <article class="card">
+          <div class="swatch" style="background:#232323;--scale:.94"><img src="./dimension-08.svg" alt="" /></div>
+          <div class="label">08 Visibilización</div>
+          <div class="meta">dimension-08.svg · escala 0.94</div>
+        </article>
+      </section>
+    </main>
+  </body>
+</html>
