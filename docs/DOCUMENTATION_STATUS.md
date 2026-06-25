@@ -40,6 +40,10 @@ Separar la documentacion que hoy sirve como referencia operativa real de la docu
 
 ## Documentacion auxiliar
 
+- `GUIA_EJECUTIVA_KIMNGENERO.md`
+  - sintesis ejecutiva para presentacion, comunicacion y contexto general del proyecto
+- `plan-kimn-uct-diseno.md`
+  - plan visual auxiliar para adoptar el lenguaje institucional KIMN/UCT
 - `archive/BRIEF_DISENO_GRAFICO.md`
 - `archive/BRIEF_DISENO_GRAFICO_EJECUTIVO.md`
 - `archive/BRIEF_DISENO_GRAFICO_RECOMENDACIONES.md`

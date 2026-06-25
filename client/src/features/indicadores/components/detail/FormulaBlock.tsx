@@ -1,3 +1,4 @@
+import React from "react";
 import type { Indicator } from "@shared/types/indicators";
 import { ChevronDown, ExternalLink } from "lucide-react";
 import { useMemo, useState } from "react";
