@@ -1,13 +1,8 @@
-Iconos definitivos de KimnGénero.
+KimnG?nero final icons.
 
-Archivos esperados:
-- `dimension-01.svg`
-- `dimension-02.svg`
-- `dimension-03.svg`
-- `dimension-04.svg`
-- `dimension-05.svg`
-- `dimension-06.svg`
-- `dimension-07.svg`
-- `dimension-08.svg`
+Runtime contract:
+- The application must consume only `dimension-01.svg` to `dimension-08.svg`.
+- `dimension-*-raw.svg` are no longer part of the runtime contract.
 
-Usa `size-test.html` para revisar el tamaño aparente de todos los iconos en una caja común.
+Maintenance support:
+- `size-test.html` remains as a manual visual harness to compare icon apparent size in a shared box.
