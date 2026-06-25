@@ -80,7 +80,7 @@ export default function HeaderUCT() {
             <Link href="/">
               <div className="flex min-w-0 flex-1 items-center transition-opacity hover:opacity-90">
                 <img
-                  src="/assets/logo_KIMN_gris-scaled.webp"
+                  src="/assets/logo-kimn-obs.png"
                   alt="Logo KIMN"
                   className="h-8 w-auto max-w-[64vw] object-contain sm:h-10 sm:max-w-[72vw] md:h-12 md:max-w-none lg:h-14"
                 />
@@ -150,7 +150,7 @@ export default function HeaderUCT() {
               <div className="flex items-center justify-between gap-4">
                 <Link href="/">
                   <div className="flex items-center transition-opacity hover:opacity-90">
-                    <img src="/assets/logo_KIMN_gris-scaled.webp" alt="Logo KIMN" className="h-10 w-auto object-contain" />
+                    <img src="/assets/logo-kimn-obs.png" alt="Logo KIMN" className="h-10 w-auto object-contain" />
                   </div>
                 </Link>
 
