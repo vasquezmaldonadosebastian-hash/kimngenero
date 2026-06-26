@@ -1,4 +1,4 @@
-import type { Indicator, IndicatorCategory, RawIndicator } from "../../../shared/types/indicators";
+import type { Indicator, IndicatorCategory, RawIndicator } from "../../../shared/types/indicator-domain";
 
 export type ResolveIframeResult = {
   iframeSrc: string;

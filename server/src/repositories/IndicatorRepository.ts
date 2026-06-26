@@ -1,4 +1,4 @@
-import type { GroupedReport, Indicator, IndicatorCategory } from "../../../shared/types/indicators";
+import type { GroupedReport, Indicator, IndicatorCategory } from "../../../shared/types/indicator-domain";
 
 export interface IndicatorRepository {
   initialize(): Promise<void>;

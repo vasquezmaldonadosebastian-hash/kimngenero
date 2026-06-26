@@ -3,7 +3,7 @@ import path from "node:path";
 import os from "node:os";
 import fs from "node:fs";
 import { SqliteIndicatorRepository } from "./SqliteIndicatorRepository";
-import type { RawIndicator } from "../../../shared/types/indicators";
+import type { RawIndicator } from "../../../shared/types/indicator-domain";
 
 function makeRawIndicator(overrides: Partial<RawIndicator> = {}): RawIndicator {
   return {

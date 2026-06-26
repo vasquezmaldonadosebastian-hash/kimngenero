@@ -1,5 +1,5 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode, useCallback, useMemo } from "react";
-import type { Indicator, IndicatorCategory } from "@shared/types/indicators";
+import type { Indicator, IndicatorCategory } from "@shared/types/indicator-domain";
 import { apiGetJson } from "../lib/apiClient";
 
 interface IndicatorsContextType {

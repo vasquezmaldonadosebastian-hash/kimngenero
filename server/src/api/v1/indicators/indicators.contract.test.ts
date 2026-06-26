@@ -1,7 +1,7 @@
 import request from "supertest";
 import { describe, expect, it } from "vitest";
 import { createApp } from "../../../createApp";
-import type { RawGroupedReport, RawIndicator } from "../../../../../shared/types/indicators";
+import type { RawGroupedReport, RawIndicator } from "../../../../../shared/types/indicator-domain";
 import { InMemoryIndicatorRepository } from "../../../repositories/InMemoryIndicatorRepository";
 import { SqliteIndicatorRepository } from "../../../repositories/SqliteIndicatorRepository";
 import { IndicatorService } from "../../../services/indicatorService";

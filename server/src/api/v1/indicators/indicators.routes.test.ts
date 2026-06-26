@@ -3,7 +3,7 @@ import { describe, expect, it } from "vitest";
 import { createApp } from "../../../createApp";
 import { InMemoryIndicatorRepository } from "../../../repositories/InMemoryIndicatorRepository";
 import { IndicatorService } from "../../../services/indicatorService";
-import type { RawIndicator } from "../../../../../shared/types/indicators";
+import type { RawIndicator } from "../../../../../shared/types/indicator-domain";
 
 process.env.NODE_ENV = "test";
 
