@@ -10,3 +10,12 @@ data/*.sqlite-*
 *.tmp
 *.temp
 Thumbs.db
+*.db
+*.sqlite
+*.sqlite3
+.env
+.env.local
+.manus-logs/
+.manus/
+logs/
+*.log
