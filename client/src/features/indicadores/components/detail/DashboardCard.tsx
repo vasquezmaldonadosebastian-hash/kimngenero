@@ -1,5 +1,5 @@
 import React from "react";
-import type { Indicator } from "@shared/types/indicators";
+import type { Indicator } from "@shared/types/indicator-domain";
 import { Download, Expand, Info, RefreshCw, Share2 } from "lucide-react";
 import { useMemo, useRef } from "react";
 import { toast } from "sonner";

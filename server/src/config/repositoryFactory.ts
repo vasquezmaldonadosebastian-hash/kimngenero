@@ -1,5 +1,5 @@
 import path from "path";
-import type { RawGroupedReport, RawIndicator } from "../../../shared/types/indicators";
+import type { RawGroupedReport, RawIndicator } from "../../../shared/types/indicator-domain";
 import type { IndicatorRepository } from "../repositories/IndicatorRepository";
 import { InMemoryIndicatorRepository } from "../repositories/InMemoryIndicatorRepository";
 import { SqliteIndicatorRepository } from "../repositories/SqliteIndicatorRepository";

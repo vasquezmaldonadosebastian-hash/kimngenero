@@ -1,5 +1,5 @@
 import React from "react";
-import type { Indicator } from "@shared/types/indicators";
+import type { Indicator } from "@shared/types/indicator-domain";
 import { ChevronDown } from "lucide-react";
 import { useState } from "react";
 

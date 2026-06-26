@@ -7,7 +7,7 @@ import type {
   IndicatorCategory,
   RawGroupedReport,
   RawIndicator,
-} from "../../../shared/types/indicators";
+} from "../../../shared/types/indicator-domain";
 import type { IndicatorRepository } from "./IndicatorRepository";
 import { groupIndicatorsByArea, mapItem } from "../services/normalizers";
 

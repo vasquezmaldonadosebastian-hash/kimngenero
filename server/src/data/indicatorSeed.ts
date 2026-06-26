@@ -1,4 +1,4 @@
-import type { RawGroupedReport, RawIndicator } from "../../../shared/types/indicators";
+import type { RawGroupedReport, RawIndicator } from "../../../shared/types/indicator-domain";
 
 type RecordLike = Record<string, unknown>;
 

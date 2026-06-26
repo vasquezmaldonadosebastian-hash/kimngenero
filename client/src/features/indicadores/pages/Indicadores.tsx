@@ -7,7 +7,7 @@
 import { useEffect, useMemo, useState } from "react";
 import { Link, useLocation } from "wouter";
 import { ChevronRight, Filter, Search } from "lucide-react";
-import type { Indicator } from "@shared/types/indicators";
+import type { Indicator } from "@shared/types/indicator-domain";
 import { apiGetJson } from "@/lib/apiClient";
 import { page2Resources } from "@/lib/page2-resources";
 import { useIndicatorsContext } from "../../../contexts/IndicatorsContext";

@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import type { RawIndicator } from "../../../shared/types/indicators";
+import type { RawIndicator } from "../../../shared/types/indicator-domain";
 import { groupByCategory, mapItem, resolveIframe } from "./normalizers";
 
 describe("resolveIframe", () => {

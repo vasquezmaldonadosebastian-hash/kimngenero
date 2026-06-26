@@ -6,7 +6,7 @@
 import { useEffect, useState } from "react";
 import { useLocation, useParams } from "wouter";
 import { ArrowLeft } from "lucide-react";
-import type { Indicator } from "@shared/types/indicators";
+import type { Indicator } from "@shared/types/indicator-domain";
 import { apiGetJson } from "@/lib/apiClient";
 import IndicadorDetail from "../components/IndicadorDetail";
 

@@ -1,4 +1,4 @@
-import type { GroupedReport, Indicator, IndicatorCategory } from "../../../shared/types/indicators";
+import type { GroupedReport, Indicator, IndicatorCategory } from "../../../shared/types/indicator-domain";
 import type { IndicatorRepository } from "../repositories/IndicatorRepository";
 
 export type IndicatorQuery = {

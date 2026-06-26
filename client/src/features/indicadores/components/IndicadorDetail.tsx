@@ -1,5 +1,5 @@
 import React from "react";
-import type { Indicator } from "@shared/types/indicators";
+import type { Indicator } from "@shared/types/indicator-domain";
 import DashboardCard from "./detail/DashboardCard";
 import FormulaBlock from "./detail/FormulaBlock";
 import Hero from "./detail/Hero";

@@ -1,7 +1,7 @@
 import React from "react";
 import { render, screen } from "@testing-library/react";
 import { describe, expect, it } from "vitest";
-import type { Indicator } from "@shared/types/indicators";
+import type { Indicator } from "@shared/types/indicator-domain";
 import TechnicalSheet from "./TechnicalSheet";
 
 function makeIndicator(overrides: Partial<Indicator> = {}): Indicator {
